@@ -19,8 +19,64 @@ app.get("/", (req, res) => {
     }
   });
 });
+app.get("/bfs", (req, res) => {
+  const fileName = "bfs.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
+app.get("/dfs", (req, res) => {
+  const fileName = "bfs.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
+app.get("/didfs", (req, res) => {
+  const fileName = "didfs.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
 
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
+app.get("/nq", (req, res) => {
+  const fileName = "nqueen.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
 
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
+app.get("/to", (req, res) => {
+  const fileName = "towerofhanoi.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
 
 app.listen(4000, () => {
   console.log(`Server Running On 4000`);
