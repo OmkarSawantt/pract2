@@ -6,13 +6,13 @@ graph = {
     4: [2, 3]
 }
 start = 0
-stack = [start]
+queue = [start]
 visited = set()
-while stack:
-    vertex = stack.pop()  
+while queue:
+    vertex = queue.pop(0)
     if vertex not in visited:
-        print(vertex, end=" ")  
-        visited.add(vertex)  
+        print(vertex, end=" ")
+        visited.add(vertex)
         for neighbor in graph[vertex]:
             if neighbor not in visited:
-                stack.append(neighbor)
+                queue.append(neighbor)
