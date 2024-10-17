@@ -7,8 +7,8 @@ const app = express();
 app.use(cors())
 app.use(fileUpload());
 
-app.get("/download", (req, res) => {
-  const fileName = "data.txt"; 
+app.get("/", (req, res) => {
+  const fileName = "mainver64bit.txt";
   const directoryPath = path.join(__dirname, "uploads");
   const filePath = path.join(directoryPath, fileName);
 

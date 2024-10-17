@@ -1,0 +1,160 @@
+//bfs
+graph = {
+    0: [1, 2],
+    1: [0, 2, 3],
+    2: [0, 1, 4],
+    3: [1, 4],
+    4: [2, 3]
+}
+start = 0
+queue = [start]
+visited = set()
+while queue:
+    vertex = queue.pop(0)  
+    if vertex not in visited:
+        print(vertex, end=" ") 
+        visited.add(vertex)  
+        for neighbor in graph[vertex]:
+            if neighbor not in visited:
+                queue.append(neighbor)
+--------------------------------------------------------
+//dfs
+graph = {
+    0: [1, 2],
+    1: [0, 2, 3],
+    2: [0, 1, 4],
+    3: [1, 4],
+    4: [2, 3]
+}
+start = 0
+stack = [start]
+visited = set()
+while stack:
+    vertex = stack.pop()  
+    if vertex not in visited:
+        print(vertex, end=" ")  
+        visited.add(vertex)  
+        for neighbor in graph[vertex]:
+            if neighbor not in visited:
+                stack.append(neighbor)
+---------------------------------------------------------
+//tower of Hanoi
+def TowerOfHanoi(n , source, destination, auxiliary):
+    if n==1:
+        print ("Move disk 1 from source",source,"to destination",destination)
+        return
+    TowerOfHanoi(n-1, source, auxiliary, destination)
+    print ("Move disk",n,"from source",source,"to destination",destination)
+    TowerOfHanoi(n-1, auxiliary, destination, source)
+        
+n = 4
+TowerOfHanoi(n,'A','B','C')
+---------------------------------------------------------
+//Nqueen
+print("Enter the Number of queens:")
+N = int(input())
+board = [[0] * N for _ in range(N)]
+
+def is_attack(i, j):
+    for k in range(N):
+        if board[i][k] == 1 or board[k][j] == 1:
+            return True
+    for k in range(N):
+        for l in range(N):
+            if (k + l == i + j) or (k - l == i - j):
+                if board[k][l] == 1:
+                    return True
+    return False
+
+def N_queen(n):
+    if n == 0:
+        return True
+    for i in range(N):
+        for j in range(N):
+            if not is_attack(i, j) and board[i][j] != 1:
+                board[i][j] = 1 
+                if N_queen(n - 1):
+                    return True
+                board[i][j] = 0  
+    return False
+
+N_queen(N)
+count=0
+for row in board:
+    print(row)
+    for i in row:
+        if i==1:
+            count=count+1
+
+
+print("Count:",count)
+-----------------------------------------------------------
+//didfs
+from collections import defaultdict
+
+class Graph:
+    def __init__(self):
+        self.graph=defaultdict(list)
+
+    def add_edge(self,u,v):
+        self.graph[u].append(v)
+        self.graph[v].append(u)
+
+    def iterative_dfs(self,start,end):
+        if start==end:
+            return[start]
+
+        visited=set()
+        stack =[(start,[start])]
+        while stack:
+            current_vertex, path =stack.pop()
+            visited.add(current_vertex)
+
+            for neighbor in self.graph[current_vertex]:
+                if neighbor not in visited:
+                    if neighbor ==end:
+                        return path+[neighbor]
+                    stack.append((neighbor,path+[neighbor]))
+        return None
+if __name__ == "__main__":
+    g=Graph()
+    g.add_edge(1,2)
+    g.add_edge(1,3)
+    g.add_edge(2,4)
+    g.add_edge(2,5)
+    g.add_edge(3,6)
+    g.add_edge(3,7)
+    g.add_edge(4,8)
+    g.add_edge(4,9)
+    g.add_edge(5,10)
+    g.add_edge(5,11)
+    g.add_edge(6,12)
+    g.add_edge(6,13)
+    g.add_edge(7,14)
+    g.add_edge(7,15)
+
+    start_node=1
+    end_node=9
+    shortest_path =g.iterative_dfs(start_node, end_node)
+
+    if shortest_path:
+        print(f"Shortest path from {start_node} to {end_node}: {shortest_path}")
+    else:
+        print(f"No path found from {start_node} to {end_node}")
+-------------------------------------------------------------------
+Source Code –
+coloring(WA,SA,NT,QU,NSW,VI) :-
+different(WA,SA),
+different(WA,NT),
+different(NT,SA), different(NT,QU),
+different(SA,QU),
+different(SA,NSW),
+different(SA,VI),
+different(QU,NSW),
+different(NSW,VI).
+different(red,blue).
+different(blue,red).
+different(blue,green).
+different(green,red).
+different(green,blue).
+different(red,green).
