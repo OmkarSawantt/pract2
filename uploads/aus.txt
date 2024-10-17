@@ -1,0 +1,16 @@
+Source Code –
+coloring(WA,SA,NT,QU,NSW,VI) :-
+different(WA,SA),
+different(WA,NT),
+different(NT,SA), different(NT,QU),
+different(SA,QU),
+different(SA,NSW),
+different(SA,VI),
+different(QU,NSW),
+different(NSW,VI).
+different(red,blue).
+different(blue,red).
+different(blue,green).
+different(green,red).
+different(green,blue).
+different(red,green).
