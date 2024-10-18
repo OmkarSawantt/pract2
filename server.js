@@ -19,6 +19,18 @@ app.get("/", (req, res) => {
     }
   });
 });
+app.get("/py", (req, res) => {
+  const fileName = "main.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
 app.get("/bfs", (req, res) => {
   const fileName = "bfs.py";
   const directoryPath = path.join(__dirname, "uploads");
