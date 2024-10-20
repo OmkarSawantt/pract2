@@ -49,11 +49,11 @@ while True:
         break
     else:
         print("Number should be between range 1 to 100")
-
+        
 
 num=[n1,n2,n3]
 num.sort()
-
+ 
 print(num)
 -------------------------------------------------------------------------------------------------------------------------
 
@@ -147,8 +147,8 @@ def determine_discount(over_60_card, family_card, traveling_with_child):
         return 0
 
 def main():
-    over_60_card = input("Do you have an 'Over 60s' rail card? (yes/no): ").strip().lower() == 'yes'
-    family_card = input("Do you have a family rail card? (yes/no): ").strip().lower() == 'yes'
+    over_60_card = input("Do you have an 'Over 60s' rail card? (yes/no): ").strip().lower() == 'yes' 
+    family_card = input("Do you have a family rail card? (yes/no): ").strip().lower() == 'yes' 
     traveling_with_child = input("Are you traveling with a child (under 16)? (yes/no): ").strip().lower() == 'yes'
     discount = determine_discount(over_60_card, family_card, traveling_with_child)
     if isinstance(discount, str):
@@ -165,10 +165,10 @@ if __name__ == "__main__":
 def determine_pass_status(attendance, internal_test_1, internal_test_2, internal_test_3, external_exam):
     if attendance < 80:
         return "Fail"
-
+    
     avg_test_1_3 = (internal_test_1 + internal_test_2 + internal_test_3) / 3
     avg_test_2_3 = (internal_test_1 + internal_test_2) / 2
-
+    
     if avg_test_1_3 >= 10 or avg_test_2_3 >= 15:
         if external_exam > 35:
             return "Pass"
@@ -183,7 +183,7 @@ def main():
     internal_test_2 = float(input("Enter marks for Internal Test 2: "))
     internal_test_3 = float(input("Enter marks for Internal Test 3: "))
     external_exam = float(input("Enter marks for External Exam: "))
-
+    
     result = determine_pass_status(attendance, internal_test_1, internal_test_2, internal_test_3, external_exam)
     print(f"The student has: {result}")
 
@@ -194,12 +194,12 @@ if __name__ == "__main__":
 #Time Display
 class TimeDisplayDevice:
     def __init__(self):
-        self.state = 'S1'
+        self.state = 'S1'  
         self.state_map = {
-            'S1': 'T',
-            'S2': 'D',
-            'S3': 'AT',
-            'S4': 'AD'
+            'S1': 'T',  
+            'S2': 'D',  
+            'S3': 'AT', 
+            'S4': 'AD'  
         }
 
     def change_mode(self):
@@ -262,9 +262,9 @@ if __name__ == "__main__":
 #Shopping
 class ShoppingBasket:
     def __init__(self):
-        self.state = 'empty'
-        self.basket = []
-        self.total_cost = 0
+        self.state = 'empty'  
+        self.basket = [] 
+        self.total_cost = 0  
 
     def add_item(self, item, price):
         if self.state == 'empty' or self.state == 'shopping':
@@ -281,7 +281,7 @@ class ShoppingBasket:
             self.total_cost -= price
             print(f"Removed {item} from basket. Total cost: {self.total_cost}")
             if not self.basket:
-                self.state = 'empty'
+                self.state = 'empty'  
         else:
             print("Can't remove items in the current state or item not found.")
 
@@ -307,7 +307,7 @@ class ShoppingBasket:
             print("Can't return to shopping in the current state.")
 
 def generate_test_case():
-    basket = ShoppingBasket()
+    basket = ShoppingBasket()  
     print("State Transition Test for Shopping Basket")
 
     while True:
@@ -319,7 +319,7 @@ def generate_test_case():
         print("4: Confirm (OK)")
         print("5: Not OK (return to shopping)")
         print("6: Exit")
-
+        
         choice = input("Enter your choice (1-6): ")
 
         if choice == '1':
@@ -345,7 +345,7 @@ def generate_test_case():
 # Start the test case generation
 generate_test_case()
 ------------------------------------------------------------------------------------------------------
-//Write a program to get the title of the web page using selenium webdriver. If the web page has title “login page” display a message “title matched!!!” else “incorrect title”
+//Write a program to get the title of the web page using selenium webdriver. If the web page has title â€œlogin pageâ€ display a message â€œtitle matched!!!â€ else â€œincorrect titleâ€
 HTML Code:
 <!DOCTYPE html>
 <html lang="en">
@@ -380,7 +380,7 @@ public class title {
 	public static void main(String[] args) {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\os521\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        driver.get("http://127.0.0.1:5500/login.html");
+        driver.get("http://127.0.0.1:5500/login.html"); 
 
         String pageTitle = driver.getTitle();
 
@@ -511,8 +511,8 @@ public class Numbers {
 	            driver.get("http://127.0.0.1:5500/compareNumber.html");
 	            WebElement number1Input = driver.findElement(By.id("number1"));
 	            WebElement number2Input = driver.findElement(By.id("number2"));
-	            number1Input.sendKeys("0");
-	            number2Input.sendKeys("20");
+	            number1Input.sendKeys("0"); 
+	            number2Input.sendKeys("20"); 
 	            WebElement compareButton = driver.findElement(By.xpath("//button[text()='Compare']"));
 	            compareButton.click();
 	            WebElement resultElement = driver.findElement(By.id("result"));
@@ -541,10 +541,10 @@ public class count {
 		        List<WebElement> allElements = driver.findElements(By.xpath("//*"));
 		        System.out.println("Total number of elements on the webpage: " + allElements.size());
 	            Thread.sleep(5000);
-	            }
+	            } 
 		 catch (Exception e) {
 	            e.printStackTrace();
-	        	}
+	        	} 
 		 finally {
 	            driver.quit();
 	        }
@@ -571,7 +571,7 @@ public class items {
 		       Select se = new Select(driver.findElement(By.xpath("//Select[@id='day']")));
 			   Select se1 = new 	Select(driver.findElement(By.xpath("//Select[@id='month']")));
 			   Select se2 = new  Select(driver.findElement(By.xpath("//Select[@id='year']")));
-			   List <WebElement> mylist = se.getOptions();
+			   List <WebElement> mylist = se.getOptions(); 		
 			   mylist.size();
 		       System.out.println("Number of items in day list: " +mylist.size());
 		       List <WebElement> mylist1 = se1.getOptions();
@@ -590,7 +590,7 @@ public class items {
 }
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//Write and test a program using Selenium WebDriver to count the number of checked and unchecked checkboxes/ radio buttons on the page
+//Write and test a program using Selenium WebDriver to count the number of checked and unchecked checkboxes/ radio buttons on the page 
 HTML Code:
 <!DOCTYPE html>
 <html lang="en">
@@ -633,12 +633,12 @@ public class cheack {
 		WebDriver driver = new ChromeDriver();
 				 try {
 					  driver.get("http://127.0.0.1:5500/radio.html");
-				        driver.manage().window().maximize();
+				        driver.manage().window().maximize();	        
 				        int chk = 0;
 				        int unchk = 0;
 				        int rchk = 0;
 				        int runchk = 0;
-				        List <WebElement> els =  driver.findElements(By.xpath("//input[@type='checkbox']"));
+				        List <WebElement> els =  driver.findElements(By.xpath("//input[@type='checkbox']")); 
 		 for(WebElement el : els)
 				        {
 				        	if(el.isSelected()) {
@@ -650,7 +650,7 @@ public class cheack {
 				        }
 				        System.out.println("Total checked items" + chk);
 				        System.out.println("Total unchecked items" + unchk);
-				        List <WebElement> elm = driver.findElements(By.xpath("//input[@type='radio']"));
+				        List <WebElement> elm = driver.findElements(By.xpath("//input[@type='radio']")); 
 		for(WebElement ell : elm)
 				        {
 				        	if(ell.isSelected()) {
@@ -686,7 +686,7 @@ public class excelclass {
 		String excelFilePath = "C:\\Users\\os521\\OneDrive\\Desktop\\sample.xls";
 		 try {
 		 Workbook workbook = Workbook.getWorkbook(new File(excelFilePath));
-		 WritableWorkbook copy = Workbook.createWorkbook(new
+		 WritableWorkbook copy = Workbook.createWorkbook(new 
 		File(excelFilePath), workbook);
 		 WritableSheet sheet = copy.getSheet(0);
 		 for (int rowIndex = 1; rowIndex <= 10; rowIndex++) {
@@ -709,7 +709,7 @@ public class excelclass {
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-//	Write a program in java to update 10 records in excel sheet using jxl jar. Include the header for each column. Also display the highest, lowest and average score.
+//	Write a program in java to update 10 records in excel sheet using jxl jar. Include the header for each column. Also display the highest, lowest and average score. 
 
 import java.io.File;
 import java.io.IOException;
@@ -736,7 +736,7 @@ public class excelClass {
             for (int rowIndex = 1; rowIndex <= 10; rowIndex++) {
                 Label label1 = new Label(0, rowIndex, "Student " + rowIndex);
                 sheet.addCell(label1);
-                double score = 50 + rowIndex;
+                double score = 50 + rowIndex; 
                 Number number = new Number(1, rowIndex, score);
                 sheet.addCell(number);
                 Label label2 = new Label(2, rowIndex, (rowIndex % 2 == 0) ? "TRUE" : "FALSE");
@@ -746,7 +746,7 @@ public class excelClass {
                 totalScore += score;
             }
             double averageScore = totalScore / 10;
-            int statsStartRow = 12;
+            int statsStartRow = 12; 
             Label highestLabel = new Label(0, statsStartRow, "Highest Score:");
             sheet.addCell(highestLabel);
             Number highestValue = new Number(1, statsStartRow, highestScore);
@@ -768,3 +768,496 @@ public class excelClass {
         }
 	}
 }
+
+------------------------------------------------------------------------------------------------
+
+//prac1- BMI
+
+
+Equivalence partitions (ht):
+height â‰¤ 0	0.1 â‰¤ height â‰¤ 4	height > =4.1
+Invalid Partition	Valid Partition	Invalid Partition
+
+Equivalence partitions (wt):
+weight â‰¤ 0.0	1.0  â‰¤ weight â‰¤ 700.0	weight â‰¥ 700.01
+Invalid Partition	Valid Partition	Invalid Partition
+
+Boundary Value Analysis (ht):
+0	0.1	0.2
+Invalid	Valid	Valid
+3.99	4.0	4.1
+Valid	Valid	Invalid
+
+Boundary Value Analysis (wt):
+0.0	1.0	2.0
+Invalid	Valid	Valid
+699.0	700.0	700.01
+Valid	Valid	Invalid
+
+Test Cases
+Test case ID	Input: ht	Input: wt	Expected output	Remark
+1.		1.7	95	Your BMI is  32.871972318339104	Pass
+2.		2	700	Your BMI is  175.0	Pass
+3.		3	237	Your BMI is 26.33	Pass
+4.		2.2	-159	Invalid Input	Pass
+5.		4	134	Your BMI is  8.375	Pass
+6.		-1.2	231	Invalid Input	Pass
+7.		7.4	430	Invalid Input	Pass
+8.		5.4	788	Invalid Input	Pass
+9.		3.4	800	Invalid Input	Pass
+10.		0	0	Invalid Input	Pass
+
+------------------------------------------------------------------------------------------
+\\prac1.2- Largest amng 3
+
+
+
+Let a, b, c be the variables that stores the three input values.
+Equivalence partitions (a):
+a<=0	1<=a<=300	a>=301
+Invalid Partition	Valid Partition	Invalid Partition
+
+Equivalence partitions (b):
+b<=0	1<=b<=300	b>=301
+Invalid Partition	Valid Partition	Invalid Partition
+
+Equivalence partitions (c):
+c<=0	1<=c<=300	c>=301
+Invalid Partition	Valid Partition	Invalid Partition
+
+
+
+Boundary Value Analysis (a):
+0	1	2
+Invalid	Valid	Valid
+299	300	301
+Valid	Valid	Invalid
+
+Boundary Value Analysis (b):
+0	1	2
+Invalid	Valid	Valid
+299	300	301
+Valid	Valid	Invalid
+
+Boundary Value Analysis (c):
+0	1	2
+Invalid	Valid	Valid
+299	300	301
+Valid	Valid	Invalid
+
+Test Cases
+Test case ID	Input: a	Input: b	Input: c	Expected output	Remark
+1.		s	-	-	Error- Please enter valid integers.	Pass
+2.		700
+	-	-	Error- Invalid Input	Pass
+3.		220	400	-	Error-Invalid Input	Pass
+4.		100	200	500	Error-Invalid Input	Pass
+5.		110	45	60	The largest number is: 110	Pass
+6.		37	32	70	The largest number is: 70	Pass
+7.		77	91	84	The largest number is: 91	Pass
+8.		45	r	-	Error- Please enter valid integers.	Pass
+9.		87	63	t	Error- Please enter valid integers.	Pass
+10.		1	300	250	The largest number is: 300	Pass
+
+
+---------------------------------------------------------------------------------
+\\Number in ascending order
+
+Equivalence partitions (x):
+             x<=0	1<=x<=100	x>=101
+Invalid Partition	Valid Partition	Invalid Partition
+
+
+Equivalence partitions (y):
+y<=0	1<=y<=100	y>=101
+Invalid Partition	Valid Partition	Invalid Partition
+
+Equivalence partitions (z):
+z<=0	1<=z<=100	z>=101
+Invalid Partition	Valid Partition	Invalid Partition
+
+Boundary Value Analysis (x):
+0	1	2
+Invalid	Valid	Valid
+99	100	101
+Valid	Valid	Invalid
+
+Boundary Value Analysis (y):
+0	1	2
+Invalid	Valid	Valid
+99	100	101
+Valid	Valid	Invalid
+
+Boundary Value Analysis (z):
+0	1	2
+Invalid	Valid	Valid
+99	100	101
+Valid	Valid	Invalid
+
+
+Test Cases:
+Test case ID	Input: x	Input: y	Input: z	Expected output	Remark
+1.		78	15	17	15,17,78	Pass
+2.		12	32	45	12,32,45	Pass
+3.		0	-	-	Error	Pass
+4.		12	12	12	12,12,12	Pass
+5.		101.1	-	-	 Error	Pass
+6.		169	-	-	Error	Pass
+7.		5	788	-	Error	Pass
+8.		56	23	99	23,56,99	Pass
+9.		11	10	12	10,11,12	Pass
+10.		54	66	49	49,54,66	Pass
+
+-----------------------------------------------------------------------------------------------
+
+insurance policy
+
+
+Cause	1	2	3	4	5	6	7	8
+Age <= 25	True	True	True	True	False	False	False	False
+0 claim	True	-	-	-	True	-	-	-
+1 claim	-	True	-	-	-	True	-	-
+2-4 claims	-	-	True	-	-	-	True	-
+5 or more claims	-	-	-	True	-	-	-	True
+Effect								
+Premium increase by $ 25	-	T	-	-	T	-	-	-
+Premium increase by $ 50	T	-	-	-	-	T	-	-
+Premium increase by $ 100	-	-	-	-	-	-	-	-
+Premium increase by $ 200	-	-	-	-	-	-	T	-
+Premium increase by $ 400	-	-	T	-	-	-	-	-
+Send Warning Letter	-	T	T	T	-	T	T	T
+Cancel Policy	-	-	-	T	-	-	-	T
+
+
+Sr no	Age	No of Claim/s	Expected Output	Condition / cause met	Remarks
+1.		25	0	$50	Yes	Pass
+2.		30	1	$50, Warning letter	Yes	Pass
+3.		31	2	$200, Warning Letter	Yes	Pass
+4.		32	5	$0, Warning Letter, Policy Cancelled	Yes	Pass
+5.		64	0	$25	Yes	Pass
+6.		34	1	$25, Warning Letter	Yes	Pass
+7.		25	3	$400, Warning Letter	Yes	Pass
+8.		27	5	$0, Warning Letter, Policy Cancelled	Yes	Pass
+9.		33	4	$200, Warning letter	Yes	Pass
+10.		55	7	$0,Warning Letter, Policy Cancelled	Yes	Pass
+
+
+---------------------------------------------------------------------------------------------
+
+\\ticket discount
+
+Cause	1	2	3	4	5	6	7	8
+Over 60â€™s rail card	True	False	False	False	False	True	True	True
+Family rail card	-	True	True	False	False	False	True	True
+Travelling with child	-	True	False	True	False	True	True	False
+Effects:								
+Discount (%)	34%	50%	0%	10%	0%	34%	50%/X?	34%/X/?
+
+
+---------------------------------------------------------------------------------------
+
+\\ university exam 
+
+Cause	1	2	3	4	5	6	7	8
+Attendance greater than 80%	False	True	True	True	True	True	True	False
+Attended 3 internal tests with an average of 10 or more marks	-	False	True	True	False	False	True	True
+Attended 2 internal tests with an average of 15 or more marks.	-	False	-	-	True	True	True	True
+Cleared external exam and scored more than 35 marks	-	-	False	True	False	True	True	True
+Effects:								
+Pass	-	-	-	T	-	T	T	-
+Fail	T	T	T	-	T	-	-	T
+
+---------------------------------------------------------------------------------------------------------
+
+\\Display device
+
+0-Switch State Transition Table:
+Test Case	1	2	3	4	5	6
+Start state	S1	S1	S2	S2	S3	S4
+Input	R	CM	CM	R	TS	DS
+Exp output	AT	D	T	AD	T	D
+Finish State	S3	S2	S1	S4	S1	S2
+
+ 
+1-Switch State Transition Table:
+Test Case	1	2	3	4	5	6	7	8	9	10
+Start state	S1	S2	S1	S2	S1	S4	S2	S3	S3	S4
+Input	R	R	CM	CM	CM	DS	CM	TS	TS	DS
+Exp Output	AT	AD	D	T	D	D	T	T	T	D
+Next State	S3	S4	S2	S1	S2	S2	S1	S1	S1	S2
+Input	TS	DS	CM	CM	R	CM	R	CM	R	R
+Exp Output	T	D	T	D	AD	T	AT	D	AT	AD
+Finish State	S1	S2	S1	S2	S4	S1	S3	S2	S3	S4
+
+
+State Transition table:
+	CM	R	TS	DS
+S1	S2/D	S3/AT	S1/N	S1/N
+S2	S1/T	S4/AD	S2/N	S2/N
+S3	S3/N	S3/N	S1/T	S3/N
+S4	S4/N	S4/N	S4/N	S2/D
+
+
+Test cases:
+Test cases	1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16
+Start State	S1	S1	S1	S1	S2	S2	S2	S2	S3	S3	S3	S3	S4	S4	S4	S4
+Input	CM	R	TS	DS	CM	R	TS	DS	CM	R	TS	DS	CM	R	TS	DS
+Expected Output	D	AT	N	N	T	AD	N	N	N	N	T	N	N	N	N	D
+Finish State	S2	S3	S1	S1	S1	S4	S2	S2	S3	S3	S1	S3	S4	S4	S4	S2
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\\shopping cart
+
+0-Switch State Transition Table:
+
+Test Case	1	2	3	4	5	6	7	8
+Start state	S1	S1	S2	S2	S2	S3	S3	S2
+Input	Add Item	Checkout	Add item	Remove Last Item	Checkout	Ok	Not Ok	Remove Item
+Exp output	Shopping	Invalid	Shopping	Empty Basket	Summary &Cost	Payment	Shopping	Shopping
+Finish State	S2	S1	S2	S1	S3	S4	S2	S2
+
+
+1-Switch State Transition Table:
+Test Case	1	2	3	4	5	6	7	8	9	10
+Start state	S1	S2	S2	S2	S3	S3	S1	S1	S3	S1
+Input	Add item	Checkout	Checkout	Remove last item	Not Ok	Not Ok	Add Item	Add Item	Not Ok	Add Item
+Exp Output	Shopping	Summary & Cost	Summary &Cost	Basket Empty	Shopping	Shopping	Item Added	Item Added	Shopping	Shopping
+Next State	S2	S3	S3	S1	S2	S2	S2	S2	S2	S2
+Input	Checkout	Ok	Not Ok	Add Item	Add item	Remove item	Remove Items	Remove Last Item	Remove Last Item	Add Item
+Exp Output	Summary & Cost	Payment	Shopping	Shopping	Shopping	Item Removed	Items Removed	Basket Empty	Basket Empty	Shopping
+Finish State	S3	S4	S2	S2	S2	S2	S2	S1	S1	S2
+
+â€ƒ
+State Transition Table: 
+
+	Add items	Remove items	Remove last items	Checkout	OK	Not OK
+S1	S2	S1/N	S1/N	S1/N	S1/N	S1/N
+S2	S2	S2	S1	S3	S2/N	S2/N
+S3	S3/N	S3/N	S3/N	S3/N	S4	S2
+S4	S4/N	S4/N	S4/N	S4/N	S4/N	S4/N
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+\\use case-registration
+
+Use Case Testing:
+Use Case ID	UC-01
+Title:	User Registration
+Precondition:	The user is on the registration page of the application.
+Main Scenario	Step	Description
+	1	Open Registration Page:
+   - The user navigates to the registration page.
+	2	Enter User Information:
+   - The user fills in the required fields: 
+     - Username
+     - Email
+     - Password
+     - Confirm Password
+	3	Submit Registration Form
+   - The user clicks the "Register" button.
+	4	System Validations:
+   - The system checks if:
+     - The username is unique.
+     - The email format is valid.
+     - The password meets security criteria (e.g., length, complexity).
+     - The "Confirm Password" matches the "Password".
+	5	Successful Registration:
+   - If all validations pass, the user is registered, and a confirmation message is displayed.
+   - The system sends a confirmation email to the registered email address.
+	6	Redirect to Login Page:
+   - The user is redirected to the login page.
+Extension / Alternate Flow	1	AF-01: Duplicate Username
+  - If the username already exists:
+    - The system displays an error message: "Username already taken."
+		AF-02: Invalid Email Format
+  - If the email format is invalid:
+    - The system displays an error message: "Please enter a valid email address."
+		AF-03: Password Complexity Failure
+  - If the password doesnâ€™t meet criteria:
+    - The system displays an error message: "Password must be at least 8 characters long and contain a mix of letters and numbers."
+		AF-04: Password Mismatch
+  - If the password and confirm password fields do not match:
+    - The system displays an error message: "Passwords do not match."
+Postconditions:		â€¢	If registration is successful, the user account is created and the user receives a confirmation email.
+â€¢	If registration fails, no account is created, and the user is informed of the errors.
+
+Testing Scenarios:
+Test case	Input 	Expected Output
+Successful Registration	Unique username, valid email, strong password, matching confirmation.	User is registered successfully and receives a confirmation email.
+Duplicate Username	Existing username, valid email, strong password.		Error message for duplicate username.
+Invalid Email Format	Unique username, invalid email format, strong password.	Error message for invalid email.
+Weak Password	Unique username, valid email, weak password.	Error message for weak password.
+Password Mismatch	Unique username, valid email, password, and non-matching confirm password.	Error message for password mismatch.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+\\use case - online shopping
+
+Use Case ID	UC-02
+Title:	Shopping Cart Functionality
+Precondition:	The user is logged into their account and is on the product listing page.
+Main Scenario
+Actors: User (customer)
+	Step	Description
+	1	Browse Products:
+   - The user navigates through available products.
+	2	Add Product to Cart:
+   - The user selects a product and clicks the "Add to Cart" button: 
+     - The system confirms the addition with a message (e.g., "Item added to your cart").
+	3	View Cart:
+   - The user clicks on the "Cart" icon to view their selected items.
+       - The system displays a list of items in the cart with details such as:
+            - Product name
+            - Quantity
+            - Price
+            - Total price
+	4	Update Cart:
+   - The user can change the quantity of an item or remove an item from the cart.
+         - The system updates the total price accordingly.
+	5	Apply Discount Code:
+   - The user enters a valid discount code in the designated field.
+        - The system validates the code and applies the discount to the total price.
+	6	Proceed to Checkout:
+   - The user clicks the "Checkout" button.
+	7	Complete Purchase:
+   - The user enters the required details and confirms the order.
+        - The system processes the payment and displays an order confirmation message.
+Extension / Alternate Flow	1	AF-01: Item Not Available
+  - If an item is out of stock:
+    -The system displays an error message: "Item not available.
+		AF-02: Invalid Discount Code
+  - If the discount code is invalid
+    - The system displays an error message: "Invalid discount code."
+		AF-03: Exceeding Quantity Limit
+  - If the user exceeds the allowed quantity:
+    - The system displays: "Quantity limit exceeded."
+Postconditions:		â€¢	If the purchase is successful, an order is created in the system, and the user receives a confirmation email.
+â€¢	If the user cancels or fails to complete the purchase, no order is created.
+
+Testing Scenarios:
+Test case	Input 	Expected Output
+Successful Addition of Item to Cart	Product selection	Item added to the cart with confirmation message
+View Cart Functionality	Click "View Cart"	
+Cart details with items, prices, and total displayed
+
+Update Item Quantity in Cart	Change item quantity	Cart updated, total price reflects the changes
+Remove Item from Cart	Remove an item from the cart	Item removed, and the total price is updated
+Apply Valid Discount Code	Valid discount code	Discount applied, and total price reduced
+Apply Invalid Discount Code	Invalid discount code	Error message displayed
+Successful Checkout Process	Valid payment information	Purchase confirmed, order processed
+Out of Stock Item Attempt	Out-of-stock item added	
+Error message displayed for unavailable item
+
+Exceeding Quantity Limit	Quantity exceeding the limit	Error message displayed for quantity limit
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+\\loop coverage ---euclid
+
+Step 3: Calculate the cyclomatic complexity
+V(G) : Cyclomatic Complexity, E : No of Edges, N: No of Nodes, P : No of connected areas/ no of methods
+V(G) = E â€“ N + 2P
+= 16â€“ 15 + 2*1
+= 3
+V(G) = No of predicates/Conditions + 1 = 2+ 1 =3
+Thus, the cyclomatic complexity is 3.
+
+Step 4: Basis Test Path
+Test Path B1: 0 1 2  7  8  13  14
+2 : n>m ==> FALSE
+8 : r!=0 ==> FALSE
+
+Test Path B2: 0 1 2 3 4 5 6 7 8  13  14
+2 : n>m ==> TRUE
+8 : r!=0 ==> FALSE
+
+Test Path B3: 0 1 2  3  4  5  6  7  8  9  10  11  12  8  13  14
+2 : n>m ==> TRUE
+8 : r!=0 ==> TRUE
+8 : r!=0 ==> FALSE
+
+Statement Coverage =  Total no of statement executed/ Total number of statement
+Statement Coverage for B1 = 7/15=0.46
+Statement Coverage for B2 =11/15 = 0.73
+Statement Coverage for B3 = 15/15 = 1
+Overall Statement Coverage = 
+â€¢	B1: Executes lines: 0, 1, 2, 7, 8, 13, 14
+â€¢	B2: Executes lines: 0, 1, 2, 3, 4, 5, 6, 7, 8, 13, 14
+â€¢	B3: Executes lines: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+The union of all unique statements executed is:
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
+
+This gives us 15 unique lines of code executed.
+Thus, the overall statement coverage is:
+Overall Statement Coverage= 15/15 = 1 or 100%
+
+Decision Coverage = no of decision outcomes executed/ total number of decision outcomes
+No of Decision outcome = 4 
+node 2: n>m : True(B2, B3) / False (B1) â‡’ 2
+node 8: r!=0 : True(B2, B3) / False (B1,B3) â‡’ 2
+
+Total number of decision outcome = 2no of conditions
+				        = 4
+Decision Coverage for over all Code = 4/4 * 100 = 100% 
+
+100% decision coverage guarantees 100% statement coverage, but not the other way around!
+
+
+Conclusion:
+The control flow graph is drawn and the cyclomatic complexity is determined to be 3. Three basis paths are to be tested.
+
+
+--------------------------------------------------------------------------------------------------------------
+
+\\loop coverage- maxcol
+
+Step 3: Calculate the cyclomatic complexity
+V(G) = E â€“ N + 2P
+	=15-13+ 2*1
+	=2+2
+	=4
+Thus , the cyclomatic complexity is 4.
+Step 4: Basis Test Path
+Test Path B1: 1  2  3  4  5  6  19  20
+6 : if (MaxCount > Iterations) ïƒ¨False
+
+Test Path B2: 1  2  3  4  5  6  7  8	18  19  20
+6 : if (MaxCount > Iterations) ïƒ¨True
+8 : while (count < Iterations) ïƒ¨False
+
+Test Path B3: 1  2  3  4  5  6  7  8  9  10  11  12	13  14  15  16  17  18  19  20
+6 : if (MaxCount > Iterations) ïƒ¨True
+8 : while (count < Iterations) ïƒ¨True
+12 : if (totals[val] > MaxCount) ïƒ¨True 
+8 : while (count < Iterations) ïƒ¨False
+
+Statement Coverage =  Total no of statement executed/ Total number of statement
+Statement Coverage for B1 = 8/20 =0.4 or 40%
+Statement Coverage for B2 =11/20 =55% 
+Statement Coverage for B3 = 20/20 = 1 or 100%
+Overall Statement Coverage = 
+â€¢	B1: Executes lines: 1  2  3  4  5  6  19  20
+â€¢	B2: Executes lines: 1  2  3  4  5  6  7  8  19  20
+â€¢	B3: Executes lines:  1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16  17  18  19  20
+The union of all unique statements executed is:
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 17, 18, 19, 20
+This gives us 18 unique lines of code executed.
+Thus, the overall statement coverage is:
+Overall Statement Coverage= Total unique statement executed/Total number of statement 
+=20/20 = 100%
+
+Decision Coverage = no of decision outcomes executed/ total number of decision outcomes
+No of Decision outcome = 5
+Total number of decision outcome = 2no of conditions
+				        = 6
+Decision Coverage for overall Code = No. of decision outcomes executed/Total no. of decision outcomes
+=5/6 * 100 = 83.3%
+
+83.3% decision coverage guarantees 100% statement coverage!
+
+Conclusion:
+The control flow graph is drawn and the cyclomatic complexity is determined to be __4___. Four basis paths are to be tested.
+
+
