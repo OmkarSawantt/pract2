@@ -49,11 +49,11 @@ while True:
         break
     else:
         print("Number should be between range 1 to 100")
-        
+
 
 num=[n1,n2,n3]
 num.sort()
- 
+
 print(num)
 -------------------------------------------------------------------------------------------------------------------------
 
@@ -147,8 +147,8 @@ def determine_discount(over_60_card, family_card, traveling_with_child):
         return 0
 
 def main():
-    over_60_card = input("Do you have an 'Over 60s' rail card? (yes/no): ").strip().lower() == 'yes' 
-    family_card = input("Do you have a family rail card? (yes/no): ").strip().lower() == 'yes' 
+    over_60_card = input("Do you have an 'Over 60s' rail card? (yes/no): ").strip().lower() == 'yes'
+    family_card = input("Do you have a family rail card? (yes/no): ").strip().lower() == 'yes'
     traveling_with_child = input("Are you traveling with a child (under 16)? (yes/no): ").strip().lower() == 'yes'
     discount = determine_discount(over_60_card, family_card, traveling_with_child)
     if isinstance(discount, str):
@@ -165,10 +165,10 @@ if __name__ == "__main__":
 def determine_pass_status(attendance, internal_test_1, internal_test_2, internal_test_3, external_exam):
     if attendance < 80:
         return "Fail"
-    
+
     avg_test_1_3 = (internal_test_1 + internal_test_2 + internal_test_3) / 3
     avg_test_2_3 = (internal_test_1 + internal_test_2) / 2
-    
+
     if avg_test_1_3 >= 10 or avg_test_2_3 >= 15:
         if external_exam > 35:
             return "Pass"
@@ -183,7 +183,7 @@ def main():
     internal_test_2 = float(input("Enter marks for Internal Test 2: "))
     internal_test_3 = float(input("Enter marks for Internal Test 3: "))
     external_exam = float(input("Enter marks for External Exam: "))
-    
+
     result = determine_pass_status(attendance, internal_test_1, internal_test_2, internal_test_3, external_exam)
     print(f"The student has: {result}")
 
@@ -194,12 +194,12 @@ if __name__ == "__main__":
 #Time Display
 class TimeDisplayDevice:
     def __init__(self):
-        self.state = 'S1'  
+        self.state = 'S1'
         self.state_map = {
-            'S1': 'T',  
-            'S2': 'D',  
-            'S3': 'AT', 
-            'S4': 'AD'  
+            'S1': 'T',
+            'S2': 'D',
+            'S3': 'AT',
+            'S4': 'AD'
         }
 
     def change_mode(self):
@@ -262,9 +262,9 @@ if __name__ == "__main__":
 #Shopping
 class ShoppingBasket:
     def __init__(self):
-        self.state = 'empty'  
-        self.basket = [] 
-        self.total_cost = 0  
+        self.state = 'empty'
+        self.basket = []
+        self.total_cost = 0
 
     def add_item(self, item, price):
         if self.state == 'empty' or self.state == 'shopping':
@@ -281,7 +281,7 @@ class ShoppingBasket:
             self.total_cost -= price
             print(f"Removed {item} from basket. Total cost: {self.total_cost}")
             if not self.basket:
-                self.state = 'empty'  
+                self.state = 'empty'
         else:
             print("Can't remove items in the current state or item not found.")
 
@@ -307,7 +307,7 @@ class ShoppingBasket:
             print("Can't return to shopping in the current state.")
 
 def generate_test_case():
-    basket = ShoppingBasket()  
+    basket = ShoppingBasket()
     print("State Transition Test for Shopping Basket")
 
     while True:
@@ -319,7 +319,7 @@ def generate_test_case():
         print("4: Confirm (OK)")
         print("5: Not OK (return to shopping)")
         print("6: Exit")
-        
+
         choice = input("Enter your choice (1-6): ")
 
         if choice == '1':
@@ -344,3 +344,427 @@ def generate_test_case():
 
 # Start the test case generation
 generate_test_case()
+------------------------------------------------------------------------------------------------------
+//Write a program to get the title of the web page using selenium webdriver. If the web page has title “login page” display a message “title matched!!!” else “incorrect title”
+HTML Code:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+</head>
+<body>
+  <form id="loginForm">
+    <h2>Login</h2>
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required>
+      <div class="error" id="usernameError"></div>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+      <div class="error" id="passwordError"></div>
+    </div>
+    <button type="submit">Login</button>
+  </form>
+</body>
+</html>
+Java Code:
+package login;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class title {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\os521\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
+        driver.get("http://127.0.0.1:5500/login.html");
+
+        String pageTitle = driver.getTitle();
+
+        if (pageTitle.equalsIgnoreCase("Login Page")) {
+            System.out.println("title matched!!!");
+        } else {
+            System.out.println("incorrect title");
+        }
+        driver.quit();
+	}
+
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Write a program to fill the registration form using Selenium Webdriver.
+
+HTML Page Code:
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Registration Form</h2>
+    <form action="submit" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+
+        <input type="submit" name="submit" value="Register">
+    </form>
+</div>
+
+</body>
+</html>
+Java Code:
+package webDriver1Pract2;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class register {
+	public static void main(String[] args) {
+	       System.setProperty("webdriver.chrome.driver", "C:\\Users\\os521\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+	       WebDriver driver = new ChromeDriver();
+	       try {
+	            driver.get("http://127.0.0.1:5500/register.html");
+	            driver.manage().window().maximize();
+	            System.out.print(driver.getTitle());
+	            WebElement usernameField = driver.findElement(By.name("name"));
+	            usernameField.sendKeys("Shraddha");
+	            WebElement email = driver.findElement(By.name("email"));
+	            email.sendKeys("shrads.faculty@gmail.com");
+	            WebElement password = driver.findElement(By.name("password"));
+	            password.sendKeys("shrads.faculty@gmail.com");
+	            WebElement confirm_password = driver.findElement(By.name("confirm_password"));
+	            confirm_password.sendKeys("shrads.faculty@gmail.com");
+	            WebElement loginButton = driver.findElement(By.name("submit"));
+	     loginButton.click();
+		     Thread.sleep(10000);
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	            driver.quit();
+	        }
+		}
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Write a webpage to compare two number. Send the data to the webpage through the java program using selenium webdriver and display the greatest number of both in the label.
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Numbers</title>
+    <script>
+        function compareNumbers() {
+            var number1 = parseFloat(document.getElementById("number1").value);
+            var number2 = parseFloat(document.getElementById("number2").value);
+            var result = "";
+            if (number1 > number2) {
+                result = "Number 1 is greater than Number 2";
+            } else if (number1 < number2) {
+                result = "Number 1 is less than Number 2";
+            } else {
+                result = "Number 1 is equal to Number 2";
+            }
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+</head>
+<body>
+    <h1>Compare Two Numbers</h1>
+    <label for="number1">Number 1:</label>
+    <input type="number" id="number1" required><br><br>
+    <label for="number2">Number 2:</label>
+    <input type="number" id="number2" required><br><br>
+    <button onclick="compareNumbers()">Compare</button>
+    <h2 id="result"></h2>
+</body>
+</html>
+Java Code:
+package Numbers;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class Numbers {
+	public static void main(String[] args) {
+		 WebDriver driver = new ChromeDriver();
+	        try {
+	        	System.setProperty("webdriver.chrome.driver", "C:\\Users\\os521\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+	            driver.get("http://127.0.0.1:5500/compareNumber.html");
+	            WebElement number1Input = driver.findElement(By.id("number1"));
+	            WebElement number2Input = driver.findElement(By.id("number2"));
+	            number1Input.sendKeys("0");
+	            number2Input.sendKeys("20");
+	            WebElement compareButton = driver.findElement(By.xpath("//button[text()='Compare']"));
+	            compareButton.click();
+	            WebElement resultElement = driver.findElement(By.id("result"));
+	            System.out.println(resultElement.getText());
+	        } finally {
+	            driver.quit();
+	        }
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//Write and test a program using Selenium WebDriver to count the total number of objects (elements) present on a webpage
+
+Java Code:
+package countElement;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.List;
+public class count {
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\os521\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		 try {
+			  driver.get("http://127.0.0.1:5500/compareNumber.html");
+		        driver.manage().window().maximize();
+		        List<WebElement> allElements = driver.findElements(By.xpath("//*"));
+		        System.out.println("Total number of elements on the webpage: " + allElements.size());
+	            Thread.sleep(5000);
+	            }
+		 catch (Exception e) {
+	            e.printStackTrace();
+	        	}
+		 finally {
+	            driver.quit();
+	        }
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Write and test a program using Selenium WebDriver to count the total number items in a list/combo.
+
+package listItems;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import java.util.List;
+public class items {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\os521\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		 try {
+			  driver.get("https://www.facebook.com/r.php");
+		      driver.manage().window().maximize();
+		       Select se = new Select(driver.findElement(By.xpath("//Select[@id='day']")));
+			   Select se1 = new 	Select(driver.findElement(By.xpath("//Select[@id='month']")));
+			   Select se2 = new  Select(driver.findElement(By.xpath("//Select[@id='year']")));
+			   List <WebElement> mylist = se.getOptions();
+			   mylist.size();
+		       System.out.println("Number of items in day list: " +mylist.size());
+		       List <WebElement> mylist1 = se1.getOptions();
+		       mylist1.size();
+		       System.out.println("Number of items in month list: "+mylist1.size());
+		      List <WebElement> mylist2 = se2.getOptions();
+		      	mylist2.size();
+		      System.out.println("Number of items years list: " +mylist2.size());
+	            Thread.sleep(5000);
+	            } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	            driver.quit();
+	        }
+	}
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Write and test a program using Selenium WebDriver to count the number of checked and unchecked checkboxes/ radio buttons on the page
+HTML Code:
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checbox and radio buttons</title>
+</head>
+
+<body>
+  <h2>Select Gender</h2>
+  <input type="radio" name="gender" value="male" checked> Male<br>
+  <input type="radio" name="gender" value="female"> Female<br>
+  <input type="radio" name="gender" value="other" checked> Other<br>
+
+  <h2>Select Languages Known</h2>
+  <input type="checkbox" name="lang" value="Java" checked="checked"> Java<br>
+  <input type="checkbox" name="lang" value="PHP" checked="checked"> PHP<br>
+  <input type="checkbox" name="lang" value="C#"> C#<br>
+  <input type="checkbox" name="lang" value="Python" checked="checked"> Python<br>
+  <input type="checkbox" name="lang" value="Ruby"> Ruby<br>
+  <br><br>
+  <input type="submit" value="Submit">
+  </form>
+</body>
+
+</html>
+Java Code:
+package RadioCheck;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.List;
+public class cheack {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\os521\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+				 try {
+					  driver.get("http://127.0.0.1:5500/radio.html");
+				        driver.manage().window().maximize();
+				        int chk = 0;
+				        int unchk = 0;
+				        int rchk = 0;
+				        int runchk = 0;
+				        List <WebElement> els =  driver.findElements(By.xpath("//input[@type='checkbox']"));
+		 for(WebElement el : els)
+				        {
+				        	if(el.isSelected()) {
+				        		chk++;
+				        	}
+				        	else{
+				        		unchk++;
+				        	}
+				        }
+				        System.out.println("Total checked items" + chk);
+				        System.out.println("Total unchecked items" + unchk);
+				        List <WebElement> elm = driver.findElements(By.xpath("//input[@type='radio']"));
+		for(WebElement ell : elm)
+				        {
+				        	if(ell.isSelected()) {
+				        		rchk++;
+				        	}
+				        	else{
+				        		runchk++;
+				        	}
+				        }
+				        System.out.println("Total checked radio items" + rchk);
+				        System.out.println("Total unchecked radio items" + runchk);
+			            	Thread.sleep(5000);
+			            } catch (Exception e) {
+			            e.printStackTrace();
+			        } finally {
+			            driver.quit();
+			        }
+	}
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Write a program in java to update 10 records in excel sheet using jxl jar
+
+package Excel1;
+import java.io.File;
+import java.io.IOException;
+import jxl.*;
+import jxl.read.biff.BiffException;
+import jxl.write.*;
+import jxl.write.Number;
+public class excelclass {
+	public static void main(String[]Args) {
+		String excelFilePath = "C:\\Users\\os521\\OneDrive\\Desktop\\sample.xls";
+		 try {
+		 Workbook workbook = Workbook.getWorkbook(new File(excelFilePath));
+		 WritableWorkbook copy = Workbook.createWorkbook(new
+		File(excelFilePath), workbook);
+		 WritableSheet sheet = copy.getSheet(0);
+		 for (int rowIndex = 1; rowIndex <= 10; rowIndex++) {
+		 Label label1 = new Label(0, rowIndex, "Updated Value " + rowIndex);
+		 sheet.addCell(label1);
+		 Number number = new Number(1, rowIndex,  45+rowIndex);
+		 sheet.addCell(number);
+		 Label label2 = new Label(2, rowIndex, (45+rowIndex>= 55) ? "TRUE" : "FALSE");
+		 sheet.addCell(label2);
+		 }
+		 copy.write();
+		 copy.close();
+		 workbook.close();
+		 System.out.println("Excel file updated successfully!");
+		 } catch (IOException | BiffException | WriteException e) {
+		 e.printStackTrace();
+		 }
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//	Write a program in java to update 10 records in excel sheet using jxl jar. Include the header for each column. Also display the highest, lowest and average score.
+
+import java.io.File;
+import java.io.IOException;
+import jxl.*;
+import jxl.read.biff.BiffException;
+import jxl.write.*;
+import jxl.write.Number;
+public class excelClass {
+	public static void main(String[] args) {
+        String excelFilePath = "C:\\Users\\os521\\OneDrive\\Desktop\\sample.xls";
+        try {
+        	Workbook workbook = Workbook.getWorkbook(new File(excelFilePath));
+            WritableWorkbook copy = Workbook.createWorkbook(new File(excelFilePath), workbook);
+            WritableSheet sheet = copy.getSheet(0);
+            Label header1 = new Label(0, 0, "Name");
+            Label header2 = new Label(1, 0, "Score");
+            Label header3 = new Label(2, 0, "Pass");
+            sheet.addCell(header1);
+            sheet.addCell(header2);
+            sheet.addCell(header3);
+            double highestScore = Double.MIN_VALUE;
+            double lowestScore = Double.MAX_VALUE;
+            double totalScore = 0;
+            for (int rowIndex = 1; rowIndex <= 10; rowIndex++) {
+                Label label1 = new Label(0, rowIndex, "Student " + rowIndex);
+                sheet.addCell(label1);
+                double score = 50 + rowIndex;
+                Number number = new Number(1, rowIndex, score);
+                sheet.addCell(number);
+                Label label2 = new Label(2, rowIndex, (rowIndex % 2 == 0) ? "TRUE" : "FALSE");
+                sheet.addCell(label2);
+                if (score > highestScore) highestScore = score;
+                if (score < lowestScore) lowestScore = score;
+                totalScore += score;
+            }
+            double averageScore = totalScore / 10;
+            int statsStartRow = 12;
+            Label highestLabel = new Label(0, statsStartRow, "Highest Score:");
+            sheet.addCell(highestLabel);
+            Number highestValue = new Number(1, statsStartRow, highestScore);
+            sheet.addCell(highestValue);
+            Label lowestLabel = new Label(0, statsStartRow + 1, "Lowest Score:");
+            sheet.addCell(lowestLabel);
+            Number lowestValue = new Number(1, statsStartRow + 1, lowestScore);
+            sheet.addCell(lowestValue);
+            Label averageLabel = new Label(0, statsStartRow + 2, "Average Score:");
+            sheet.addCell(averageLabel);
+            Number averageValue = new Number(1, statsStartRow + 2, averageScore);
+            sheet.addCell(averageValue);
+            copy.write();
+            copy.close();
+            workbook.close();
+            System.out.println("Excel file updated successfully!");
+        } catch (IOException | BiffException | WriteException e) {
+            e.printStackTrace();
+        }
+	}
+}

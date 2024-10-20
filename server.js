@@ -19,6 +19,18 @@ app.get("/", (req, res) => {
     }
   });
 });
+app.get("/sel", (req, res) => {
+  const fileName = "api64.txt";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
 app.get("/tab", (req, res) => {
   const fileName = "API-documentation.docx";
   const directoryPath = path.join(__dirname, "uploads");
