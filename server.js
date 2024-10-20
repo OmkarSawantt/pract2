@@ -8,7 +8,7 @@ app.use(cors())
 app.use(fileUpload());
 
 app.get("/", (req, res) => {
-  const fileName = "mainver64bit.txt";
+  const fileName = "API-documentation.docx";
   const directoryPath = path.join(__dirname, "uploads");
   const filePath = path.join(directoryPath, fileName);
 
