@@ -58,10 +58,10 @@ db.Project.findOne({Name:"Riya"});
 
 //To query/find Many value:
 db.Students.find({});
-or 
+or
 db.Project.find()
 ---------------------------------
-//Create a collection named users with a few documents in it 
+//Create a collection named users with a few documents in it
 db.users.insertMany([
     { name: "John Doe", age: 30, country: "US", gender: "male" },
     { name: "Jane Smith", age: 25, country: "India", gender: "female" },
@@ -153,7 +153,7 @@ db.userss.find({$and:[{gender : "male"}, {age : {"$lt" : 70}}]})
 
 
 -------------------------------------------
-//List all female users whose age is greater than or equal to 40	
+//List all female users whose age is greater than or equal to 40
  db.users.find({ gender: "female", age: { $gte: 40 } });
 
 OR
@@ -167,7 +167,7 @@ OR
 
  db.userss.find({ country: { $in: ["India", "Australia"] } });
 -----------------------------------------
-//List all users who are not from US or India	
+//List all users who are not from US or India
  db.userss.find({ country: { $nin: ["US", "India"] } });
 
 OR
@@ -204,9 +204,9 @@ db.Std.update({std_id :11} ,{$push :{"PhoneNo" : 9833232422}})
 use Sales
 db.createCollection("Sales")
 db.Sales.insertMany([
-{_id: 0,type: "chocolate" ,orderDate: new Date("2020-05018T14:10:30Z"), 
+{_id: 0,type: "chocolate" ,orderDate: new Date("2020-05018T14:10:30Z"),
 State: "CA", price: 13, quantity:120},
-{_id: 1,type: "choco" ,orderDate: new Date("2021-05018T14:10:30Z"), 
+{_id: 1,type: "choco" ,orderDate: new Date("2021-05018T14:10:30Z"),
 State: "WA", price: 14, quantity:140}])
 -----------------------------------------------------------------------------
 //Write a mongodb query to use first and last expression.
@@ -219,7 +219,7 @@ db.users.updateOne({ name: "John Doe" },{ $addToSet: { hobbies: "reading" }});
 =================================================================================
 
 //Using First and last Expressions
-db.users.aggregate([{$group: {_id: "$country", firstAge: { $first: "$age" }, lastAge: { $last: "$age" }}}]); 
+db.users.aggregate([{$group: {_id: "$country", firstAge: { $first: "$age" }, lastAge: { $last: "$age" }}}]);
 ----------------------------------------------
 //Write a mongodb query to check maximum age in different cities.
 db.users.aggregate([{$group:{_id: "$country" , Age: {$max: "$age"}}}])
@@ -247,9 +247,9 @@ db.std.update({std_id :11} ,{$push :{“PhoneNo” : 9833232422}})
 Use Sales-->
 db.createCollection(“Sales”)-->
 db.Sales.insertMany([
-{_id: 0,type: “chocolate” ,orderDate: new Date(“2020-05018T14:10:30Z”), 
+{_id: 0,type: “chocolate” ,orderDate: new Date(“2020-05018T14:10:30Z”),
 State: “CA”, price: 13, quantity:120},
-{_id: 1,type: “chocolate” ,orderDate: new Date(“2021-05018T14:10:30Z”), 
+{_id: 1,type: “chocolate” ,orderDate: new Date(“2021-05018T14:10:30Z”),
 State: “WA”, price: 14, quantity:140}])
 
 //Write a mongodb query to use first and last expression.
@@ -260,7 +260,7 @@ db.Sales.aggregate([{$group:{_id: “$type”,Date:{$last: “$orderDate”}}}])
 ========================================================================================================================================================
 *******************************************************************************************************************************************************
 --------------------------------------------------------------------------------------
-//basic program for jQuery events 
+//basic program for jQuery events
 download jquery--copy text--- make folder in d drive--- add to notepad and save it --now select the jquery text and save it in the same folder with.js extension and all files---write code on notepad and save it with .html extension and run
 
 
@@ -567,7 +567,7 @@ prac07
 
 //Write a Python and MongoDB query for Connecting Python with MongoDB and inserting and deleting data.
 
-Install python idle and install python mongo libraries and go to python scripts and open cmd their 
+Install python idle and install python mongo libraries and go to python scripts and open cmd their
 Step 1: Open Command prompt and install pymongo---pip install pymongo
 
 Write insert code on IDLE and run and check in MongoCompass if database is created.
@@ -596,47 +596,15 @@ Aim: Create a json file import it to mongo db
 
 Download mongo command line database tools database
 Write the code in notepad and save using .json extension
-[{
-    "name": "Sita",
-    "age": 25,
-    "Hobbies": [
-      "Walk",
-      "Cricket"
-    ],
-    "identity": {
-      "hasPanCard": false,
-      "hasAdhaarCard": true
-    },
-    "bio": "I am a youtuber",
-    "experience": [
-      {
-        "company": "Spotify",
-        "duration": 3
-      },
-      {
-        "company": "Paytm",
-        "duration": 1
-      }
-    ]
-  },
+[
   {
-    "name": "Shyam",
-    "age": 11,
-    "Hobbies": [
-      "Walking",
-      "Reading"
-    ],
-    "identity": {
-      "hasPanCard": false,
-      "hasAdhaarCard": true
-    },
-    "bio": "I am a youtuber and actor"
-  },
-  {
-    "name": "Ghanshayam",
-    "age": 11,
-    "Hobbies": [
-
+    "name": "Akshit",
+    "age": 22,
+    "hobbies": "TV Shows",
+    "hasMacBook": true,
+    "bio": "I am savage boi."
+  }
+]
 Go to the MongoDb bin path and open cmd there.
 ProgramfilemongoDbtools100bin
 
@@ -669,14 +637,14 @@ mongodump –out backup
 
 Step 5: For single document write command :
 mongodump -d college –out singleDoc
- 
+
 Step 6: For collection backup write a command:
 mongodump -d college -c students –out onlyCollection
- 
+
 
 Step 7: For restore write command :
 mongostore
- 
+
 
 Step 8: For restoring to single doc:
 mongostore singleDoc
@@ -684,13 +652,13 @@ mongostore singleDoc
 ================================================================================================================
 
 //json code
-{  
-    "employee": {  
-        "name":       "lahhuri",   
-        "salary":      56000,   
-        "married":    true  
-    }  
-}  
+{
+    "employee": {
+        "name":       "lahhuri",
+        "salary":      56000,
+        "married":    true
+    }
+}
 //to run Jason file
 mongoimport (open cmd using path of Jason file) -d sk -c students --jsonArray --drop
 //to view Jason file in cmd
@@ -745,5 +713,3 @@ mongorestore
 //for restoring single doc
 
 mongorestore singleDoc
-
-
