@@ -1,0 +1,1359 @@
+//To perform Remote Method Invocation>
+ServerInterface.java
+import java.rmi.*;
+
+public interface ServerInterface extends Remote
+{
+	double add(double d1,double d2) throws RemoteException;
+}
+
+import java.rmi.*;
+import java.rmi.server.*;
+
+public class ServerImple extends UnicastRemoteObject implements ServerInterface
+{
+   public ServerImple() throws RemoteException
+  	{
+  	}
+  	public double add(double d1,double d2)throws RemoteException
+	{
+	return d1 + d2;
+	}
+}
+
+Client.java
+import java.rmi.*;
+
+public class Client {
+    public static void main(String args[]) {
+        try {
+            ServerInterface obj2 = (ServerInterface) Naming.lookup("rmi://localhost/Calc");
+
+         
+            System.out.println("The first number is: " + args[0]);
+            double d1 = Double.valueOf(args[0]).doubleValue();
+
+            
+            System.out.println("The second number is: " + args[1]);
+            double d2 = Double.valueOf(args[1]).doubleValue();
+
+    
+            System.out.println("The sum is: " + obj2.add(d1, d2));
+        } catch (Exception e) {
+            System.out.println("Exception: " + e);
+        }
+    }
+}
+
+MainServerProg.java
+import java.rmi.*;
+import java.rmi.registry.LocateRegistry;
+
+public class MainServerProg {
+    public static void main(String args[]) {
+        try {
+            
+            LocateRegistry.createRegistry(1099);
+
+            ServerImple ob1 = new ServerImple();
+            Naming.rebind("rmi://localhost/Calc", ob1);
+
+            System.out.println("Server is ready.");
+        } catch (Exception e) {
+            System.out.println("Exception: " + e);
+        }
+    }
+}
+
+
+check if you have jdk1.8.0_202 write all code in different notepadsave in same folder go to folder and open cmd their in cmd write path of  bin of jdk1.8.0_202 and then compile each code  then start rmiregistry java MainServerProg open another cmd in the folder againwrite a command their -> java Client 5 6  and run
+------------------------------------------------------------------------------
+
+//calculator webservice
+ @WebMethod(operationName = "add")
+    public double add(@WebParam(name = "a") double a, @WebParam(name = "b") double b) {
+        return a + b;
+    }
+
+    @WebMethod(operationName = "subtract")
+    public double subtract(@WebParam(name = "a") double a, @WebParam(name = "b") double b) {
+        return a - b;
+    }
+
+    @WebMethod(operationName = "multiply")
+    public double multiply(@WebParam(name = "a") double a, @WebParam(name = "b") double b) {
+        return a * b;
+    }
+
+    @WebMethod(operationName = "divide")
+    public double divide(@WebParam(name = "a") double a, @WebParam(name = "b") double b) throws IllegalArgumentException {
+        if (b == 0) {
+            throw new IllegalArgumentException("Cannot divide by zero");
+        }
+        return a / b;
+    /**
+     * This is a sample web service operation
+     */
+   
+    }
+}
+
+Select new project and go to java web web applicationgive project a name and click finishclick on project name and click on web service give web service and package a name and click finishwrite the code and clean and build the project Now run the web service
+-----------------------------------------------------
+//calculator webclient
+ public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter num1:");
+        int num1 = sc.nextInt();
+
+        System.out.println("Enter num2:");
+        int num2 = sc.nextInt();
+
+        // Create service instance
+       
+        // Perform calculations and display results
+        System.out.println("Addition:"+add(num1, num2));
+        System.out.println("Subtraction:"+subtract(num1, num2));
+        System.out.println("Multiplication"+multiply(num1, num2));
+        System.out.println("Division:"+divide(num1, num2));
+        
+}
+Select new project and go to java web web applicationgive project a name and click finishclick on project name and click on web service Client Add the web service in the project by clicking on browsegive package a nameclick finishgo to project name go to newjava classgive name and write the codealso import the methods from web referencesclean and build the projectand run the java file.
+--------------------------------------------------------------------------
+//hash client
+  public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter Name of the Product:");
+        String name=sc.next();
+        System.out.println("Price:"+getPrice(name));  
+-------------------------------------------------
+//hash service
+ protected Hashtable products;
+    public hashT()
+    {
+        products=new Hashtable();
+        products.put("Pen",new Double(9.85));
+        products.put("Table",new Double(119.23));
+        products.put("Chair",new Double(100.20));
+    }
+    
+    @WebMethod(operationName = "getPrice")
+    public double getPrice(@WebParam(name="productname")String productname)
+    {
+        Double price =(Double)products.get(productname);
+        
+        return price.doubleValue();
+    
+    }
+}
+
+Steps will be same as calculator
+--------------------------------------------
+//fahrenheight to celcius web service
+    @WebMethod(operationName = "fahrenheitToCelsius")
+    public double fahrenheitToCelsius(@WebParam(name = "fahrenheit") double fahrenheit) {
+        return (fahrenheit - 32) * 5 / 9;
+    }
+    @WebMethod(operationName = "celsiusToFahrenheit")
+    public double celsiusToFahrenheit(@WebParam(name = "celsius") double celsius) {
+        return (celsius * 9 / 5) + 32;
+    }
+    }
+-------------------------------------------------------
+//fahreinheitToCelcius Client
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        System.out.print("ctof");
+        int a=sc.nextInt();
+        System.out.println("your conversion is"+celsiusToFahrenheit(a));
+        System.out.print("ftoc");
+        int b=sc.nextInt();
+        System.out.println("your conversion is"+fahrenheitToCelsius(b));
+--------------------------------------------------------------
+//servlet for degree change
+package org.me;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = "TemperatureConverterServlet", urlPatterns = {"/convert"})
+public class NewServlet extends HttpServlet {
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String result = "";
+        
+        String temperatureStr = request.getParameter("temperature");
+        String unit = request.getParameter("unit");
+        
+        if (temperatureStr != null && !temperatureStr.isEmpty()) {
+            try {
+                double temperature = Double.parseDouble(temperatureStr);
+                
+                if ("Celsius".equalsIgnoreCase(unit)) {
+                    double fahrenheit = (temperature * 9 / 5) + 32;
+                    result = temperature + "°C is " + fahrenheit + "°F";
+                } else if ("Fahrenheit".equalsIgnoreCase(unit)) {
+                    double celsius = (temperature - 32) * 5 / 9;
+                    result = temperature + "°F is " + celsius + "°C";
+                } else {
+                    result = "Invalid unit. Please specify either 'Celsius' or 'Fahrenheit'.";
+                }
+            } catch (NumberFormatException e) {
+                result = "Please enter a valid number for temperature.";
+            }
+        }
+
+        try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Temperature Converter</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Temperature Converter</h1>");
+            out.println("<form method='post' action='convert'>");
+            out.println("Temperature: <input type='text' name='temperature' required/> <br/>");
+            out.println("Unit: <select name='unit' required>");
+            out.println("<option value='Celsius'>Celsius</option>");
+            out.println("<option value='Fahrenheit'>Fahrenheit</option>");
+            out.println("</select><br/>");
+            out.println("<input type='submit' value='Convert'/>");
+            out.println("</form>");
+            out.println("<h2>Result: " + result + "</h2>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    public String getServletInfo() {
+        return "Temperature Converter Servlet";
+    }
+}
+------------------------------------------------
+//servlet for calculator
+package mihir.me;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = "calculator", urlPatterns = {"/calculator"})
+public class calculator extends HttpServlet {
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String result = "";
+        
+        // Get parameters from the request
+        String num1Str = request.getParameter("num1");
+        String num2Str = request.getParameter("num2");
+        String operation = request.getParameter("operation");
+        
+        if (num1Str != null && num2Str != null && operation != null) {
+            try {
+                double num1 = Double.parseDouble(num1Str);
+                double num2 = Double.parseDouble(num2Str);
+                
+                switch (operation) {
+                    case "add":
+                        result = num1 + num2 + "";
+                        break;
+                    case "subtract":
+                        result = num1 - num2 + "";
+                        break;
+                    case "multiply":
+                        result = num1 * num2 + "";
+                        break;
+                    case "divide":
+                        if (num2 != 0) {
+                            result = num1 / num2 + "";
+                        } else {
+                            result = "Cannot divide by zero.";
+                        }
+                        break;
+                    default:
+                        result = "Invalid operation.";
+                }
+            } catch (NumberFormatException e) {
+                result = "Please enter valid numbers.";
+            }
+        }
+
+        try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Calculator Servlet</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Simple Calculator</h1>");
+            out.println("<form method='post' action='calculator'>");
+            out.println("Number 1: <input type='text' name='num1' required/><br/>");
+            out.println("Number 2: <input type='text' name='num2' required/><br/>");
+            out.println("Operation: <select name='operation' required>");
+            out.println("<option value='add'>Add</option>");
+            out.println("<option value='subtract'>Subtract</option>");
+            out.println("<option value='multiply'>Multiply</option>");
+            out.println("<option value='divide'>Divide</option>");
+            out.println("</select><br/>");
+            out.println("<input type='submit' value='Calculate'/>");
+            out.println("</form>");
+            out.println("<h2>Result: " + result + "</h2>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    @Override
+    public String getServletInfo() {
+        return "Simple Calculator Servlet";
+    }
+}
+----------------------------------------------------------------------
+//Create a client (java desktop application) to implement convert temperature web service
+
+Code:
+Deskapp
+package any.me;
+
+public class JFrame extends javax.swing.JFrame {
+
+    /**
+     * Creates new form JFrame
+     */
+    public JFrame() {
+        initComponents();
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jTextField1.setToolTipText("");
+
+        jButton1.setText("Celsius_To_Farenheit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Farenheit_To_Celsius");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
+                            .addComponent(jButton1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(97, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(177, 177, 177))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jButton1)
+                .addGap(27, 27, 27)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addContainerGap(107, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        int a=Integer.parseInt(jTextField1.getText());
+        jLabel1.setText(celsiusToFarenheit(a)+"");
+        
+        
+    }                                        
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        int b=Integer.parseInt(jTextField1.getText());
+        jLabel1.setText(farenheitToCelsius(b)+"");
+    }                                        
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(JFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new JFrame().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
+    // End of variables declaration                   
+
+    private static int celsiusToFarenheit(int name) {
+        any.me.TempSer_Service service = new any.me.TempSer_Service();
+        any.me.TempSer port = service.getTempSerPort();
+        return port.celsiusToFarenheit(name);
+    }
+
+    private static int farenheitToCelsius(int name) {
+        any.me.TempSer_Service service = new any.me.TempSer_Service();
+        any.me.TempSer port = service.getTempSerPort();
+        return port.farenheitToCelsius(name);
+    }
+} 
+
+Select new project and go to java java applicationclick on project namenewJFrameFormDesign the field double click on button and write the code  go to project name and click on web service clientadd project referencenow drag and drop the method in the code and make necessary changesclean and build project name run jframe file.
+---------------------------------------------------------------------
+//For calculator -JFrame
+
+Code:
+
+package org.me;
+
+public class Calframe extends javax.swing.JFrame {
+
+    /**
+     * Creates new form Calframe
+     */
+    public Calframe() {
+        initComponents();
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButton1.setText("Addition");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Subtraction");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Multiplication");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Division");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton4)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField2)
+                            .addComponent(jTextField1))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(53, 53, 53))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addGap(35, 35, 35)
+                .addComponent(jButton4)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addContainerGap(59, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        int a=Integer.parseInt(jTextField2.getText());
+        int b=Integer.parseInt(jTextField1.getText());
+        jLabel1.setText(addition(a,b)+"");
+    }                                        
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        int a=Integer.parseInt(jTextField2.getText());
+        int b=Integer.parseInt(jTextField1.getText());
+        jLabel1.setText(subtraction(a,b)+"");
+    }                                        
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        int a=Integer.parseInt(jTextField2.getText());
+        int b=Integer.parseInt(jTextField1.getText());
+        jLabel1.setText(multiplication(a,b)+"");
+    }                                        
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        int a=Integer.parseInt(jTextField2.getText());
+        int b=Integer.parseInt(jTextField1.getText());
+        jLabel1.setText(division(a,b)+"");
+    }                                        
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Calframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Calframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Calframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Calframe.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Calframe().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    // End of variables declaration                   
+
+    private static int addition(int num1, int num2) {
+        org.me.Calservice_Service service = new org.me.Calservice_Service();
+        org.me.Calservice port = service.getCalservicePort();
+        return port.addition(num1, num2);
+    }
+
+    private static int division(int num1, int num2) {
+        org.me.Calservice_Service service = new org.me.Calservice_Service();
+        org.me.Calservice port = service.getCalservicePort();
+        return port.division(num1, num2);
+    }
+
+    private static int multiplication(int num1, int num2) {
+        org.me.Calservice_Service service = new org.me.Calservice_Service();
+        org.me.Calservice port = service.getCalservicePort();
+        return port.multiplication(num1, num2);
+    }
+
+    private static int subtraction(int num1, int num2) {
+        org.me.Calservice_Service service = new org.me.Calservice_Service();
+        org.me.Calservice port = service.getCalservicePort();
+        return port.subtraction(num1, num2);
+    }
+
+    private String addition(int num1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
+
+-------------------------------------------
+//Create a client (web application using servlet) to implement convert temperature web service
+
+Index.html
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="name of servlet">
+            <input type="text" name="name">
+            <input type="submit" name="Ftoc">
+            
+        </form>
+    </body>
+</html>
+
+servlet file
+
+package org.me;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.WebServiceRef;
+
+/**
+ *
+ * @author riyat
+ */
+@WebServlet(name = "name of servlet", urlPatterns = {"/name of servlet"})
+public class riya6bserv extends HttpServlet {
+
+    @WebServiceRef(wsdlLocation = "http://localhost:9999/Coversion/FtoC?WSDL")
+    private FtoC_Service service;
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int Temp= Integer.parseInt(request.getParameter("name"));
+        
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet riya6bserv</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1> "+ctoF(Temp)+ "</h1><br>");
+             out.println("<h1>"+ftoC(Temp)+ "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+    private int ctoF(int name) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        org.me.FtoC port = service.getFtoCPort();
+        return port.ctoF(name);
+    }
+
+    private int ftoC(int name) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        org.me.FtoC port = service.getFtoCPort();
+        return port.ftoC(name);
+    }
+
+}
+
+Select new project and go to  servlet and write code write code in index(write servlet name their) also import file in servlet change web service reference wsdl locationjust run the server file and get the wsdl url and run the index.html
+----------------------------------------------------
+//Create a RESTful web Service to fetch a display employee detail.
+
+HelloWorldResources.java
+package helloworld;
+
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
+
+import javax.ws.rs.Path;
+import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
+
+/**
+ * REST Web Service
+ *
+ * @author mkuchtiak
+ */
+
+@Stateless
+@Path("/greeting")
+public class HelloWorldResource {
+
+    @EJB
+    private NameStorageBean nameStorage;
+    /**
+     * Retrieves representation of an instance of helloworld.HelloWorldResource
+     * @return an instance of java.lang.String
+     */
+    @GET
+    @Path("/Name")
+    @Produces("text/html")
+    public String getName() {
+        return "<html><body><h1>Hello "+nameStorage.getName()+"!</h1></body></html>";
+    }
+    @GET
+    @Path("/Id")
+    @Produces("text/html")
+    public String getempId() {
+        return "<html><body><h1>"+nameStorage.getempId()+"!</h1></body></html>";
+    }
+
+    /**
+     * PUT method for updating an instance of HelloWorldResource
+     * @param content representation for the resource
+     * @return an HTTP response with content of the updated or created resource.
+     */
+    @PUT
+    @Path("/Name")
+    @Consumes("text/plain")
+    public void setName(String content) {
+        nameStorage.setName(content);
+    }
+    @PUT
+    @Path("/Id")
+    @Consumes("text/plain")
+    public void setempId(int content) {
+        nameStorage.setempId(content);
+    }
+}
+
+NameStorageBean.java
+package helloworld;
+
+import javax.ejb.Singleton;
+
+/** Singleton session bean used to store the name parameter for "/helloWorld" resource
+ *
+ * @author mkuchtiak
+ */
+@Singleton
+public class NameStorageBean {
+
+    // name field
+    private String name = "abc";
+    private int id = 01;
+
+    public String getName() {
+        return name;
+    }
+    public int getempId() {
+        return id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+     public void setempId(int id) {
+        this.id = id;
+    }
+ 
+}
+Create project sampleweb servicerest hellogo to source packagehelloworldresourcebelow @put add @path copy paste for id  go to namestoragebeancopy paste  and run the web service file(test uri)click on project name and test restful and select localclick ok
+
+----------------------------------------------------------
+//Create a RESTful Client application to display employee detail from REST service.
+Index.html
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="abc">
+            <input type="text" name="empname">
+            <input type="text" name="empid">
+            <input type="submit" name="submit">
+            
+        </form>
+    </body>
+</html>
+
+abc.java
+package org.me;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author riyat
+ */
+@WebServlet(name = "abc", urlPatterns = {"/abc"})
+public class abc extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        restclient obj= new restclient();
+        String name=request.getParameter("empname");
+        String id=request.getParameter("empid");
+        obj.setName(name);
+        obj.setempId(id);
+        
+        String t1= obj.getName();
+        String t2=obj.getempId();
+        
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet abc</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1> " + t1+ "</h1>");
+            out.println("<h1> " + t2+ "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
+Steps:
+New project(normal) new restful java clientbrowse serviceindex.html changenew servletCODErun html
+----------------------------------------------------------------
+//Write a program in WCF to create a web service to check if the number is odd or even.
+
+---Create new "ASP.NET Web Application(.Net Framework)
+---Add->newItem->web service(asmx)
+//WebService1.asmx
+
+        public string CheackOddEven(int number)
+        {
+            return number % 2 == 0 ? "Even" : "Odd";
+        }
+    }
+}
+to run right click on Webservice1.asmx and "View in Browser"
+
+//Write a service client that consumes the service in the WCF.
+
+---Create new "ASP.NET Web Application(.Net Framework)by right clicking on same project of solution explo
+---Add->Service Reference
+---Click discover and select service and click ok
+
+---create new web form
+
+webform1.aspx
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Odd or Even Checker</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:TextBox ID="TextBox" runat="server"></asp:TextBox>
+            <asp:Button ID="Button1" runat="server" Text="Check" OnClick="Button1_Click" />
+        </div>
+        <asp:Label ID="LabelResult" runat="server" Text="" ForeColor="Blue" />
+    </form>
+</body>
+</html>
+
+webform.aspx.cs
+ protected void Button1_Click(object sender, EventArgs e)
+ {
+     var client = new WebService1SoapClient();
+     string result = client.CheackOddEven(Int32.Parse(TextBox.Text));
+     LabelResult.Text = result;
+ }
+
+
+OR
+
+        [WebMethod]
+        public string EvenOdd(int n)
+        {
+            if (n % 2 == 0)
+            {
+                return "Even number";
+            }
+            else
+            {
+                return "Odd number";
+            }
+        }
+    }
+}
+go to visual studio  create new projectasp.net web application .net framework give project name  uncheck httpclick on project nameadd new itemweb service(asmx)write oddeven coderun asmx file by viewing in browser
+
+//Write a service client that consumes the service in the WCF.
+
+Webform1.aspx.cs
+            idiot.WebService1 obj= new idiot.WebService1();
+            int n= int.Parse(TextBox1.Text);
+            Label1.Text = obj.Oddeven(n);
+        }
+    }
+}
+
+Webform1.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="idiot.WebForm1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    </form>
+</body>
+</html>
+create project-> click on project name -> add-> web form-> add design-> textbox,button,label->button click->code->Webform.aspx(view in browser)
+
+---------------------------------------
+//Write a JAX-WS program to make a calculator
+
+code will be same for calculatorService (given up)
+//Write a service client that consumes the service in the WCF.
+webform1.aspx
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            Num1<asp:TextBox ID="number1" runat="server"></asp:TextBox><br />
+            Num2<asp:TextBox ID="number2" runat="server"></asp:TextBox><br />
+            <asp:Button ID="Button1" runat="server" Text="Add" OnClick="Button1_Click" />
+            <asp:Button ID="Button2" runat="server" Text="Sub" OnClick="Button2_Click" />
+            <asp:Button ID="Button3" runat="server" Text="Mult" OnClick="Button3_Click" />
+            <asp:Button ID="Button4" runat="server" Text="Divide" OnClick="Button4_Click" />
+        </div>
+        <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+    </form>
+</body>
+</html>
+
+webform.aspx.cs
+
+ mihir.calculator obj = new mihir.calculator();
+ protected void Page_Load(object sender, EventArgs e)
+ {
+
+ }
+
+ protected void Button1_Click(object sender, EventArgs e)
+ {
+     {
+         int a = int.Parse(number1.Text);
+         int b = int.Parse(number2.Text);
+         Label1.Text = obj.add(a, b).ToString();
+
+
+     }
+
+ }
+
+ protected void Button2_Click(object sender, EventArgs e)
+ {
+     int a = int.Parse(number1.Text);
+     int b = int.Parse(number2.Text);
+     Label1.Text = obj.subtract(a, b).ToString();
+ }
+
+ protected void Button3_Click(object sender, EventArgs e)
+ {
+     int a = int.Parse(number1.Text);
+     int b = int.Parse(number2.Text);
+     Label1.Text = obj.multiply(a, b).ToString();
+ }
+
+ protected void Button4_Click(object sender, EventArgs e)
+ {
+
+  int a = int.Parse(number1.Text);
+     int b = int.Parse(number2.Text);
+     Label1.Text = obj.divide(a, b).ToString();
+
+}
+}
+
+run web service on net beans- copy wsdl file url - create new project in vs-click on project name- add service refernce-paste url click go--> click advance-->add web reference-->again paste url-->click on the arrow --> change name of local host(calref)-->add reference-->right click on name-add - webform- add text box(2) (4) button label(1)-click button and create event--write code--run
+--------------------------------------------
+//Write a service client that consumes the service in the WCF.
+        [WebMethod]
+        public string Oddeven(int n)    
+        {
+            if (n % 2 == 0)
+            {
+                return "Its an even number.";
+            }
+            else
+            {
+                return "Its an odd number.";
+            }
+        }
+    }
+}
+go to visual studio  asp .net web application.net frameworkgive project name and 
+uncheck the config https go to project name add new item werbservice.asmxwrite the oddeven codeview in browse
+---------------------------------------------------
+//Create a client (web application using servlet) to check if the number is odd or even.
+Index.html
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+         <form action="ashash">
+               <input name="num" type="text"/>
+            <input name="sub" type="submit"/>
+        </form>
+    </body>
+</html> 
+ashash
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.xml.ws.WebServiceRef;
+import org.me.WebService1;
+
+/**
+ *
+ * @author riyat
+ */
+@WebServlet(urlPatterns = {"/ashash"})
+public class ashash extends HttpServlet {
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_52605/WebService1.asmx.wsdl")
+    private WebService1 service;
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        service=new WebService1();
+        try (PrintWriter out = response.getWriter()) {
+             int a = Integer.parseInt(request.getParameter("num"));
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ashash</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1> your number is: "+oddeven(a)+"</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+    private String oddeven(int n) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        org.me.WebService1Soap port = service.getWebService1Soap();
+        return port.oddeven(n);
+    }
+
+}
+ go to visual studio  asp .net web application.net frameworkgive project name and uncheck the config https go to project name add new item werbservice.asmxwrite the oddeven codeview in browsercopy its wsdl url go to netbeansmake new projectadd web service clientadd url of web descriptionadd package and create make servletwrite code add reference code in servlet make html file and add servlet name.(for calculator- just add int in netbeans, import method and revise html)
+
+
+
+
