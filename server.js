@@ -106,6 +106,17 @@ app.get("/rf", async(req, res) => {
     }
   });
 });
+app.get("/rip", async(req, res) => {
+    const fileName = "RouterRIP.pkt";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
 
 
 
