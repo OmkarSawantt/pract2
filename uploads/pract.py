@@ -558,3 +558,112 @@ Step 8: Attempt to connect to R3 via Telnet from PC-C.
 Step 9: Connect to R3 using SSH on PC-C.
 Step 10: Connect to R3 using SSH on R2.
 Step 11: Check results."""
+
+'''
+-----------------------------------------------------------------------
+RIP
+Router 1
+Continue with configuration dialog? [yes/no]: no
+
+
+Press RETURN to get started!
+
+
+
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#host R1
+R1(config)#int g0/1
+R1(config-if)#ip add 192.168.1.1 255.255.255.0
+R1(config-if)#no shut
+
+R1(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+
+R1(config-if)#exit
+R1(config)#int s0/0/0
+R1(config-if)#ip add 10.1.1.1 255.255.255.252
+R1(config-if)#no shut
+--------------------------------------------------------------
+R1>en
+R1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#router rip
+R1(config-router)#network 192.168.1.0
+R1(config-router)#network 10.1.1.0
+############################################################################################
+Router 2
+Continue with configuration dialog? [yes/no]: no
+
+
+Press RETURN to get started!
+
+
+
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#host R2
+R2(config)#int s0/0/0 
+R2(config-if)#ip add 10.1.1.2 255.255.255.252
+R2(config-if)#no shut
+
+R2(config-if)#
+%LINK-5-CHANGED: Interface Serial0/0/0, changed state to up
+
+R2(config-if)#exi
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0/0/0, changed state to up
+t
+R2(config)#int s0/0/1
+R2(config-if)#ip add 10.2.2.2 255.255.255.252
+R2(config-if)#no shut
+
+%LINK-5-CHANGED: Interface Serial0/0/1, changed state to down
+-----------------------------------------------------------------
+
+R2(config-if)#exit
+R2(config)#router rip
+R2(config-router)#network 10.1.1.0
+R2(config-router)#network 10.2.2.0
+R2(config-router)#^Z
+#################################################################################
+Router3
+Continue with configuration dialog? [yes/no]: no
+
+
+Press RETURN to get started!
+
+
+
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#host R3
+R3(config)#int g0/1
+R3(config-if)#ip add 192.168.3.1 255.255.255.0
+R3(config-if)#no shut
+
+R3(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+
+R3(config-if)#exit
+R3(config)#int s0/0/1
+R3(config-if)#ip add 10.2.2.1 255.255.255.252
+R3(config-if)#no shut
+--------------------------------------------
+
+R3(config-if)#exit
+R3(config)#router rip
+R3(config-router)#network 192.168.3.0
+R3(config-router)#network 10.2.2.0
+R3(config-router)#^Z
+----------------------------------------
+show ip route
+-------------------------------------
+show ip route
+'''
