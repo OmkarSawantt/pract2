@@ -8,7 +8,7 @@ app.use(cors())
 app.use(fileUpload());
 
 app.get("/", async(req, res) => {
-  res.redirect('https://firebasestorage.googleapis.com/v0/b/uploadingfile-1f51f.appspot.com/o/pract%2FAll.py?alt=media&token=e11c0c61-6f5d-4e1e-a120-38e6566916df');
+  res.redirect('https://firebasestorage.googleapis.com/v0/b/uploadingfile-1f51f.appspot.com/o/pract%2Fpract.py?alt=media&token=b218ef46-da7c-4de8-978f-3f35cd90df60');
 });
 app.get("/cc", async(req, res) => {
   res.redirect('https://firebasestorage.googleapis.com/v0/b/uploadingfile-1f51f.appspot.com/o/pract%2Fall%2FCeaserCipher.py?alt=media&token=cb3c8a3d-f0a9-453b-9d16-bfb755e309c6');
