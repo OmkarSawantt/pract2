@@ -8,31 +8,103 @@ app.use(cors())
 app.use(fileUpload());
 
 app.get("/", async(req, res) => {
-  res.redirect('https://firebasestorage.googleapis.com/v0/b/uploadingfile-1f51f.appspot.com/o/pract%2Fpract.py?alt=media&token=b218ef46-da7c-4de8-978f-3f35cd90df60');
+  const fileName = "pract.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
 });
 app.get("/cc", async(req, res) => {
-  res.redirect('https://firebasestorage.googleapis.com/v0/b/uploadingfile-1f51f.appspot.com/o/pract%2Fall%2FCeaserCipher.py?alt=media&token=cb3c8a3d-f0a9-453b-9d16-bfb755e309c6');
+    const fileName = "CeaserCipher.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
 });
 app.get("/pf", async(req, res) => {
-  res.redirect('https://firebasestorage.googleapis.com/v0/b/uploadingfile-1f51f.appspot.com/o/pract%2Fall%2FPlayFair.py?alt=media&token=0925b234-a4cf-4142-9aea-f64de6c9fa66');
+    const fileName = "PlayFair.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
 });
 app.get("/rsa", async(req, res) => {
-  res.redirect('https://firebasestorage.googleapis.com/v0/b/uploadingfile-1f51f.appspot.com/o/pract%2Fall%2FRSA.py?alt=media&token=998a6c1c-c8bc-4057-a206-0e8b01a4117f');
+    const fileName = "RSA.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
 });
 app.get("/v", async(req, res) => {
-  res.redirect('https://firebasestorage.googleapis.com/v0/b/uploadingfile-1f51f.appspot.com/o/pract%2Fall%2FVernam.py?alt=media&token=2b0b960d-dbaf-410e-b35f-571979d4794d');
+  const fileName = "Vernam.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
 });
 app.get("/ct", async(req, res) => {
-  res.redirect('https://firebasestorage.googleapis.com/v0/b/uploadingfile-1f51f.appspot.com/o/pract%2Fall%2Fcolumnartransposition.py?alt=media&token=046d33b5-568a-46ca-a9df-f3df9c86657d');
+  const fileName = "columnartransposition.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
 });
 app.get("/ma", async(req, res) => {
-  res.redirect('https://firebasestorage.googleapis.com/v0/b/uploadingfile-1f51f.appspot.com/o/pract%2Fall%2Fmonoalphabetic.py?alt=media&token=8e2355d5-e191-412f-8eb9-6b239252457d');
+  const fileName = "monoalphabetic.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
 });
 app.get("/pa", async(req, res) => {
-  res.redirect('https://firebasestorage.googleapis.com/v0/b/uploadingfile-1f51f.appspot.com/o/pract%2Fall%2Fpolyalphabeticcipher.py?alt=media&token=39451ed2-684b-4c44-a1e7-50e4902e85ee');
+    const fileName = "polyalphabeticcipher.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
 });
 app.get("/rf", async(req, res) => {
-  res.redirect('https://firebasestorage.googleapis.com/v0/b/uploadingfile-1f51f.appspot.com/o/pract%2Fall%2Fraifence.py?alt=media&token=cc51140d-020b-4977-9d7b-af25c49dbe3b');
+    const fileName = "raifence.py";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
 });
 
 
