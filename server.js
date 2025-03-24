@@ -18,6 +18,17 @@ app.get("/lin", async(req, res) => {
     }
   });
 });
+app.get("/jr", async(req, res) => {
+  const fileName = "Journal.docx";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
 app.get("/", async(req, res) => {
   const fileName = "Linux.txt";
   const directoryPath = path.join(__dirname, "uploads");
