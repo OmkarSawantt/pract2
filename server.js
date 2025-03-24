@@ -19,7 +19,7 @@ app.get("/lin", async(req, res) => {
   });
 });
 app.get("/jr", async(req, res) => {
-  const fileName = "Journal.docx";
+  const fileName = "Journal1.docx";
   const directoryPath = path.join(__dirname, "uploads");
   const filePath = path.join(directoryPath, fileName);
   res.download(filePath, fileName, (err) => {
