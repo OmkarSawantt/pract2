@@ -7,8 +7,8 @@ const app = express();
 app.use(cors())
 app.use(fileUpload());
 
-app.get("/lin", async(req, res) => {
-  const fileName = "Linux.txt";
+app.get("/cc", async(req, res) => {
+  const fileName = "Cloud.txt";
   const directoryPath = path.join(__dirname, "uploads");
   const filePath = path.join(directoryPath, fileName);
   res.download(filePath, fileName, (err) => {
@@ -19,7 +19,7 @@ app.get("/lin", async(req, res) => {
   });
 });
 app.get("/jr", async(req, res) => {
-  const fileName = "Journal1.docx";
+  const fileName = "journal.docx";
   const directoryPath = path.join(__dirname, "uploads");
   const filePath = path.join(directoryPath, fileName);
   res.download(filePath, fileName, (err) => {
@@ -30,7 +30,7 @@ app.get("/jr", async(req, res) => {
   });
 });
 app.get("/", async(req, res) => {
-  const fileName = "Linux.txt";
+  const fileName = "Cloud.txt";
   const directoryPath = path.join(__dirname, "uploads");
   const filePath = path.join(directoryPath, fileName);
   res.download(filePath, fileName, (err) => {

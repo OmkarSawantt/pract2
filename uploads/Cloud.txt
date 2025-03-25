@@ -1,0 +1,757 @@
+TCP
+Practical 01
+Aim: Write a program for implementing Client Server communication model using TCP.
+
+TCP_Server.java
+import java.io.*;
+import java.net.*;
+public class TCP_Server {
+public static void main(String[] args) {
+try {
+System.out.println("Hii! I am Server");
+int port =5555 ;
+ServerSocket ss=new ServerSocket (port);
+System.out.println("Waiting for connection");
+Socket s= ss.accept();
+System.out.println("Connection is done...");
+
+
+BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
+int num = Integer.parseInt(br.readLine());
+System.out.println("Request From client =" + num);
+int f = 1;
+for(int i=1;i<=num;i++)
+{
+f= f * i;
+}
+PrintWriter pw = new PrintWriter(new OutputStreamWriter(s.getOutputStream()));
+pw.println(f);
+pw.flush();
+}
+catch (Exception e)
+{
+System.out.println("Error : " + e);
+}
+}}
+
+
+TCP_Client.java
+import java.io.*;
+import java.net.*;
+public class TCP_Client {
+public static void main(String[] args) {
+System.out.println("Hii I am Client");
+try {
+int port = 5555;
+InetAddress addr = InetAddress.getLocalHost();
+Socket s = new Socket(addr,port);
+System.out.println("Connection is done ...");
+BufferedReader br1 = new BufferedReader(new InputStreamReader(System.in));
+System.out.println("Enter The Number :");
+int num = Integer.parseInt(br1.readLine());
+PrintWriter pw = new PrintWriter(new OutputStreamWriter(s.getOutputStream()));
+pw.println(num);
+pw.flush();
+BufferedReader br2 = new BufferedReader(new InputStreamReader(s.getInputStream()));
+int ans = Integer.parseInt(br2.readLine());
+System.out.println("Response From Server =" + ans);
+}
+catch (Exception e)
+{
+System.out.println("Error : " + e);
+}
+}
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------
+UDP Factorial
+Practical 2
+Aim: A client server based program using UDP to find the factorial of the entered number(also implement iterative server).
+
+
+Server Side Code:
+UDP_Factorial_server.java
+import java.io.*;
+import java.net.*;
+public class UDP_Factorial_server {
+
+
+public static void main(String[] args) {
+try
+{
+int port = 1234;
+DatagramSocket ds = new DatagramSocket(port);
+System.out.println("Waiting for Client ...");
+while(true)
+{
+byte b[] = new byte[1024];
+DatagramPacket dp1 = new DatagramPacket(b, b.length);
+ds.receive(dp1);
+String str = new String(dp1.getData(),0,dp1.getLength());
+System.out.println("Request From Client="+str);
+if(str.equals("end"))
+{
+System.exit(0);
+}
+int num = Integer.parseInt(str);
+int f = 1;
+for(int i=1;i<=num;i++)
+{
+f = f * i;
+}
+String res = "Factorial="+f;
+byte b1[] = new byte[1024];
+b1 = res.getBytes();
+InetAddress addr1 = InetAddress.getByName(null);
+DatagramPacket dp2 = new DatagramPacket(b1, b1.length,addr1,5678);
+ds.send(dp2); }}
+catch (Exception e)
+{
+System.out.println("Error=" + e);
+}}}
+Server Side Output:
+ A screenshot of a computer
+
+AI-generated content may be incorrect. 
+
+
+
+Client Side Code:
+UDP_Factorial_Client.java
+import java.io.*;
+import java.net.*;
+public class UDP_Factorial_Client {
+public static void main(String[] args) {
+try
+{
+int port = 5678;
+DatagramSocket ds = new DatagramSocket(port);
+while(true)
+{
+System.out.println("Enter The Number :");
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+String str = br.readLine();
+byte b[] = new byte[1024];
+b = str.getBytes();
+InetAddress addr = InetAddress.getByName(null);
+DatagramPacket dp1 = new DatagramPacket(b, b.length,addr,1234);
+ds.send(dp1);
+if(str.equals("end"))
+{
+System.exit(0);
+}
+byte b1[] = new byte[1024];
+DatagramPacket dp2 = new DatagramPacket(b1, b1.length);
+ds.receive(dp2);
+String res = new String(dp2.getData(),0,dp2.getLength());
+System.out.println("Response From Server : " +res);
+
+
+} }
+catch (Exception e)
+{
+System.out.println("Error=" + e);
+}}}
+
+-------------------------------------------------------------------------------------------------------------------------------------
+RPC Calculator
+
+Practical 03
+Aim: A program that finds the addition, subtraction, multiplication and division of the entered two numbers using RPC.
+
+
+Server Side Code:
+TCP_server.java
+import java.io.*;
+import java.net.*;
+public class TCP_server {
+public static void main(String[] args) {
+System.out.println("Hii! I am Server");
+try
+{
+int port = 8888;
+ServerSocket ss = new ServerSocket(port);
+System.out.println("Waiting for Client ...");
+Socket s = ss.accept();
+System.out.println("Connection is done ...");
+while(true)
+{
+BufferedReader br = new BufferedReader(new
+InputStreamReader(s.getInputStream()));
+int n1 = Integer.parseInt(br.readLine());
+int n2 = Integer.parseInt(br.readLine());
+String sign = br.readLine();
+System.out.println("Data From Client :");
+System.out.println("n1="+n1);
+System.out.println("n2="+n2);
+System.out.println("sign="+sign);
+int ans = 0;
+if(sign.equals("+"))
+{
+ans = n1 + n2;
+}
+else if(sign.equals("-"))
+{
+ans = n1 - n2;
+}
+else if(sign.equals("*"))
+{
+ans = n1 * n2;
+}
+else if(sign.equals("/"))
+{
+ans = n1 / n2;
+}
+
+
+else
+{
+ans = 0;
+}
+String res = "Answer ="+ans;
+PrintWriter pw = new PrintWriter(new OutputStreamWriter(s.getOutputStream()));
+pw.println(res);
+pw.flush();
+}
+}
+catch (Exception ex)
+{
+System.out.println("Error :" + ex);
+}}}
+
+
+Client Side Code:
+TCP_client.java
+import java.io.*;
+import java.net.*;
+public class TCP_client {
+public static void main(String[] args)
+{
+System.out.println("Hii! I am Client");
+try
+{
+int port = 8888;
+InetAddress addr = InetAddress.getByName(null);
+System.out.println("IP-Address :" + addr);
+Socket s = new Socket(addr, port);
+System.out.println("Connection is done ...");
+while(true)
+{
+
+
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in ));
+System.out.println("Enter The TWO Numbers :");
+String str = br.readLine();
+if(str.equals("end"))
+{
+System.exit(0);
+}
+int n1 = Integer.parseInt(str);
+int n2 = Integer.parseInt(br.readLine());
+System.out.println("Enter The Operation Sign(+,-,*,/)");
+String sign = br.readLine();
+PrintWriter pw = new PrintWriter(new OutputStreamWriter(s.getOutputStream()));
+pw.println(n1);
+pw.println(n2);
+pw.println(sign);
+pw.flush();
+BufferedReader br1 = new BufferedReader(new
+InputStreamReader(s.getInputStream()));
+String res = br1.readLine();
+System.out.println("REsponse From Server :"+res);
+}}
+catch(Exception ex)
+{
+System.out.println("Error :"+ex);
+}}}
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+BroadCast
+
+Practical 04
+Aim: Implement UDP for sending broad cast sender and receiver using a multicast Socket.
+
+
+Server Side Code:
+Server1.java
+import java.net.*;
+import java.io.*;
+public class Server1 {
+public static final int PORT = 1234;
+public static void main(String args[])throws Exception {
+MulticastSocket socket;
+DatagramPacket packet;
+InetAddress address;
+address = InetAddress.getByName("239.1.2.3");
+socket = new MulticastSocket();
+socket.joinGroup(address);
+byte[] data = null;
+for(;;)
+{
+Thread.sleep(10000); System.out.println("Sending ");
+String str = ("This is Server Calling ");
+data= str.getBytes();
+address = InetAddress.getByName(null);
+packet = new DatagramPacket(data, str.length(),address,PORT);
+socket.send(packet);
+}
+}}
+
+
+Client side code :
+Client1.java
+import java.net.*;
+import java.io.*;
+public class Client1 {
+public static final int PORT = 1234;
+public static void main(String args[])throws Exception {
+MulticastSocket socket; 
+DatagramPacket packet; 
+InetAddress address;
+address = InetAddress.getByName("239.1.2.3");
+socket = new MulticastSocket(PORT);
+socket.joinGroup(address);
+byte[] data = new byte[100];
+packet = new DatagramPacket(data,data.length);
+for(;;)
+{
+socket.receive(packet);
+String str = new String(packet.getData());
+System.out.println("Message received from "+ packet.getAddress() + "Message is : "+str);
+}
+}}
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Web Service Calculator
+
+Practical 05
+Aim:
+a) Show the implementation of web services.
+b) Implementing “Calculator” Web Service.
+
+
+Step 1 : Go to file🡪 new project 🡪 java web🡪 Web application.
+Step 2 : Click on project name 🡪 new 🡪 Web Service🡪 allot a name 🡪 Give package a name and click finish.
+Step 3: Write Code then clean and build and deploy
+
+
+Cal_s
+package org.me;
+
+
+import javax.jws.WebService;
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+/**
+ *
+ * @author riyat
+ */
+@WebService(serviceName = "Cal_s")
+public class Cal_s {
+
+
+     @WebMethod(operationName = "Addition")
+     public int add(@WebParam( name = "number1") int n1,@WebParam(name = "number2") int n2 ){
+       
+    return n1+n2;  
+    }
+     @WebMethod (operationName = "subtraction")
+     public int sub(@WebParam(name = "number1")int n1,@WebParam(name = "number2") int n2){
+         return n1-n2;
+     }
+     @WebMethod (operationName = "division")
+     public int div(@WebParam(name = "number1")int n1,@WebParam(name = "number2") int n2){
+         return n1/n2;
+     }
+      @WebMethod (operationName = "multiplication")
+     public int multi(@WebParam(name = "number1")int n1,@WebParam(name = "number2") int n2){
+         return n1*n2;
+     }
+}
+
+
+Step 4: Go to web service and right click on your service and test web service.
+Output:
+
+
+To create Client:
+Step 1: Go to files🡪 new project🡪Java🡪Java Application🡪Give project name.
+Step 2: Right click on your Project 🡪 new 🡪 Web Service Client🡪 In project , browse your Web service 🡪give a package name
+Step 3: Write the code in the java file🡪 Write the code🡪 Clean and build 🡪 Click on the project and run.
+
+
+Calculator_Client
+package calculator_client;
+import java.util.Scanner;
+
+
+public class Calculator_Client {
+
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner (System.in);
+        System.out.println("Enter num1 :");
+        int num1 = sc.nextInt();
+        System.out.println("Enter num2 :");
+
+
+        int num2 = sc.nextInt();
+        org.me.CalS_Service service = new org.me.CalS_Service();
+        org.me.CalS port = service.getCalSPort();
+        System.out.println("Output in:" + port.addition(num1,num2));
+        System.out.println("Output in:" + port.subtraction(num1,num2));
+        System.out.println("Output in:" + port.division(num1,num2));
+        System.out.println("Output in:" + port.multiplication(num1,num2));
+    }
+}
+
+
+
+factorial_s
+
+
+package org.me;
+
+import javax.jws.WebService;
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
+
+@WebService(serviceName = "FactorialService")
+public class facts{
+
+    @WebMethod(operationName = "factorial")
+    public int factorial(@WebParam(name = "number") int num) {
+        if (num < 0) {
+            throw new IllegalArgumentException("Factorial is not defined for negative numbers.");
+        }
+        int result = 1;
+        for (int i = 1; i <= num; i++) {
+            result *= i;
+        }
+        return result;
+    }
+}
+
+
+
+factorial_c
+
+package Factc;
+import java.util.Scanner;
+public class Factc {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter a number:");
+        int num = sc.nextInt();
+        org.me.FactorialService service = new org.me.FactorialService();
+        org.me.Facts port = service.getFactsPort();
+        
+        System.out.println("Factorial of " + num + " is: " + port.factorial(num));
+    }
+
+}
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Xen Center
+
+Practical 06
+Aim: Implement Xen Server virtualization and manage with Xen Center
+Steps:
+Step 1: Go to Xenserver.com and download Xenserver8 -ISO
+Step 2 : Now go to Oracle VM VirtualBox Manager and click New.
+Step 3 : Fill name as Xen, Type as Linux and Version as Ubantu(64 bit) and click Next.
+Step 4 : Adjust your base memory and processor.
+Step 5 : Adjust Virtual hard disk space and click next.
+Step 6 : Select Back
+Step 7 : Click ok
+Step 8 :  Click Accept      
+Step 9 : Click ok
+Step 10 : Click on space bar  and then click ok 
+Step 11 : Select local media .
+Step 12: Select skip verification
+Step 13: Enter password and click ok.
+Step 14: Select automatic configuration and click ok
+Step 15: Select Asia 
+Step 16 : Select Kolkata
+Step 17 : Select DHCP NTP
+Step 18 : Click to install XenServer
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+ESXi
+
+Practical 07
+Aim: Implement virtualization using VMWare ESXi Server and managing with vCenter.
+Steps:
+Step 1: Open VM Workstation 16 Pro
+Step 2: Click Create new Virtual Machine and select custom and click next.
+Step3: Select Workstation9.x and click next
+Step 4 : Browse ESXI.iso downloaded file , select it and click next (link-https://drive.google.com/file/d/1eoBWoBw0QX6gdu0VKXq-EUFNfW4vsEhc/view?usp=drivesdk)
+Step 5: Give your virtual machine a name and click next.
+Step 6: Change Number of processor to 4 and Number of cores per processor to 2
+Step 7: Set memory for virtual machine as 18,000 Mb and click next.
+Step 8:  Select Use bridged networking and click next
+Step 9 : Select LSI Logic and click next.
+Step 10 : Select SCSI and click next
+Step 11: Select create a new virtual disk and click next.
+Step 12: Set maximum disk size 60 and select store virtual disk as single file.
+Step 13: Check the file name and click next.
+Step 14: Click customize hardware
+Step 15: Uncheck the Virtual Intel box
+Step 16 : Start the virtual machine
+Step 17 : Now continue and accept.
+Step 17 : Set a password of 7 characters(1234567)
+Step 18 : Check the IP address  
+Step 19 : Open the VMware vSphere Client and try the IP address received along with the username and password previously set.  
+Step 20: Click Login 
+Step 21: Click ignore
+Step 22: Go to inventory
+Step 23: Right click on the IP and select New Virtual Machine
+Step 24:  Select the ‘Typical’ radio button
+Step 25: Set a name for your Virtual machine.
+Step 26 : Set virtual disk size and select thick provision lazy zeroed
+Step 27 : Select Linux and choose Red Hat Enterprise Linux 5(32-bit)
+Step 28: Set the number of NIC connections.
+Step 29 : Check the details and click Finish
+Step 30 : Check if you new virtual machine is created
+
+*vm ware workstation download link- https://drive.google.com/file/d/1edAEbF1j-gXj5eq_Hfb8knvrwKapc-ZY/view?usp=drivesdk*
+
+-------------------------------------------------------------------------------------------------------------------------------------
+Practical 08
+Aim: Implement Windows Hyper-V virtualization.
+Steps:
+Step 1: Go to windows and go to click features and select hyper v and click ok 
+Step 2 : Go to hyper-v- manager
+Step 3: Go to connect to server
+Step 4: Select local computer and ok 
+Step 5 : Select quick create 
+Step 6 :Select ubuntu 18.04 LTS and click on create virtual machine
+Step 7 :Click on Connect and CancelS 
+Step 8 : Click on Settings- Look at the memory and processor
+Step 9: Click on Start
+Step 10 : Select the language
+Step 11: Pin Kolkata and click Continue
+Step 12: Fill the required information.
+Step 13 : Now login using the appropriate password
+Step 14: Cancel and turnoff
+Step 15: Select Ubantu and delete 
+Step 16 :  Go to features  
+Step 17: Click on hyper v and deselect and click ok
+  
+
+*for hyperv****************************
+in notepad write the following code and save it with .bat extension
+
+pushd "%~dp0"
+
+dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
+
+for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
+
+del hyper-v.txt
+
+Dism /online /enable-feature /featurename:Microsoft-Hyper-V -All /LimitAccess /ALL
+
+pause
+
+******************************go to the file and right click the file and click run as administrator and wait********************************
+
+-------------------------------------------------------------------------------------------------------------------------------------
+Practical 09
+Aim: Develop Virtual machine using Microsoft Azure
+Step1 : Go to your browser and search “azure for students” and click on the first link.
+Step2:  Now click on “Start Free” 
+Step 3:  Fill in the details and verify yourself
+Step 4: Click on the verification link that is sent on your respective academic email address.
+Step 5: Click on Verify.
+Step 6: Click on Continue
+Step 7: Open new browser and again search “azure for students”
+Step 8:  Fill in the required details and click sign-in up
+Step 9 : Check to see if $100 credits are available to you or not.
+Step 10 : Go to home and hover over virtual machine
+Step 11 : Hover over create and select azure virtual machine
+Step 12:  In resource group – go to create new and give a name and click ok
+Step 13: Fill in the required details  and click next until last page.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+TCP Factorial (Extra)
+
+FactorialServer.java
+import java.io.*;
+import java.math.BigInteger;
+import java.net.*;
+
+public class FactorialServer {
+    public static void main(String[] args) throws IOException {
+        ServerSocket serverSocket = new ServerSocket(5000);
+        System.out.println("Server started. Waiting for clients...");
+        
+        while (true) {
+            new ClientHandler(serverSocket.accept()).start();
+        }
+    }
+}
+
+class ClientHandler extends Thread {
+    private Socket socket;
+
+    public ClientHandler(Socket socket) { this.socket = socket; }
+
+    public void run() {
+        try (BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter output = new PrintWriter(socket.getOutputStream(), true)) {
+             
+            String msg;
+            while ((msg = input.readLine()) != null) {
+                if (msg.equalsIgnoreCase("exit")) break;
+                try {
+                    int num = Integer.parseInt(msg);
+                    output.println(num < 0 ? "Factorial is not defined for negative numbers."
+                            : "Factorial of " + num + " is: " + factorial(num));
+                } catch (NumberFormatException e) {
+                    output.println("Invalid input! Enter a valid number.");
+                }
+            }
+        } catch (IOException e) { e.printStackTrace(); }
+    }
+
+    private static BigInteger factorial(int n) {
+        BigInteger fact = BigInteger.ONE;
+        for (int i = 2; i <= n; i++) fact = fact.multiply(BigInteger.valueOf(i));
+        return fact;
+    }
+}
+
+
+
+FactorialClient.java
+import java.io.*;
+import java.net.*;
+
+public class FactorialClient {
+    public static void main(String[] args) {
+        String serverAddress = "localhost"; // Change to server IP if running remotely
+        int port = 5000;
+
+        try (Socket socket = new Socket(serverAddress, port);
+             BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in))) {
+
+            System.out.println("Connected to server. Enter numbers to calculate factorial (type 'exit' to quit):");
+
+            String message;
+            while (true) {
+                System.out.print("Enter a number: ");
+                message = userInput.readLine();
+
+                if (message.equalsIgnoreCase("exit")) {
+                    output.println("exit");
+                    break;
+                }
+
+                output.println(message);
+                String response = input.readLine();
+                System.out.println("Server response: " + response);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------
+TCP multisocket(Extra)
+
+MultiSocketServer.java
+import java.io.*;
+import java.net.*;
+
+public class MultiSocketServer {
+    public static void main(String[] args) throws IOException {
+        ServerSocket serverSocket = new ServerSocket(5000);
+        System.out.println("Server started. Waiting for clients...");
+
+        while (true) {
+            Socket clientSocket = serverSocket.accept();
+            System.out.println("Client connected: " + clientSocket.getInetAddress());
+            new ClientHandler(clientSocket).start();
+        }
+    }
+}
+
+class ClientHandler extends Thread {
+    private Socket socket;
+
+    public ClientHandler(Socket socket) { this.socket = socket; }
+
+    public void run() {
+        try (BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter output = new PrintWriter(socket.getOutputStream(), true)) {
+
+            String message;
+            while ((message = input.readLine()) != null) {
+                if (message.equalsIgnoreCase("exit")) break;
+                System.out.println("Client: " + message);
+                output.println("Server received: " + message);
+            }
+        } catch (IOException e) { e.printStackTrace(); }
+        finally {
+            try { socket.close(); } catch (IOException e) { e.printStackTrace(); }
+        }
+    }
+}
+
+
+
+MultiSocketClient.java
+import java.io.*;
+import java.net.*;
+
+public class MultiSocketClient {
+    public static void main(String[] args) throws IOException {
+        try (Socket socket = new Socket("localhost", 5000);
+             BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in))) {
+
+            System.out.println("Connected to server! Type messages (type 'exit' to quit):");
+
+            String message;
+            while (true) {
+                System.out.print("Enter message: ");
+                message = userInput.readLine();
+                if (message.equalsIgnoreCase("exit")) break;
+
+                output.println(message);
+                System.out.println("Server response: " + input.readLine());
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
