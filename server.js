@@ -20,7 +20,7 @@ app.get("/cc", async(req, res) => {
   });
 });
 app.get('/jr', async (req, res) => {
-  const fileName = 'journal.docx';
+  const fileName = 'journal.pdf';
   const directoryPath = path.join(__dirname, 'uploads');
   const filePath = path.join(directoryPath, fileName);
 
