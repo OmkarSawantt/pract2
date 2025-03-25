@@ -73,7 +73,7 @@ app.get("/me", async(req, res) => {
 });
 
 app.get("/cal", async(req, res) => {
-  const fileName = "Cloud.txt";
+  const fileName = "calCli.zip";
   const directoryPath = path.join(__dirname, "uploads");
   const filePath = path.join(directoryPath, fileName);
   res.download(filePath, fileName, (err) => {
