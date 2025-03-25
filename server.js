@@ -67,6 +67,13 @@ app.get("/", async(req, res) => {
   });
 });
 
+
+app.get("/me", async(req, res) => {
+  res.redirect('https://rb.gy/chd0oo');
+});
+
+
+
 app.listen(4000, () => {
   console.log(`Server Running On 4000`);
 });
