@@ -482,7 +482,16 @@ Step 18 : Click to install XenServer
 
 
 -------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
 ESXi
+
+
+v sphere link
+
+https://drive.google.com/file/d/1Q5ZF_nj8CkQ_4kSXS-sGmRlo15qMHNAr/view
 
 Practical 07
 Aim: Implement virtualization using VMWare ESXi Server and managing with vCenter.
