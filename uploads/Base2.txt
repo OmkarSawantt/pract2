@@ -597,3 +597,18 @@ print(cf_matrix)
 print(f"F1 Score : {f1_score(y_test, y_pred)}")
 
 
+
+#Precision-Recall Curve
+plt.figure(figsize=(8, 6))
+
+for name, model in models:
+    y_scores = model.predict_proba(X_test)[:, 1] if hasattr(model, "predict_proba") else model.decision_function(X_test)
+    precision, recall, _ = precision_recall_curve(y_test, y_scores)
+
+    plt.plot(recall, precision, label=f"{name} (AP={average_precision_score(y_test, y_scores):.2f})")
+
+plt.xlabel("Recall")
+plt.ylabel("Precision")
+plt.title("Precision-Recall Curve")
+plt.legend()
+plt.show()
