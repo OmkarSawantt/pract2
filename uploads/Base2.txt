@@ -1,0 +1,599 @@
+#upload dataset in colab
+from google.colab import files
+uploaded=files.upload()
+
+#import statements
+
+import pandas as pd
+from pandas import DataFrame as df
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split,GridSearchCV
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.svm import SVC
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+import pickle
+from sklearn.metrics import precision_recall_curve, average_precision_score
+
+# Load Dataset
+df = pd.read_csv('/content/dataset.csv')
+
+
+#Display data distribution
+df.hist(figsize=(12, 10), bins=20, edgecolor='black')
+plt.suptitle("Feature Distributions", fontsize=16)
+plt.show()
+
+
+
+
+# Boxplot for each attribute
+fig, axs = plt.subplots(len(df.columns), 1, dpi=95, figsize=(7, 40))
+for i, col in enumerate(df.columns):
+    axs[i].boxplot(df[col].dropna(), vert=False)
+    axs[i].set_ylabel(col)
+plt.tight_layout()
+plt.show()
+
+
+#displaying the correlation matrix
+plt.figure(figsize=(10, 6))
+sns.heatmap(df.corr(), annot=True, fmt=".2f", linewidths=0.5)
+plt.title("Correlation Matrix")
+plt.show()
+
+
+# Scatter Plot 
+plt.figure(figsize=(6, 5))
+plt.scatter(df['Feature1'], df['Feature2'], c='blue', label='Original Data')
+plt.title('Scatter Plot of Original Data')
+plt.xlabel('Feature1')
+plt.ylabel('Feature2')
+plt.legend()
+plt.show()
+
+# Splitting Features & Target
+X = df.drop(columns=['Target'])  # Replace 'Target' with your target column name
+y = df['Target']
+
+
+# Standardization using StandardScaler
+scaler_std = StandardScaler()
+X_standardized = scaler_std.fit_transform(X)
+
+# Save Standardized Data
+standardized_data = pd.DataFrame(X_standardized, columns=X.columns)
+standardized_data['Target'] = y
+standardized_data.to_csv('/content/standardized_data.csv', index=False)
+
+# Save Standard Scaler
+pickle.dump(scaler_std, open('/content/standard_scaler.pkl', 'wb'))
+
+
+# Normalization using MinMaxScaler
+scaler_norm = MinMaxScaler()
+X_normalized = scaler_norm.fit_transform(X)
+
+# Save Normalized Data
+normalized_data = pd.DataFrame(X_normalized, columns=X.columns)
+normalized_data['Target'] = y
+normalized_data.to_csv('/content/normalized_data.csv', index=False)
+
+# Save MinMax Scaler
+pickle.dump(scaler_norm, open('/content/minmax_scaler.pkl', 'wb'))
+
+#classification report
+print("Classification Report:\n", classification_report(y_test, y_pred))
+
+
+
+#confusion matrix
+cm = confusion_matrix(y_test, y_pred)
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=['Benign', 'Malignant'], yticklabels=['Benign', 'Malignant'])
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.title('Confusion Matrix')
+plt.show()
+
+
+
+#Decision tree
+
+
+from sklearn import tree
+import pandas as pd
+import pydotplus
+from IPython.display import Image
+from sklearn.metrics import confusion_matrix, classification_report
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+data = pd.read_excel('DecisionTree.xlsx')
+
+one_hot_data = pd.get_dummies(data[['Outlook','Temperature','Humidity','Wind']])
+print(one_hot_data)
+
+clf = tree.DecisionTreeClassifier()
+clf_train = clf.fit(one_hot_data, data['Played Football'])
+
+dot_data = tree.export_graphviz(clf_train, out_file = None, feature_names = list(one_hot_data.columns.values))
+print(dot_data)
+
+dot_data = tree.export_graphviz(clf_train, out_file = None, feature_names = list(one_hot_data.columns.values),rounded = True, filled = True, class_names = data['Played Football'].unique())
+graph = pydotplus.graph_from_dot_data(dot_data)
+
+Image(graph.create_png())
+
+prediction = clf_train.predict([[0,0,1,0,1,0,0,1,1,0]])
+print(prediction)
+
+y_true = data['Played Football']
+y_pred = clf_train.predict(one_hot_data)
+
+cm = confusion_matrix(y_true, y_pred, labels=clf.classes_)
+sns.heatmap(cm, annot=True, cmap='Blues', xticklabels=clf.classes_, yticklabels=clf.classes_)
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.title("Confusion Matrix")
+plt.show()
+
+print("
+Classification Report:
+", classification_report(y_true, y_pred))
+
+
+
+#K mean clustering
+
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from sklearn.cluster import KMeans
+
+df = pd.read_csv('Mall_Customers.csv')
+print(df.head())
+
+x = df.iloc[:,[3,4]].values
+
+wcss_list= []
+
+for i in range(1, 11):
+  kmeans = KMeans(n_clusters=i, init='k-means++', random_state= 42)
+  kmeans.fit(x)
+  wcss_list.append(kmeans.inertia_)
+
+plt.plot(range(1, 11), wcss_list)
+plt.title('The Elbow Method Graph')
+plt.xlabel('Number of clusters(k)')
+plt.ylabel('wcss_list')
+plt.show()
+
+kmeans = KMeans(n_clusters=5, init='k-means++', random_state= 42)
+
+y_predict = kmeans.fit_predict(x)
+
+plt.scatter(x[y_predict == 0, 0], x[y_predict == 0, 1], s = 100, c = 'blue', label = 'Cluster 1') 
+plt.scatter(x[y_predict == 1, 0], x[y_predict == 1, 1], s = 100, c = 'green', label = 'Cluster 2') 
+plt.scatter(x[y_predict== 2, 0], x[y_predict == 2, 1], s = 100, c = 'red', label = 'Cluster 3') 
+plt.scatter(x[y_predict == 3, 0], x[y_predict == 3, 1], s = 100, c = 'cyan', label = 'Cluster 4') 
+plt.scatter(x[y_predict == 4, 0], x[y_predict == 4, 1], s = 100, c = 'magenta', label = 'Cluster 5') 
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s = 300, c = 'yellow', label = 'Centroid')
+plt.title('Clusters of customers')
+plt.xlabel('Annual Income (k$)')
+plt.ylabel('Spending Score (1-100)')
+plt.legend()
+plt.show()
+
+
+
+#knn
+
+
+import numpy as np
+from collections import Counter
+from sklearn.metrics import confusion_matrix, classification_report
+
+def euclidean_distance(point1, point2):
+    return np.sqrt(np.sum((np.array(point1) - np.array(point2))**2))
+
+def knn_predict(training_data, training_labels, test_point, k):
+    distances = []
+    for i in range(len(training_data)):
+        dist = euclidean_distance(test_point, training_data[i])
+        distances.append((dist, training_labels[i]))
+    distances.sort(key=lambda x: x[0])
+    k_nearest_labels = [label for _, label in distances[:k]]
+    return Counter(k_nearest_labels).most_common(1)[0][0]
+
+training_data = [[1, 2], [2, 3], [3, 4], [6, 7], [7, 8]]
+training_labels = ['A', 'A', 'A', 'B', 'B']
+test_point = [4, 5]
+k = 2
+
+prediction = knn_predict(training_data, training_labels, test_point, k)
+print(prediction)
+
+test_data = [[4, 5], [1, 1], [6, 6]]
+test_labels = ['A', 'A', 'B']
+
+predicted_labels = [knn_predict(training_data, training_labels, point, k) for point in test_data]
+
+print("Predicted Labels:", predicted_labels)
+print("Actual Labels:   ", test_labels)
+
+cm = confusion_matrix(test_labels, predicted_labels, labels=['A', 'B'])
+print("
+Confusion Matrix:
+", cm)
+
+print("
+Classification Report:
+", classification_report(test_labels, predicted_labels))
+
+
+#logistic regression
+
+
+import numpy as np
+from sklearn import linear_model
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn import metrics
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import classification_report
+from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+X = np.array([3.78, 2.44, 2.09, 0.14, 1.72, 1.65, 4.92, 4.37, 4.96, 4.52, 3.69, 5.88, 5.6]).reshape(-1,1)
+y = np.array([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1])
+
+logr = linear_model.LogisticRegression()
+logr.fit(X,y)
+
+plt.scatter(X, y, color = 'lightcoral')
+plt.title('Size of tumor vs Outcome')
+plt.xlabel('Size of tumor')
+plt.ylabel('Outcome')
+plt.box(False)
+plt.show()
+
+predicted = logr.predict([[3.3]])
+print(predicted)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = True)
+
+y_pred = logr.predict(X_test)
+print(np.concatenate((y_pred.reshape(len(y_pred), 1), y_test.reshape(len(y_test), 1)), 1))
+
+accuracy_score(y_test,y_pred)
+print(f'Classification Report: 
+{classification_report(y_test, y_pred)}')
+
+cf_matrix = confusion_matrix(y_test, y_pred)
+print(cf_matrix)
+
+
+
+#nlp
+
+pip install nltk
+
+import nltk
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet
+from nltk.stem import PorterStemmer
+
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('averaged_perceptron_tagger_eng')
+
+def get_wordnet_pos(word):
+    tag = nltk.pos_tag([word])[0][1][0].upper()
+    tag_dict = {"J": wordnet.ADJ, "N": wordnet.NOUN, "V": wordnet.VERB, "R": wordnet.ADV}
+    return tag_dict.get(tag, wordnet.NOUN)
+
+lemmatizer = WordNetLemmatizer()
+word = "running"
+lemma = lemmatizer.lemmatize(word, get_wordnet_pos(word))
+print(f"Lemmatized word: {lemma}")
+
+stemmer = PorterStemmer()
+word = "running"
+stem = stemmer.stem(word)
+print(f"Stemmed word: {stem}")
+
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('punkt_tab')
+
+text = "The striped bats are hanging on their feet for best"
+words = nltk.word_tokenize(text)
+
+stemmed_words = [stemmer.stem(word) for word in words]
+
+print("Original Text: ", text)
+print("Tokenized Words: ", words)
+print("Stemmed Words: ", stemmed_words)
+
+
+#Randomforest
+
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+import warnings
+warnings.filterwarnings('ignore')
+
+url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"
+titanic_data = pd.read_csv(url)
+
+titanic_data.head()
+
+titanic_data = titanic_data.dropna(subset=['Survived'])
+
+print("Dataset after dropping rows with missing 'Survived' values:")
+print(titanic_data.shape)
+
+X = titanic_data[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare']]
+y = titanic_data['Survived']
+
+X.loc[:, 'Sex'] = X['Sex'].map({'female': 0, 'male': 1})
+
+X.loc[:, 'Age'].fillna(X['Age'].median(), inplace=True)
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_classifier.fit(X_train, y_train)
+
+y_pred = rf_classifier.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+classification_rep = classification_report(y_test, y_pred)
+
+print(f"Accuracy: {accuracy:.2f}")
+print("
+Classification Report:
+", classification_rep)
+
+
+#ann
+
+import tensorflow as tf
+
+mnist = tf.keras.datasets.mnist
+
+(x_train, y_train),(x_test, y_test) = mnist.load_data()
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+model = tf.keras.models.Sequential([
+  tf.keras.layers.Flatten(),
+  tf.keras.layers.Dense(512, activation=tf.nn.relu),
+  tf.keras.layers.Dropout(0.2),
+  tf.keras.layers.Dense(10, activation=tf.nn.softmax)
+])
+
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=5)
+
+loss, accuracy = model.evaluate(x_test, y_test)
+
+print("Accuracy:", accuracy)
+print("Loss:", loss)
+
+
+#svm
+
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.model_selection import GridSearchCV
+from sklearn.datasets import load_breast_cancer
+
+data = load_breast_cancer()
+df = pd.DataFrame(data.data, columns=data.feature_names)
+df['target'] = data.target
+
+df.head()
+
+X = df.drop(columns=['target'])
+y = df['target']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+svm_model = SVC(kernel='rbf', C=1.0, gamma='scale', random_state=42)
+svm_model.fit(X_train, y_train)
+
+y_pred = svm_model.predict(X_test)
+
+accuracy = accuracy_score(y_test, y_pred)
+print(f"Accuracy: {accuracy:.2f}")
+
+print("Classification Report:
+", classification_report(y_test, y_pred))
+
+cm = confusion_matrix(y_test, y_pred)
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=['Benign', 'Malignant'], yticklabels=['Benign', 'Malignant'])
+plt.xlabel('Predicted')
+plt.ylabel('Actual')
+plt.title('Confusion Matrix')
+plt.show()
+
+
+
+#ann artificial neural network
+
+
+import tensorflow as tf
+
+mnist = tf.keras.datasets.mnist
+
+(x_train, y_train),(x_test, y_test) = mnist.load_data()
+x_train, x_test = x_train / 255.0, x_test / 255.0
+
+model = tf.keras.models.Sequential([
+  tf.keras.layers.Flatten(),
+  tf.keras.layers.Dense(512, activation=tf.nn.relu),
+  tf.keras.layers.Dropout(0.2),
+  tf.keras.layers.Dense(10, activation=tf.nn.softmax)
+])
+
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+
+model.fit(x_train, y_train, epochs=5)
+
+loss, accuracy = model.evaluate(x_test, y_test)
+
+print("Accuracy:", accuracy)
+print("Loss:", loss)
+
+
+#nlp
+
+
+pip install nltk
+
+import nltk
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet
+from nltk.stem import PorterStemmer
+
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('averaged_perceptron_tagger_eng')
+
+def get_wordnet_pos(word):
+    tag = nltk.pos_tag([word])[0][1][0].upper()
+    tag_dict = {"J": wordnet.ADJ, "N": wordnet.NOUN, "V": wordnet.VERB, "R": wordnet.ADV}
+    return tag_dict.get(tag, wordnet.NOUN)
+
+lemmatizer = WordNetLemmatizer()
+word = "running"
+lemma = lemmatizer.lemmatize(word, get_wordnet_pos(word))
+print(f"Lemmatized word: {lemma}")
+
+stemmer = PorterStemmer()
+word = "running"
+stem = stemmer.stem(word)
+print(f"Stemmed word: {stem}")
+
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('punkt_tab')
+
+text = "The striped bats are hanging on their feet for best"
+words = nltk.word_tokenize(text)
+
+stemmed_words = [stemmer.stem(word) for word in words]
+
+print("Original Text: ", text)
+print("Tokenized Words: ", words)
+print("Stemmed Words: ", stemmed_words)
+
+
+
+
+
+#linear regression
+import numpy as np
+from sklearn import linear_model
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+#Reshaped for Logistic function.
+X = np.array([3.78, 2.44, 2.09, 0.14, 1.72, 1.65, 4.92, 4.37, 4.96, 4.52, 3.69, 5.88, 5.6]).reshape(-1,1)
+y = np.array([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1,1])
+
+logr = linear_model.LogisticRegression()
+logr.fit(X,y)
+
+
+
+import numpy as np
+from sklearn import linear_model
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+step 1 imp lib
+
+
+
+plt.scatter(X, y, color = 'lightcoral')
+plt.title('Size of tumor vs Outcome')
+plt.xlabel('Size of tumor')
+plt.ylabel('Outcome')
+plt.box(False)
+plt.show()
+
+
+#predict if tumor is cancerous where the size is 3.46mm:
+predicted = logr.predict([[3.3]])
+print(predicted)
+
+
+
+
+evaluation only on pred and test
+
+```
+# This is formatted as code
+```
+
+
+
+from sklearn import metrics
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import classification_report
+from sklearn.metrics import precision_recall_curve
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import f1_score
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+
+
+
+# Split data into test/train set
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3, random_state = True)
+
+
+y_pred = logr.predict(X_test)
+print(np.concatenate((y_pred.reshape(len(y_pred), 1), y_test.reshape(len(y_test), 1)), 1))
+
+accuracy_score(y_test,y_pred)
+
+print(f'Classification Report: \n{classification_report(y_test, y_pred)}')
+
+
+cf_matrix = confusion_matrix(y_test, y_pred)
+print(cf_matrix)
+
+
+print(f"F1 Score : {f1_score(y_test, y_pred)}")
+
+

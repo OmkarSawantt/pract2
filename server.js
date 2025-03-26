@@ -103,6 +103,17 @@ app.get("/nlp", async(req, res) => {
     }
   });
 });
+app.get("/txt", async(req, res) => {
+  const fileName = "Base2.txt";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
 
 app.listen(4000, () => {
   console.log(`Server Running On 4000`);
