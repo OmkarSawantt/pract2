@@ -612,3 +612,19 @@ plt.ylabel("Precision")
 plt.title("Precision-Recall Curve")
 plt.legend()
 plt.show()
+
+
+
+
+# Tune hyperparameters using GridSearchCV.
+models_tun = {
+    'Logistic Regression': (logreg, {'C': [0.1, 1, 10], 'solver': ['liblinear', 'lbfgs']}),
+    'Decision Tree': (dtc, {'max_depth': [None, 10, 20], 'min_samples_split': [2, 5, 10]}),
+    'Random Forest': (rfc, {'n_estimators': [50, 100, 200], 'max_depth': [None, 10, 20], 'min_samples_split': [2, 5, 10]}),
+    'SVM': (svm, {'C': [0.1, 1, 10], 'kernel': ['linear', 'rbf']})
+}
+models=[]
+for name, (model, params) in models_tun.items():
+    grid = GridSearchCV(model, params, cv=5, scoring='accuracy')
+    grid.fit(X_train, y_train)
+    models.append((name, grid.best_estimator_))
