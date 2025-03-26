@@ -1,0 +1,46 @@
+Perform this on my dataset
+[Dataset column]
+[Data]
+
+I want to Perform this on Google colab
+Import the dataset form local storage
+
+Step1 = Import necessary library
+
+Step2 = Import the Data set
+
+Step3 = Read the dataset
+type of dataset
+shape of dataset
+head of the dataset
+tail of the dataset
+sample of the dataset
+describe the dataset
+info of the dataset
+
+Step4 = Handle Missing Value
+and print the info
+
+Step5 = Data Preprocessing (EDA)
+Histogram Plot
+Box Plot
+Correlation Matrix
+Outlier Detection and Handling
+Identify and Remove highly correlated Features
+Apply feature selection technique
+	
+Step6 = Split the dataset by 80% training and 20% testing
+
+Step7 = ML models [Model Name]
+
+Step8 = Plot
+
+Step9 = Evaluating the model performance (confusion matrix, classification report)
+
+Step10 = Precision and Recall Curve
+
+Step11 = Model Accuracy Comparison Graph
+
+Step12 = Predict using the user Input
+
+Step13 = Save the Model

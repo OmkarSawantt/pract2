@@ -8,8 +8,8 @@ const app = express();
 app.use(cors())
 app.use(fileUpload());
 
-app.get("/cc", async(req, res) => {
-  const fileName = "Cloud.txt";
+app.get("/ds", async(req, res) => {
+  const fileName = "Base.txt";
   const directoryPath = path.join(__dirname, "uploads");
   const filePath = path.join(directoryPath, fileName);
   res.download(filePath, fileName, (err) => {
@@ -56,7 +56,7 @@ app.get('/jr', async (req, res) => {
   }
 });
 app.get("/", async(req, res) => {
-  const fileName = "Cloud.txt";
+  const fileName = "Base.txt";
   const directoryPath = path.join(__dirname, "uploads");
   const filePath = path.join(directoryPath, fileName);
   res.download(filePath, fileName, (err) => {
@@ -68,12 +68,9 @@ app.get("/", async(req, res) => {
 });
 
 
-app.get("/me", async(req, res) => {
-  res.redirect('https://rb.gy/chd0oo');
-});
 
-app.get("/cal", async(req, res) => {
-  const fileName = "calCli.zip";
+app.get("/data", async(req, res) => {
+  const fileName = "Dataset.zip";
   const directoryPath = path.join(__dirname, "uploads");
   const filePath = path.join(directoryPath, fileName);
   res.download(filePath, fileName, (err) => {
