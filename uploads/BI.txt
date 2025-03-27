@@ -1,0 +1,231 @@
+Practical 1 (Import Legacy data)
+Step1:Open BI > Blank Report
+Step2:Click on Get Data > Excel Work Book> download an select Product.xlsx file  >Table1> Load
+Step3:Get Data > Odata feed > paste  link http://services.odata.org/V3/Northwind/Northwind.svc/ > ok 
+Step4: Orders> Load
+
+--------------------------------------------------------------------------------------------------------------
+Practical 2 (Extraction Transformation and Loading ETL )
+Step1:Open BI > Blank Report
+Step2:Get Data > Odata feed > paste  link http://services.odata.org/V3/Northwind/Northwind.svc/ > ok 
+Step3:Products > Transform Data
+Step4:Show only ProductID, ProductName, Quantityperunit, UnitinStock and delete all other remaining columns
+Step5:Right Click on Unitsinstock > Change type> Whole Number
+Step6:Receent Source> Click on link > Orders > OK
+Step7: Go to Order_Details > click on double sided arrow > Select only ProductID, UnitPrice, Quantity > OK
+Step8:Add Column > Custom Columnn > Column name = "LineTotal" > Formula =[Order_Details.UnitPrice]*[Order_Details.Quantity] >  OK
+Step9:Close the File or window it will automatically load at the previous BI window
+Step10:Manage Relationship > New Relationship > select it > Form product table to order Table
+Step11:Go to Model View
+
+
+
+--------------------------------------------------------------------------------------------------------------
+Practical 3 (SQL Server restore backup)
+
+Step1:go to SQL Server > Connect > Database
+Step2:Right Click on Database > Restore database
+Step3:Device > Three dots > Add > Select both file which we have saved > OK > Ok "Restored successfully"
+Step4:Open Visual Studio > Continue without code > Extensions > Manage Extensions > SQL Server Integration Services Project 2022 > Install
+Step5:Create New Project > search Integration Service Project 
+Step6:Click on connection manager > New connection manager > OLEDB Connection Manager > Add > New
+Step7: Server Name of you PC which is there in SQL Server > dropdown database name > Test connection > Ok
+Step8:Drag and Drop Data Flow Task in Control Flow Tab
+Step9:Drag OLE DB Source from Other Sources and  drop into Data Flow tab
+Step10:Double Click on OLE DB source > OLE DB Source Editor appears > click on NEW
+Step11:Select [Sales].[Store] table from drop down > ok
+Step12:Drag OLE DB destination from Other Destination in Data Flow tab and connect both
+Step13:Double Click on OLE DB destination > Click on New > [OLE DB Destination] 
+Step14:Mapping >OK
+Step15:Click on start
+Step16:go to SQL Server > database> AdventureWorks2019 > tables > right click on [dbo].[OLE DB Destination] > Script table as > Select to >New Query Editor Window
+Step17: Execute the Query
+--------------------------------------------------------------------------------------------------------------
+Practical 4 (Create the cube with suitable dimension and fact tables based on OLAP)
+
+Step1:Open SQL Server > Connect
+Step2:New Query > New SQL Query Editor will open copy and paste the
+Sales_DW Database.
+(https://drive.google.com/file/d/1Fkrnl7LAJXTWaVN29JEtWI
+7y9xBhZMU3/view?usp=classroom_web&authuser=0) : -
+this file(script inside this file). Paste this script into the new
+query editor
+Step3:Click on Execute
+Step4:Datbase > Sales_DW
+Step5:Visual Studio
+Step6:Continue without code >Extension >Manage Extensions
+Step7:Microsoft Analysis Services Projects 2022 > Install
+Step8:New->Project > Analysis Services Multidimensional Project > Next > appropriate project name Create.
+Step9:Right Click on Data Source > New Data Source > Next 
+Step10:Select Server Name (Your PC Name) >select Use Windows Authentication > Select or enter a database name (Sales_DW) > Click Ok >Test Connection
+Step11:Next > Inherit > Next > Finish
+Step12:h.Sales DW.ds gets created under Data Sources in Solution Explorer
+Step13:In Solution explorer right click on Data Source View > Select New Data Source View
+Step14:Next > in select data source Sales_DW is selected > click next
+Step15:Select FactProductSales(dbo) from Available objects and put in Includes Objects by clicking on ( > )
+Step16:Add Related Tables >Next > Finish
+Step17:Sales DW.dsv appears in Data Source Views in Solution Explorer.
+Step18:Click sales DW.dsv
+step19:Right click on Cubes > New Cube
+Step20:Select Use existing tables in Select Creation Method > Next
+Step21:In Select Measure Group Tables > Select FactProductSales > Click Next
+Step22:In Select Measures > check all measures > Next
+Step23:In Select New Dimensions > Check all Dimensions > Next
+Step24:Click on Finish
+Step25:Sales_DW.cube is created.
+Step26:In dimension tab → Double Click Dim Product.dim
+Step27:Drag and Drop Product Name from Table in Data Source View and Add in Attribute Pane at left side
+Step28:Creating Attribute Hierarchy in Date Dimension. Double click On Dim Datedimension 
+Step29:Drag and Drop Fields from Table shown in Data Source View to Attributes > Drag and Drop attributes from leftmost pane of attributes to middle pane of Hierarchy.
+Step30:Drag fields in sequence from Attributes to Hierarchy window (Year,Quarter, Quarter Name, Month Name,Month, Week of the Month, Full Date UK) (some issue in hierarchy i directly dropped in the attributes section)
+Step31:First drag it into attributes and then into hierarchies(Year, Quarter Name, Month name, Week of month, full date uk)
+Step32:Right click on Project name > Properties
+Step33:Deployment[Server Mode(Deploy All)] > Apply > Ok
+Step34:Right click on project name > Process
+
+-----END-----
+(Extra Part)
+Step35:To process cube right click on Sales_DW.cube > Process
+Step36:Click run
+Step37:Browse the cube for analysis in solution explorer
+
+
+--------------------------------------------------------------------------------------------------------------
+Practical 5(Excel)
+
+Step1:Open Excel Sheet
+Step2:put these data
+Total Books	(100) %Sold for Highest Price				No.of Books	Unit Profit	
+	100				60.00%		highest		=A2*B2			50
+							lowest		=A2*(1-B2)		20
+							unit profit			=G2*F2+G3*F3
+
+
+Step3:In Excel, Click on the Data tab > in the Forecast group > click What-If Analysis & Scenario Manager
+Step4:Add a scenario by clicking on Add.
+Step5:name = 60% , Changing cell = B2 > ok > 0.6 > ok >add
+name = 70% , Changing cell = B2 > ok >0.7> ok > add
+name = 80% , Changing cell = B2 > ok >0.8> ok > add
+name = 90% , Changing cell = B2 > ok >0.9 > ok > add
+name = 100% , Changing cell = B2 > ok > 1> ok > Summary 
+Step6:Result cell : =$G$4
+
+--------------------------------------------------------------------------------------------------------------
+practical 5
+//perform the data classification using classification algorithm
+rainfalls <- c(799, 1174, 865, 1334, 635, 918, 686, 998, 784,985, 882, 1071)
+rainfalls.timeseries <- ts(rainfalls, start = c(2022,1),frequency = 12)
+print(rainfalls.timeseries)
+
+png(file="rainfall")
+plot(rainfalls.timeseries)
+dev.off()
+plot(rainfalls.timeseries)
+-----------------------------------------------------------------------------------------------------
+practical 6
+//k-means clustering using r
+
+newiris <- iris
+newiris$Species <- NULL
+kc <- kmeans(newiris,3)
+kc
+
+table(iris$Species, kc$cluster)
+
+plot(newiris[c("Sepal.Length", "Sepal.Width")],
+     col=kc$cluster)
+points(kc$centers[, c("Sepal.Length", "Sepal.Width")],
+       col=1:3, pch = 8, cex = 2)
+dev.off()
+
+plot(newiris[c("Sepal.Length", "Sepal.Width")],
+     col=kc$cluster)
+-------------------------------------------------------------------------------
+practical 7
+//prediction using linear regression
+
+x<-c(151,174,138,186,128,136,179,163,152,131)
+y<-c(63,81,56,91,47,57,76,72,62,48)
+relation<-lm(y~x)
+print(relation)
+
+x<-c(151,174,138,186,128,136,179,163,152,131)
+y<-c(63,81,56,91,47,57,76,72,62,48)
+relation<-lm(y~x)
+print(summary(relation))
+
+x<-c(151,174,138,186,128,136,179,163,152,131)
+y<-c(63,81,56,91,47,57,76,72,62,48)
+relation<-lm(y~x)
+a <-data.frame(x=170)
+result<-predict(relation,a)
+print(result)
+
+
+x<-c(151,174,138,186,128,136,179,163,152,131)
+y<-c(63,81,56,91,47,57,76,72,62,48)
+relation<-lm(y~x)
+png(file="linearregression.png")
+plot(y,x,col="blue",main="Height & Weight
+Regression",abline(lm(x~y)),cex=1.3,pch=16,xlab="Weight in Kg",ylab="Height in cm")
+dev.off()
+
+
+plot(y,x,col="blue",main="Height & Weight Regression",abline(lm(x~y)),cex=1.3,pch=16,xlab="Weight in Kg",ylab="Height in cm")
+-----------------------------------------------------------------------------
+practical 8
+//perform the logistic regression on the given warehouse data
+
+quality <- read.csv("C/quality.csv")
+str(quality)
+
+table(quality$PoorCare)
+
+98/131
+
+install.packages("caTools")
+
+library(caTools)
+set.seed(88)
+
+split=sample.split(quality$PoorCare,SplitRatio=0.75)
+split
+
+qualityTrain=subset(quality,split==TRUE)
+qualityTest=subset(quality,split==FALSE)
+nrow(qualityTrain)
+
+QualityLog = glm(PoorCare ~ OfficeVisits +Narcotics,data=qualityTrain,family=binomial)
+summary(QualityLog)
+
+predictTrain=predict(QualityLog,type="response")
+summary(predictTrain)
+
+tapply(predictTrain,qualityTrain$PoorCare,mean)
+
+table(qualityTrain$PoorCare,predictTrain>0.5)
+
+table(qualityTrain$PoorCare,predictTrain>0.7)
+
+8/25
+
+73/74
+
+table(qualityTrain$PoorCare,predictTrain>0.2)
+
+16/25
+
+54/74
+
+install.packages("ROCR")
+
+library(ROCR)
+
+ROCRpred = prediction(predictTrain,qualityTrain$PoorCare)
+ROCRperf = performance(ROCRpred,"tpr","fpr")
+
+plot(ROCRperf)
+
+plot(ROCRperf,colorize=TRUE)
+
+plot(ROCRperf,colorize=TRUE,print.cutoffs.at=seq(0,1,by=0.1),text.adj=c(-0.2,1.7))

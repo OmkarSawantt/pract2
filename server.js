@@ -5,58 +5,36 @@ const fileUpload = require("express-fileupload");
 const path = require("path");
 const fs = require('fs');
 const app = express();
+const archiver = require("archiver");
 app.use(cors())
 app.use(fileUpload());
 
-app.get("/ds", async(req, res) => {
-  const fileName = "Base.txt";
-  const directoryPath = path.join(__dirname, "uploads");
-  const filePath = path.join(directoryPath, fileName);
-  res.download(filePath, fileName, (err) => {
-    if (err) {
-      console.log("Error downloading file:", err);
-      res.status(500).send("File could not be downloaded.");
-    }
-  });
-});
-app.get('/jr', async (req, res) => {
-  const fileName = 'journal.pdf';
-  const directoryPath = path.join(__dirname, 'uploads');
-  const filePath = path.join(directoryPath, fileName);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-  // Check if the file exists before attempting to download
-  if (fs.existsSync(filePath)) {
-    // Set correct MIME type for .docx
-    res.setHeader(
-      'Content-Type',
-      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-    );
-    res.setHeader(
-      'Content-Disposition',
-      `attachment; filename="${fileName}"`
-    );
-
-    // Use res.sendFile as fallback for res.download if needed
-    res.download(filePath, fileName, (err) => {
-      if (err) {
-        console.error('Error downloading file:', err);
-
-        // Fallback to res.sendFile if res.download fails
-        res.sendFile(filePath, (err2) => {
-          if (err2) {
-            console.error('Error sending file:', err2);
-            res.status(500).send('File could not be downloaded.');
-          }
-        });
-      }
-    });
-  } else {
-    console.error('File not found:', filePath);
-    res.status(404).send('File not found.');
-  }
-});
 app.get("/", async(req, res) => {
-  const fileName = "Base.txt";
+  const fileName = "BI.txt";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
+app.get("/bi1", async(req, res) => {
+  const fileName = "Practical1.pbix";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
+app.get("/bi2", async(req, res) => {
+  const fileName = "Practical2.pbix";
   const directoryPath = path.join(__dirname, "uploads");
   const filePath = path.join(directoryPath, fileName);
   res.download(filePath, fileName, (err) => {
@@ -69,8 +47,77 @@ app.get("/", async(req, res) => {
 
 
 
-app.get("/data", async(req, res) => {
-  const fileName = "Dataset.zip";
+app.get("/2b", async (req, res) => {
+  const files = [
+    { name: "AdventureWorks2012.bak", path: path.join(__dirname, "uploads/AdventureWorks2012.bak") },
+    { name: "AdventureWorksDW2012.bak", path: path.join(__dirname, "uploads/AdventureWorksDW2012.bak") },
+  ];
+
+  res.setHeader("Content-Type", "application/zip");
+  res.setHeader("Content-Disposition", "attachment; filename=files.zip");
+
+  const archive = archiver("zip", {
+    zlib: { level: 9 },
+  });
+  archive.pipe(res);
+  files.forEach((file) => {
+    archive.file(file.path, { name: file.name });
+  });
+  archive.finalize();
+  archive.on("error", (err) => {
+    console.error("Error creating archive:", err);
+    res.status(500).send("Error creating archive");
+  });
+});
+
+
+
+app.get("/exc", async(req, res) => {
+  const fileName = "Excel.xlsx";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
+app.get("/olap", async(req, res) => {
+  const fileName = "--DROP DATABASE Sales_DW.txt";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
+app.get("/class", async(req, res) => {
+  const fileName = "data_classification.R";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
+app.get("/k", async(req, res) => {
+  const fileName = "k_means.R";
+  const directoryPath = path.join(__dirname, "uploads");
+  const filePath = path.join(directoryPath, fileName);
+  res.download(filePath, fileName, (err) => {
+    if (err) {
+      console.log("Error downloading file:", err);
+      res.status(500).send("File could not be downloaded.");
+    }
+  });
+});
+app.get("/lin", async(req, res) => {
+  const fileName = "Linear_regression.R";
   const directoryPath = path.join(__dirname, "uploads");
   const filePath = path.join(directoryPath, fileName);
   res.download(filePath, fileName, (err) => {
@@ -81,48 +128,26 @@ app.get("/data", async(req, res) => {
   });
 });
 
-app.get("/ann", async(req, res) => {
-  const fileName = "SimpleANN.txt";
-  const directoryPath = path.join(__dirname, "uploads");
-  const filePath = path.join(directoryPath, fileName);
-  res.download(filePath, fileName, (err) => {
-    if (err) {
-      console.log("Error downloading file:", err);
-      res.status(500).send("File could not be downloaded.");
-    }
+app.get("/log", async (req, res) => {
+  const files = [
+    { name: "BI_logistic_regression.R", path: path.join(__dirname, "uploads/BI_logistic_regression.R") },
+    { name: "quality (2) - quality (2).csv", path: path.join(__dirname, "uploads/quality (2) - quality (2).csv") },
+  ];
+
+  res.setHeader("Content-Type", "application/zip");
+  res.setHeader("Content-Disposition", "attachment; filename=files.zip");
+
+  const archive = archiver("zip", {
+    zlib: { level: 9 },
   });
-});
-app.get("/nlp", async(req, res) => {
-  const fileName = "NLP.txt";
-  const directoryPath = path.join(__dirname, "uploads");
-  const filePath = path.join(directoryPath, fileName);
-  res.download(filePath, fileName, (err) => {
-    if (err) {
-      console.log("Error downloading file:", err);
-      res.status(500).send("File could not be downloaded.");
-    }
+  archive.pipe(res);
+  files.forEach((file) => {
+    archive.file(file.path, { name: file.name });
   });
-});
-app.get("/txt", async(req, res) => {
-  const fileName = "Base2.txt";
-  const directoryPath = path.join(__dirname, "uploads");
-  const filePath = path.join(directoryPath, fileName);
-  res.download(filePath, fileName, (err) => {
-    if (err) {
-      console.log("Error downloading file:", err);
-      res.status(500).send("File could not be downloaded.");
-    }
-  });
-});
-app.get("/zip", async(req, res) => {
-  const fileName = "alltxt.zip";
-  const directoryPath = path.join(__dirname, "uploads");
-  const filePath = path.join(directoryPath, fileName);
-  res.download(filePath, fileName, (err) => {
-    if (err) {
-      console.log("Error downloading file:", err);
-      res.status(500).send("File could not be downloaded.");
-    }
+  archive.finalize();
+  archive.on("error", (err) => {
+    console.error("Error creating archive:", err);
+    res.status(500).send("Error creating archive");
   });
 });
 
