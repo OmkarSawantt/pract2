@@ -57,18 +57,30 @@ app.get("/2b", async (req, res) => {
   res.setHeader("Content-Disposition", "attachment; filename=files.zip");
 
   const archive = archiver("zip", {
-    zlib: { level: 9 },
+    zlib: { level: 9 }, // Maximum compression
   });
+
   archive.pipe(res);
+
+  // Check if files exist before adding them to the archive
   files.forEach((file) => {
-    archive.file(file.path, { name: file.name });
+    if (fs.existsSync(file.path)) {
+      archive.file(file.path, { name: file.name });
+    } else {
+      console.error(`File not found: ${file.path}`);
+    }
   });
-  archive.finalize();
+
+  // Handle errors
   archive.on("error", (err) => {
     console.error("Error creating archive:", err);
     res.status(500).send("Error creating archive");
   });
+
+  // Finalize the archive
+  archive.finalize();
 });
+
 
 
 
