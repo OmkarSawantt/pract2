@@ -12,7 +12,7 @@ app.use(fileUpload());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.get("/", async(req, res) => {
-  const fileName = "BI.txt";
+  const fileName = "wd.txt";
   const directoryPath = path.join(__dirname, "uploads");
   const filePath = path.join(directoryPath, fileName);
   res.download(filePath, fileName, (err) => {
