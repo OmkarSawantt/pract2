@@ -1,0 +1,2597 @@
+Lab 1: HTML5 and CSS3 – Structured & Responsive Web Design  
+Case Title: Design a College Department Website (Static Layout) 
+ 
+Index.html  
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>College Department</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+ 
+    <header> 
+        <h1>Computer Science Department</h1> 
+        <nav> 
+            <ul> 
+                <li><a href="index.html">Home</a></li> 
+                <li><a href="about.html">About Us</a></li> 
+                <li><a href="faculty.html">Faculty</a></li> 
+                <li><a href="courses.html">Courses</a></li> 
+                <li><a href="contact.html">Contact</a></li> 
+            </ul> 
+        </nav> 
+    </header> 
+ 
+    <section class="banner"> 
+        <h2>Welcome to Our Department</h2> 
+        <p>Exploring knowledge through innovation and excellence.</p> 
+    </section> 
+ 
+    <section class="content">         <article class="card"> 
+            <h3>Our Vision</h3> 
+            <p>To empower students with advanced knowledge and skills.</p> 
+        </article> 
+ 
+        <article class="card"> 
+            <h3>Our Mission</h3> 
+            <p>To deliver quality education and industry-focused learning.</p>         </article> 
+ 
+        <article class="card"> 
+            <h3>Programs Offered</h3> 
+           <p>UG, PG, and Certificate Courses in Computer Science.</p>        </article> 
+    </section> 
+ 
+    <footer> 
+        <p>© 2025 Computer Science Department. All Rights Reserved.</p>     </footer> 
+ 
+</body> 
+</html> 
+ 
+About.html 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>About Us - Department</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+ 
+<header> 
+    <h1>Computer Science Department</h1> 
+    <nav> 
+        <ul> 
+            <li><a href="index.html">Home</a></li> 
+            <li><a href="about.html">About Us</a></li> 
+            <li><a href="faculty.html">Faculty</a></li> 
+            <li><a href="courses.html">Courses</a></li> 
+            <li><a href="contact.html">Contact</a></li> 
+        </ul> 
+    </nav> 
+</header> 
+ 
+<section class="banner"> 
+    <h2>About Our Department</h2> 
+</section> 
+ 
+<section class="content"> 
+    <article class="card">         <h3>History</h3> 
+        <p>The Computer Science Department was established to nurture innovation and technical excellence.</p> 
+    </article> 
+   <article class="card"> 
+        <h3>Vision</h3> 
+        <p>To be a leading center in computing education and research.</p>     </article> 
+ 
+    <article class="card"> 
+        <h3>Mission</h3> 
+        <p>To produce skilled professionals who can contribute to the IT industry and academia.</p>     </article> 
+</section> 
+ 
+<footer> 
+    <p>© 2025 Computer Science Department. All Rights Reserved.</p> 
+</footer> 
+ 
+</body> 
+</html> 
+ 
+Contact.html 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Contact Us - Department</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+ 
+<header> 
+    <h1>Computer Science Department</h1> 
+    <nav> 
+        <ul> 
+            <li><a href="index.html">Home</a></li> 
+            <li><a href="about.html">About Us</a></li> 
+            <li><a href="faculty.html">Faculty</a></li> 
+            <li><a href="courses.html">Courses</a></li> 
+            <li><a href="contact.html">Contact</a></li> 
+        </ul> 
+    </nav> 
+</header> 
+ 
+<section class="banner"> 
+    <h2>Contact Us</h2> 
+</section> 
+<section class="content"> 
+    <article class="card"> 
+        <h3>Department Address</h3> 
+        <p>ABC College, Main Campus, Pune</p> 
+        <p>Email: csdept@college.edu</p> 
+        <p>Phone: +91 9876543210</p> 
+    </article> 
+ 
+    <article class="card"> 
+        <h3>Send Us a Message</h3> 
+ 
+        <form> 
+            <label>Name:</label><br> 
+            <input type="text" required><br><br> 
+ 
+            <label>Email:</label><br> 
+            <input type="email" required><br><br> 
+ 
+            <label>Your Message:</label><br> 
+            <textarea rows="4" required></textarea><br><br> 
+ 
+            <button type="submit">Submit</button> 
+        </form> 
+    </article> 
+</section> 
+ 
+<footer> 
+    <p>© 2025 Computer Science Department. All Rights Reserved.</p> 
+</footer> 
+ 
+</body> 
+</html> 
+ 
+Courses.html 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Courses - Department</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+ 
+<header> 
+    <h1>Computer Science Department</h1> 
+   <nav>         <ul> 
+            <li><a href="index.html">Home</a></li> 
+            <li><a href="about.html">About Us</a></li> 
+            <li><a href="faculty.html">Faculty</a></li> 
+            <li><a href="courses.html">Courses</a></li> 
+            <li><a href="contact.html">Contact</a></li> 
+        </ul> 
+    </nav> 
+</header> 
+ 
+<section class="banner"> 
+    <h2>Courses We Offer</h2> 
+</section> 
+ 
+<section class="content"> 
+    <article class="card"> 
+        <h3>Bachelor of Computer Science (BCS)</h3> 
+        <p>3-year undergraduate program focusing on core computing skills.</p>     </article> 
+ 
+    <article class="card"> 
+        <h3>Master of Computer Science (MCS)</h3> 
+        <p>2-year postgraduate course for advanced computing knowledge.</p>     </article> 
+ 
+    <article class="card"> 
+        <h3>Certificate in Web Development</h3> 
+        <p>6-month course covering HTML, CSS, JavaScript, and frameworks.</p> 
+    </article> 
+</section> 
+ 
+<footer> 
+    <p>© 2025 Computer Science Department. All Rights Reserved.</p> 
+</footer> 
+ 
+</body> 
+</html> 
+ 
+Faculty.html 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Faculty - Department</title> 
+   <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+ 
+<header> 
+    <h1>Computer Science Department</h1> 
+    <nav> 
+        <ul> 
+            <li><a href="index.html">Home</a></li> 
+            <li><a href="about.html">About Us</a></li> 
+            <li><a href="faculty.html">Faculty</a></li> 
+            <li><a href="courses.html">Courses</a></li> 
+            <li><a href="contact.html">Contact</a></li> 
+        </ul> 
+    </nav> 
+</header> 
+ 
+<section class="banner"> 
+    <h2>Meet Our Faculty</h2> 
+</section> 
+ 
+<section class="content"> 
+    <article class="card"> 
+        <h3>Dr. Sneha Kulkarni</h3>         <p>Head of Department</p> 
+        <p>Expertise: Artificial Intelligence, Machine Learning</p> 
+    </article> 
+ 
+    <article class="card"> 
+        <h3>Prof. Amit Sharma</h3> 
+        <p>Assistant Professor</p> 
+        <p>Expertise: Web Development, Cloud Computing</p> 
+    </article> 
+ 
+    <article class="card"> 
+        <h3>Prof. Riya Desai</h3> 
+        <p>Lecturer</p> 
+        <p>Expertise: Data Structures, Python Programming</p> 
+    </article> 
+</section> 
+ 
+<footer> 
+    <p>© 2025 Computer Science Department. All Rights Reserved.</p> 
+</footer> 
+ 
+</body> 
+</html> 
+ 
+Style.css 
+ 
+/* Global Styling */ body {     margin: 0;     font-family: Arial, sans-serif; 
+    background: #f8f8f8; 
+} 
+ 
+/* Header */ header {     background: #003366;     color: white;     padding: 20px;     text-align: center; 
+} 
+ 
+nav ul {     list-style: none;     padding: 0; 
+} 
+ 
+nav ul li {     display: inline-block; 
+    margin: 0 15px; 
+} 
+ 
+/* Navigation Hover Animation */ 
+nav ul li a {     color: white;     text-decoration: none;     font-weight: bold; 
+    position: relative; 
+} 
+ 
+nav ul li a::after {     content: "";     position: absolute;     width: 0;     height: 2px;     background: yellow; 
+    left: 0; 
+    bottom: -5px; 
+    transition: 0.3s; 
+} 
+ 
+nav ul li a:hover::after { 
+    width: 100%; 
+} 
+ 
+/* Banner Section */ .banner { 
+    background: url("banner.jpg") center/cover no-repeat;     padding: 80px 20px;     text-align: center; 
+    color: white;     background-color: #004080; 
+} 
+ 
+.banner h2 {     font-size: 2.5rem; 
+    animation: fadeIn 2s ease; 
+} 
+ 
+/* Fade-in animation */ @keyframes fadeIn {     from { opacity: 0; } 
+    to { opacity: 1; } 
+} 
+ 
+/* Content Cards (Grid Layout) */ 
+.content { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));     gap: 20px; 
+    padding: 30px; 
+} 
+ 
+.card {     background: white;     padding: 20px;     border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+} 
+ 
+/* Footer */ footer {     background: #00264d;     color: white;     padding: 15px; 
+    text-align: center; 
+} 
+ 
+/* Responsive Mobile View */ 
+@media (max-width: 600px) { 
+ 
+    nav ul li {         display: block; 
+        margin: 10px 0; 
+    } 
+ 
+    .banner h2 { 
+        font-size: 1.8rem; 
+    } 
+} 
+ 
+-----------------------------------------------------------------------------------
+Lab 2: JavaScript Basics – Interactive User Form  
+Case Title: Online Registration Form with Validation 
+ 
+Index.html 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Student Registration Form</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+ 
+    <div class="form-container"> 
+        <h2>Student Registration Form</h2> 
+ 
+        <form id="regForm"> 
+ 
+            <label>Name:</label> 
+            <input type="text" id="name"> 
+            <small class="error" id="nameError"></small> 
+ 
+            <label>Email:</label> 
+            <input type="email" id="email"> 
+            <small class="error" id="emailError"></small> 
+ 
+            <label>Phone:</label> 
+            <input type="text" id="phone"> 
+            <small class="error" id="phoneError"></small> 
+ 
+            <label>Course:</label> 
+            <select id="course"> 
+                <option value="">Select Course</option> 
+                <option value="BBA">BBA</option> 
+                <option value="BCA">BCA</option> 
+                <option value="BSc IT">BSc IT</option> 
+            </select> 
+            <small class="error" id="courseError"></small> 
+ 
+            <button type="submit">Submit</button>         </form> 
+        <p id="successMsg"></p> 
+    </div> 
+ 
+    <script src="script.js"></script> 
+</body> 
+</html> 
+ 
+Script.js 
+document.getElementById("regForm").addEventListener("submit", function(event) {     event.preventDefault(); // stop page reload 
+ 
+    let name = document.getElementById("name").value.trim();     let email = document.getElementById("email").value.trim();     let phone = document.getElementById("phone").value.trim();     let course = document.getElementById("course").value; 
+ 
+    let isValid = true; 
+ 
+    // Name validation     if (name === "") { 
+        document.getElementById("nameError").innerText = "Name is required";         isValid = false; 
+    } else { 
+        document.getElementById("nameError").innerText = ""; 
+    } 
+ 
+    // Email validation 
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    if (!emailPattern.test(email)) { 
+        document.getElementById("emailError").innerText = "Enter a valid email";         isValid = false; 
+    } else { 
+        document.getElementById("emailError").innerText = ""; 
+    } 
+ 
+    // Phone validation (numeric & 10 digits)     if (!/^\d{10}$/.test(phone)) { 
+        document.getElementById("phoneError").innerText = "Phone must be 10 digits";         isValid = false; 
+    } else { 
+        document.getElementById("phoneError").innerText = ""; 
+    } 
+ 
+    // Course validation     if (course === "") { 
+        document.getElementById("courseError").innerText = "Select a course";         isValid = false; 
+    } else { 
+        document.getElementById("courseError").innerText = ""; 
+    } 
+ 
+    // Success message 
+    if (isValid) { 
+        document.getElementById("successMsg").innerText = "Registration Successful!"; 
+    } 
+}); 
+ 
+// Real-time validation 
+document.getElementById("email").addEventListener("input", function() {     let email = this.value; 
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+ 
+    document.getElementById("emailError").innerText =         emailPattern.test(email) ? "" : "Invalid email format"; 
+}); 
+ 
+Style.css 
+ 
+body { 
+    font-family: Arial, sans-serif; 
+    background: #f2f2f2; 
+} 
+ 
+.form-container {     width: 350px;     margin: 50px auto;     background: #fff;     padding: 20px;     border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.2); 
+} 
+ 
+label { 
+    font-weight: bold; 
+} 
+ 
+input, select {     width: 100%;     padding: 8px;     margin: 5px 0 10px 0;     border: 1px solid #ccc; 
+    border-radius: 5px; 
+} 
+button {     width: 100%;     padding: 10px;     background: #4CAF50; 
+    color: white;     border: none;     border-radius: 5px; 
+    cursor: pointer; 
+} 
+ 
+button:hover { 
+    background: #45a049; 
+} 
+ 
+.error {     color: red; 
+    font-size: 12px; 
+} 
+ 
+#successMsg {     margin-top: 15px;     font-size: 16px;     font-weight: bold; 
+    color: green; 
+} 
+ 
+----------------------------------------------------------------------------------------
+
+Lab 3: JavaScript DOM & Event Handling – Dynamic Product Catalog  
+Case Title: E-Commerce Product Listing Page 
+ 
+Index.html 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Product Catalog</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+ 
+    <h1>   Product Catalog</h1> 
+ 
+    <!-- FILTER BUTTONS --> 
+    <div class="controls"> 
+        <button onclick="showAll()">All</button> 
+        <button onclick="filterCategory('Electronics')">Electronics</button> 
+        <button onclick="filterCategory('Clothes')">Clothes</button> 
+        <button onclick="sortPriceLow()">Price: Low → High</button> 
+        <button onclick="sortPriceHigh()">Price: High → Low</button> 
+    </div> 
+ 
+    <!-- PRODUCT LIST --> 
+    <div id="productList" class="product-container"></div> 
+ 
+    <h2>🛍 Cart</h2> 
+    <ul id="cartList"></ul> 
+ 
+    <!-- POPUP FOR DETAILS --> 
+    <div id="popup" class="popup"> 
+        <div class="popup-content"> 
+            <span onclick="closePopup()" class="close">&times;</span> 
+            <img id="popupImg"> 
+            <h3 id="popupName"></h3> 
+            <p id="popupPrice"></p> 
+            <p id="popupCategory"></p> 
+        </div> 
+    </div> 
+ 
+    <script src="script.js"></script> 
+</body> 
+</html> 
+ 
+Script.js 
+// PRODUCT DATA let products = [ 
+    { name: "Laptop", price: 45000, category: "Electronics", image: "img1.jpg" }, 
+    { name: "Headphones", price: 1500, category: "Electronics", image: "img2.jpg" }, 
+    { name: "T-Shirt", price: 500, category: "Clothes", image: "img3.jpg" }, 
+    { name: "Shoes", price: 1200, category: "Clothes", image: "img4.jpg" } 
+]; 
+ 
+let cart = []; 
+ 
+// DISPLAY PRODUCTS function loadProducts(list) { 
+    const container = document.getElementById("productList");     container.innerHTML = ""; 
+ 
+    list.forEach((p, index) => { 
+        let card = document.createElement("div"); 
+        card.className = "product-card"; 
+ 
+        card.innerHTML = ` 
+            <img src="${p.image}" alt="${p.name}"> 
+            <h3>${p.name}</h3> 
+            <p>Price: ₹${p.price}</p> 
+            <p>${p.category}</p> 
+            <button class="add-btn" onclick="addToCart(${index})">Add to Cart</button> 
+            <button class="details-btn" onclick="viewDetails(${index})">View Details</button> 
+        `; 
+ 
+        container.appendChild(card); 
+    }); 
+} 
+ 
+loadProducts(products); 
+ 
+// FILTERING 
+function filterCategory(cat) { 
+    const filtered = products.filter(p => p.category === cat);     loadProducts(filtered); 
+} 
+ 
+function showAll() { 
+    loadProducts(products); 
+} 
+ 
+// SORTING function sortPriceLow() {    const sorted = [...products].sort((a, b) => a.price - b.price); 
+    loadProducts(sorted); 
+} 
+ 
+function sortPriceHigh() { 
+    const sorted = [...products].sort((a, b) => b.price - a.price);     loadProducts(sorted); 
+} 
+ 
+// ADD TO CART function addToCart(index) { 
+    cart.push(products[index]); 
+ 
+    let cartList = document.getElementById("cartList");     let li = document.createElement("li"); 
+    li.textContent = products[index].name + " - ₹" + products[index].price;     cartList.appendChild(li); 
+} 
+ 
+// VIEW DETAILS POPUP function viewDetails(index) { 
+    document.getElementById("popupImg").src = products[index].image;     document.getElementById("popupName").innerText = products[index].name;     document.getElementById("popupPrice").innerText = "Price: ₹" + products[index].price;     document.getElementById("popupCategory").innerText = "Category: " + products[index].category; 
+ 
+    document.getElementById("popup").style.display = "block"; 
+} 
+ 
+function closePopup() { 
+    document.getElementById("popup").style.display = "none"; 
+} 
+ 
+Style.css 
+ 
+body { 
+    font-family: Arial, sans-serif;     background: #f5f5f5; 
+    padding: 20px; 
+} 
+ 
+h1, h2 { 
+    text-align: center; 
+} 
+ 
+.controls {    text-align: center;    margin-bottom: 20px; 
+} 
+ 
+button {     padding: 8px 15px;     margin: 5px;     cursor: pointer;     background: #333;     color: white;     border-radius: 6px; 
+    border: none; 
+} 
+ 
+.product-container {     display: flex;     justify-content: center;     flex-wrap: wrap;     gap: 15px; 
+} 
+ 
+.product-card {     width: 220px;     background: white;     padding: 15px;     border-radius: 10px;     box-shadow: 0 0 8px #ccc; 
+    text-align: center; 
+} 
+ 
+.product-card img {     width: 100%;     height: 150px;     object-fit: cover; 
+} 
+ 
+.add-btn, .details-btn {     background: #28a745;     margin-top: 10px;     padding: 7px 12px;     border: none;     color: white;     border-radius: 5px; 
+    cursor: pointer; 
+} 
+ 
+.details-btn {     background: #007bff; 
+} 
+/* Popup */ .popup {     display: none;     position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%;     height: 100%; 
+    background: rgba(0,0,0,0.6); 
+} 
+ 
+.popup-content {     background: white;     padding: 20px;     width: 300px;     margin: 10% auto;     text-align: center; 
+    border-radius: 10px; 
+} 
+ 
+.popup-content img { 
+    width: 100%; 
+} 
+ 
+.close {     float: right;     cursor: pointer; 
+    font-size: 20px; 
+} 
+
+----------------------------------------------------------------------------------------------
+Lab 4: Advanced JavaScript – Asynchronous API Integration  
+Case Title: Live Weather Dashboard 
+ 
+Index.html 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Live Weather Dashboard</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+ 
+    <div class="container"> 
+        <h1>🌤 Live Weather Dashboard</h1> 
+ 
+        <div class="search-box"> 
+            <input type="text" id="cityInput" placeholder="Enter city name"> 
+            <button onclick="getWeather()">Search</button> 
+        </div> 
+ 
+        <div id="weatherResult" class="weather-card"></div> 
+ 
+        <p id="errorMsg" class="error"></p> 
+    </div> 
+ 
+    <script src="script.js"></script> 
+</body> 
+</html> 
+ 
+Script.js 
+async function getWeather() { 
+    const city = document.getElementById("cityInput").value.trim();     const resultDiv = document.getElementById("weatherResult");     const errorMsg = document.getElementById("errorMsg"); 
+ 
+    resultDiv.innerHTML = ""; 
+    errorMsg.innerText = ""; 
+ 
+    if (city === "") { 
+        errorMsg.innerText = "Please enter a city name.";         return; 
+    } 
+ 
+    const apiKey = "YOUR_API_KEY_HERE"; //    Add your OpenWeatherMap API key 
+ 
+    const url = 
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`; 
+     try { 
+        const response = await fetch(url); 
+ 
+        if (!response.ok) { 
+            throw new Error("City not found."); 
+        } 
+ 
+        const data = await response.json(); 
+ 
+        const icon = data.weather[0].icon; 
+        const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`; 
+ 
+        resultDiv.innerHTML = ` 
+            <h2>${data.name}, ${data.sys.country}</h2> 
+            <img src="${iconUrl}" alt="Weather Icon"> 
+            <h3>${data.weather[0].description.toUpperCase()}</h3> 
+            <p><strong>Temperature:</strong> ${data.main.temp} °C</p> 
+            <p><strong>Humidity:</strong> ${data.main.humidity}%</p> 
+            <p><strong>Wind Speed:</strong> ${data.wind.speed} m/s</p> 
+        `; 
+ 
+    } catch (error) { 
+        errorMsg.innerText = "Error: " + error.message; 
+    } 
+} 
+Style.css 
+ 
+body { 
+    font-family: Arial, sans-serif;     background: #e8f0ff; 
+    margin: 0; 
+    padding: 0; 
+} 
+ 
+.container {     width: 350px;     padding: 20px;     margin: 40px auto;     background: white;     border-radius: 12px; 
+    box-shadow: 0 0 12px rgba(0,0,0,0.2);     text-align: center; 
+}  
+.search-box {     margin-bottom: 20px; 
+} 
+ 
+input {     width: 70%;     padding: 8px;     border: 1px solid #aaa; 
+    border-radius: 5px; 
+} 
+ 
+button {     padding: 8px 12px;     background: #007bff;     color: white;     border: none;     border-radius: 6px;     cursor: pointer; 
+} 
+ 
+button:hover {     background: #0062cc; 
+} 
+ 
+.weather-card img {     width: 80px; 
+} 
+ 
+.weather-card {     margin-top: 20px;     padding: 15px; 
+} 
+ 
+.error {     color: red;     margin-top: 10px; 
+} 
+ 
+
+--------------------------------------------------------------------------------------
+Lab 5: Advanced JavaScript – Object-Oriented Programming  
+Case Title: Task Management System (To-Do Application) 
+ 
+Index.html 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>OOP Task Manager</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+ 
+    <div class="container">         <h1>   Task Manager</h1> 
+ 
+        <div class="input-box"> 
+            <input type="text" id="title" placeholder="Task Title"> 
+            <input type="text" id="desc" placeholder="Task Description"> 
+ 
+            <select id="type"> 
+                <option value="general">General Task</option> 
+                <option value="work">Work Task</option> 
+                <option value="personal">Personal Task</option> 
+          </select> 
+ 
+            <button onclick="addTask()">Add Task</button> 
+        </div> 
+ 
+        <h2>Your Tasks</h2> 
+        <ul id="taskList"></ul> 
+    </div> 
+ 
+    <script src="script.js"></script> 
+</body> 
+</html> 
+ Script.js 
+ 
+// ====== OOP CLASSES ====== 
+ 
+class Task { 
+    constructor(title, description, status = "Pending") { 
+        this.title = title;         this.description = description;         this.status = status; 
+        this.type = "General"; 
+    } 
+} 
+ 
+class WorkTask extends Task {     constructor(title, description) {         super(title, description); 
+        this.type = "Work"; 
+    } 
+} 
+ 
+class PersonalTask extends Task {     constructor(title, description) {         super(title, description); 
+        this.type = "Personal"; 
+    } 
+} 
+ 
+// ====== APP LOGIC ====== 
+ 
+let tasks = JSON.parse(localStorage.getItem("tasks")) || []; 
+ 
+// Display tasks when page loads window.onload = () => {  renderTasks(); 
+};  
+// Add Task function addTask() { 
+    const title = document.getElementById("title").value.trim();     const desc = document.getElementById("desc").value.trim(); 
+    const type = document.getElementById("type").value; 
+ 
+    if (title === "" || desc === "") { 
+        alert("Please enter both title and description.");         return; 
+    } 
+ 
+    let task; 
+ 
+    if (type === "work") { 
+        task = new WorkTask(title, desc);     } else if (type === "personal") { 
+        task = new PersonalTask(title, desc); 
+    } else { 
+        task = new Task(title, desc); 
+    } 
+ 
+    tasks.push(task);     saveData(); 
+    renderTasks(); 
+ 
+    document.getElementById("title").value = ""; 
+    document.getElementById("desc").value = ""; 
+} 
+ 
+// Render Task List function renderTasks() {     const list = document.getElementById("taskList"); 
+    list.innerHTML = ""; 
+ 
+    tasks.forEach((task, index) => { 
+        let li = document.createElement("li"); 
+ 
+        li.innerHTML = ` 
+            <strong>${task.title}</strong> (${task.type})<br> 
+            ${task.description}<br> 
+            <em>Status: ${task.status}</em> 
+ 
+            <span class="edit-btn" onclick="editTask(${index})">✏</span>             <span class="delete-btn" onclick="deleteTask(${index})">🗑</span> 
+        `; 
+ 
+      list.appendChild(li); 
+    }); 
+} 
+ 
+// Edit Task function editTask(index) { 
+    let newTitle = prompt("Edit Title:", tasks[index].title); 
+    let newDesc = prompt("Edit Description:", tasks[index].description); 
+ 
+    if (newTitle && newDesc) {         tasks[index].title = newTitle; 
+        tasks[index].description = newDesc; 
+ 
+        saveData(); 
+        renderTasks(); 
+    } 
+} 
+ 
+// Delete Task function deleteTask(index) { 
+    if (confirm("Are you sure you want to delete this task?")) { 
+        tasks.splice(index, 1);         saveData(); 
+        renderTasks(); 
+    } 
+} 
+ 
+// Save tasks to Local Storage function saveData() { 
+    localStorage.setItem("tasks", JSON.stringify(tasks)); 
+} 
+ 
+Style.css 
+ 
+body { 
+    font-family: Arial, sans-serif;     background: #f3f3f3;     margin: 0; 
+    padding: 0; 
+} 
+ 
+.container {     width: 400px;     margin: 40px auto;     background: white;     padding: 20px; 
+ border-radius: 12px; 
+  box-shadow: 0 0 12px rgba(0,0,0,0.2); 
+} 
+ 
+h1, h2 {     text-align: center; 
+} 
+ 
+.input-box input, select {     width: 100%;     padding: 8px;     margin: 8px 0;     border: 1px solid #aaa; 
+    border-radius: 5px; 
+} 
+ 
+button {     width: 100%;     padding: 10px;     background: #007bff;     color: white;     border: none;     border-radius: 6px; 
+    cursor: pointer; 
+} 
+button:hover {     background: #0056b3; 
+} 
+ 
+#taskList li {     background: #e7f0ff;     padding: 10px;     margin: 8px 0;     border-radius: 6px; 
+    position: relative; 
+} 
+ 
+.edit-btn, .delete-btn {     float: right;     margin-left: 10px; 
+    cursor: pointer; 
+} 
+ 
+----------------------------------------------------------------------------------
+Lab 6: TypeScript Fundamentals – Type-Safe Application  
+
+
+Case Title: Student Result Management using TypeScript 
+ 
+App.js 
+ 
+"use strict"; 
+// ===== Interfaces ===== 
+// ===== Class for managing results ===== class StudentResult {     constructor(student, marks) {         this.student = student; 
+        this.marks = marks; 
+    } 
+    // Calculate total marks     getTotal() { 
+        return this.marks.subject1 + this.marks.subject2 + this.marks.subject3; 
+    } 
+    // Calculate grade     getGrade() { 
+        const total = this.getTotal();         const percentage = total / 3;         if (percentage >= 75)             return "A";         if (percentage >= 60)             return "B";         if (percentage >= 45) 
+            return "C"; 
+        return "D"; 
+ } 
+}
+// ===== Using the class ===== // Demo student const student = {     id: 101, 
+    name: "Aarav Mehta", 
+    course: "BCA" 
+}; 
+// Demo marks const marks = {     subject1: 85,     subject2: 78, 
+    subject3: 90 
+}; 
+// Create object 
+const studentResult = new StudentResult(student, marks); 
+// Display on page 
+document.getElementById("output").innerHTML = ` 
+    <h2>Student Result</h2> 
+    <p><strong>ID:</strong> ${student.id}</p> 
+    <p><strong>Name:</strong> ${student.name}</p> 
+    <p><strong>Course:</strong> ${student.course}</p> 
+    <p><strong>Total Marks:</strong> ${studentResult.getTotal()}</p> 
+    <p><strong>Grade:</strong> ${studentResult.getGrade()}</p> 
+`; 
+ 
+ 
+ 
+App.ts 
+interface Student {     id: number;     name: string; 
+    course: string; 
+} 
+ 
+interface Result {     subject1: number;     subject2: number;     subject3: number; 
+} 
+ 
+class StudentResult {     student: Student; 
+    marks: Result; 
+ 
+    constructor(student: Student, marks: Result) {         this.student = student; 
+       this.marks = marks; 
+    } 
+ 
+    getTotal(): number { 
+        return this.marks.subject1 + this.marks.subject2 + this.marks.subject3; 
+    } 
+ 
+    getGrade(): string {         const total = this.getTotal(); 
+        const percentage = total / 3; 
+ 
+        if (percentage >= 75) return "A";         if (percentage >= 60) return "B";         if (percentage >= 45) return "C"; 
+        return "D"; 
+    } 
+} 
+ 
+const student: Student = {     id: 101, 
+    name: "Aarav Mehta", 
+course: "BCA" 
+}; 
+ 
+const marks: Result = {     subject1: 85,     subject2: 78, 
+    subject3: 90 
+}; 
+ 
+const studentResult = new StudentResult(student, marks); 
+ 
+document.getElementById("output")!.innerHTML = ` 
+    <h2>Student Result</h2> 
+    <p><strong>ID:</strong> ${student.id}</p> 
+    <p><strong>Name:</strong> ${student.name}</p> 
+    <p><strong>Course:</strong> ${student.course}</p> 
+    <p><strong>Total Marks:</strong> ${studentResult.getTotal()}</p> 
+    <p><strong>Grade:</strong> ${studentResult.getGrade()}</p> 
+`;  
+Index.html  
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+ <head> 
+   <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Student Result - TypeScript</title> 
+</head> 
+ <body> 
+    <h1>Student Result Management</h1> 
+   <div id="output"></div> 
+    <script src="dist/app.js"></script> 
+</body> 
+ </html> 
+------------------------------------------------------------------------
+Lab 7: Angular Basics – Component-Based Application  
+Case Title: Employee Directory Management System 
+ 
+employee.service.ts 
+ 
+import { Injectable } from '@angular/core'; 
+@Injectable({ 
+  providedIn: 'root' 
+}) 
+export class EmployeeService {   employees = [ 
+    { id: 1, name: 'Riya Adep', position: 'Developer', salary: 35000 }, 
+    { id: 2, name: 'Amit Sharma', position: 'Manager', salary: 55000 } 
+  ]; 
+  constructor() {}   getEmployees() { 
+    return this.employees; 
+  } 
+  addEmployee(emp: any) {     emp.id = this.employees.length + 1; 
+    this.employees.push(emp); 
+  } 
+} 
+ 
+employee-list.component.ts import { Component } from '@angular/core'; 
+import { EmployeeService } from '../employee.service'; 
+ 
+@Component({ 
+  selector: 'app-employee-list',   templateUrl: './employee-list.component.html' 
+}) 
+export class EmployeeListComponent {   employees: any[] = []; 
+ 
+  constructor(private empService: EmployeeService) { 
+    this.employees = this.empService.getEmployees(); 
+  } 
+} 
+ 
+employee-list.component.html 
+<h2>Employee List</h2> 
+ 
+<ul> 
+  <li *ngFor="let emp of employees"> 
+    {{ emp.id }} - {{ emp.name }} ({{ emp.position }}) 
+  </li> </ul> employee-details.component.ts 
+import { Component, Input } from '@angular/core'; 
+ 
+@Component({ 
+  selector: 'app-employee-details',   templateUrl: './employee-details.component.html' 
+}) 
+export class EmployeeDetailsComponent { 
+  @Input() employee: any; 
+} 
+ 
+employee-details.component.html 
+<div *ngIf="employee"> 
+  <h3>Employee Details</h3> 
+  <p><strong>Name:</strong> {{ employee.name }}</p> 
+  <p><strong>Position:</strong> {{ employee.position }}</p> 
+  <p><strong>Salary:</strong> {{ employee.salary }}</p> 
+</div> 
+ 
+add-employee.component.ts import { Component } from '@angular/core'; 
+import { EmployeeService } from '../employee.service'; 
+ 
+@Component({ 
+  selector: 'app-add-employee',   templateUrl: './add-employee.component.html' 
+}) 
+export class AddEmployeeComponent { 
+ 
+  newEmployee = { 
+    name: '',     position: '',     salary: null 
+  }; 
+ 
+  constructor(private empService: EmployeeService) {} 
+ 
+  addEmployee() { 
+    this.empService.addEmployee(this.newEmployee); 
+    this.newEmployee = { name: '', position: '', salary: null }; 
+  } 
+} 
+ 
+add-employee.component.html 
+<h2>Add New Employee</h2> 
+ 
+<label>Name:</label> 
+<input [(ngModel)]="newEmployee.name"> 
+ 
+<label>Position:</label> 
+<input [(ngModel)]="newEmployee.position"> 
+ 
+<label>Salary:</label> 
+<input type="number" [(ngModel)]="newEmployee.salary"> 
+ 
+<button (click)="addEmployee()">Add Employee</button> 
+ 
+app.module.ts import { FormsModule } from '@angular/forms'; @NgModule({ 
+  declarations: [...],   imports: [ 
+    BrowserModule, 
+    FormsModule 
+  ], 
+  bootstrap: [AppComponent] 
+}) 
+export class AppModule {} 
+ 
+app.component.html 
+<h1>Employee Directory Management System</h1> 
+ 
+<app-add-employee></app-add-employee> 
+<hr> 
+<app-employee-list></app-employee-list> 
+ 
+  
+ ---------------------------------------------------------------------------
+ Lab 8: Angular Services & HTTP Client Integration
+
+Index.html 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>News Feed App</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+ <h2>News Feed Application</h2> 
+<button onclick="loadNews()">Load News</button> 
+ <div id="newsContainer"></div> 
+ <script src="script.js"></script> 
+</body> 
+</html> 
+ 
+Style.css 
+ 
+body { 
+    font-family: Arial; 
+padding: 20px; 
+}  
+#newsContainer { 
+    margin-top: 20px; 
+} 
+ 
+.card {     padding: 15px;     border: 1px solid #ccc;     margin-bottom: 12px; 
+    border-radius: 6px; 
+} 
+ 
+Script.js 
+
+function loadNews() { 
+    fetch("https://jsonplaceholder.typicode.com/posts") 
+        .then(res => res.json()) 
+        .then(data => showNews(data)) 
+        .catch(() => alert("Error loading news")); 
+} 
+ 
+function showNews(newsList) { 
+    let container = document.getElementById("newsContainer"); 
+    container.innerHTML = ""; 
+ 
+    newsList.slice(0, 10).forEach(news => {         container.innerHTML += `             <div class="card"> 
+                <h3>${news.title}</h3> 
+                <p>${news.body}</p> 
+            </div> 
+        `; 
+    }); 
+} 
+ -----------------------------------------------------------------------
+Lab 9: Angular Routing & SPA Development
+Index.html 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Online Course Portal</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+ 
+<h2>Online Course Portal</h2> 
+ 
+<nav> 
+    <button onclick="showPage('home')">Home</button> 
+    <button onclick="showPage('courses')">Courses</button> 
+</nav> 
+ <!-- HOME PAGE --> 
+<section id="home" class="page"> 
+    <h3>Welcome to our Learning Platform!</h3> 
+    <p>Browse courses and start learning.</p> 
+</section> 
+ <!-- COURSES PAGE --> 
+<section id="courses" class="page" style="display:none;"> 
+    <h3>Available Courses</h3> 
+    <div id="courseList"></div> 
+</section> 
+ <!-- COURSE DETAILS (Dynamic) --> 
+<section id="details" class="page" style="display:none;"> 
+    <h3 id="dTitle"></h3> 
+    <p id="dDesc"></p> 
+    <button onclick="enroll()">Enroll</button> 
+    <button onclick="showPage('courses')">Back</button> 
+</section> 
+ 
+<script src="script.js"></script> 
+</body> 
+</html> 
+style.css
+ body {     font-family: Arial;     padding: 20px; 
+} 
+nav button {     margin-right: 10px;     padding: 8px 14px; 
+} 
+.courseCard {     border: 1px solid #ccc;     padding: 12px;     margin: 10px 0;     border-radius: 6px; 
+} 
+ 
+Script.js 
+// Dummy course data let courses = [ 
+    { title: "HTML Basics", desc: "Learn the structure of web pages." }, 
+    { title: "CSS Styling", desc: "Design beautiful websites." }, 
+    { title: "JavaScript Essentials", desc: "Make websites interactive." } 
+]; 
+// SPA Navigation function showPage(page) { 
+    document.querySelectorAll(".page").forEach(p => p.style.display = "none");     document.getElementById(page).style.display = "block"; 
+ 
+    if (page === "courses") loadCourses(); 
+} 
+ 
+function loadCourses() { 
+    let box = document.getElementById("courseList");     box.innerHTML = ""; 
+ 
+    courses.forEach((c, i) => {         box.innerHTML += ` 
+            <div class="courseCard"> 
+                <h4>${c.title}</h4> 
+                <button onclick="viewDetails(${i})">View Details</button> 
+            </div> 
+        `; 
+    }); 
+} 
+ 
+function viewDetails(i) { 
+    document.getElementById("dTitle").innerText = courses[i].title;     document.getElementById("dDesc").innerText = courses[i].desc; 
+   showPage("details"); 
+} 
+ 
+function enroll() { 
+    alert("Enrolled Successfully!"); 
+} 
+ ---------------------------------------------------------------------------- 
+ Lab 10: Capstone Project (Integration of All Technologies)
+
+Index.html 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>MCA Student Information Portal</title> 
+    <link rel="stylesheet" href="style.css"> 
+</head> 
+<body> 
+ 
+<h2>MCA Student Information Portal</h2> 
+ 
+<div class="box"> 
+    <input id="name" placeholder="Student Name"> 
+    <input id="roll" placeholder="Roll Number"> 
+    <input id="course" placeholder="Course (e.g., MCA)"> 
+    <button onclick="addStudent()">Add Student</button> 
+</div> 
+ 
+<h3>Student List</h3> 
+<table id="table"> 
+    <tr> 
+        <th>Name</th> 
+        <th>Roll</th> 
+        <th>Course</th> 
+        <th>Action</th> 
+    </tr> 
+</table> 
+ 
+<script src="script.js"></script> 
+</body> 
+</html> 
+ 
+Style.css body {     font-family: Arial;     padding: 20px; 
+}  
+.box input {     padding: 8px;     margin: 5px; 
+}  
+button {     padding: 8px 14px; 
+}  
+table {     width: 70%;     border-collapse: collapse;     margin-top: 15px; 
+} 
+th, td {     border: 1px solid #ccc;     padding: 10px; 
+} 
+td button { 
+    padding: 5px 10px; 
+} 
+ 
+Script.js let students = JSON.parse(localStorage.getItem("mcaStudents")) || []; 
+ 
+function addStudent() {     let name = document.getElementById("name").value;     let roll = document.getElementById("roll").value;     let course = document.getElementById("course").value; 
+ 
+    if (name === "" || roll === "" || course === "") { 
+        alert("Please fill all fields");         return; 
+    } 
+ 
+    let student = { name, roll, course };     students.push(student); 
+ 
+    localStorage.setItem("mcaStudents", JSON.stringify(students));     showStudents(); 
+} 
+ 
+function showStudents() {     let table = document.getElementById("table"); 
+ 
+    // Reset table except header     table.innerHTML = ` 
+        <tr> 
+            <th>Name</th> 
+            <th>Roll</th> 
+            <th>Course</th> 
+            <th>Action</th> 
+        </tr>
+    students.forEach((s, i) => {         table.innerHTML += ` 
+        <tr> 
+            <td>${s.name}</td> 
+            <td>${s.roll}</td> 
+            <td>${s.course}</td> 
+            <td><button onclick="removeStudent(${i})">Delete</button></td> 
+        </tr> 
+        `; 
+    }); 
+} 
+ 
+function removeStudent(i) {     students.splice(i, 1); 
+    localStorage.setItem("mcaStudents", JSON.stringify(students));     showStudents(); 
+} 
+showStudents(); 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+PRACTICAL QUESTIONS : 
+ 
+1. Develop a multi -section webpage using <header> , <nav> , <article> , <aside> , and <footer> tags. 	 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Multi-Section Webpage</title> 
+ 
+    <style>         body {             margin: 0;             font-family: Arial, sans-serif;             background: #f2f2f2; 
+        } 
+ 
+        header {             background: #333;             color: white;             padding: 20px;             text-align: center; 
+        } 
+ 
+        nav { 
+            background: #555;             padding: 10px;             text-align: center; 
+        } 
+       nav a {            color: white;            margin: 0 15px;             text-decoration: none;             font-weight: bold; 
+        } 
+ 
+        .container {             display: flex;             padding: 20px; 
+        } 
+ 
+        article {             flex: 3; 
+            background: white;             padding: 20px;             margin-right: 20px;             border-radius: 8px; 
+        } 
+ 
+        aside {             flex: 1; 
+            background: #e3e3e3;             padding: 20px;             border-radius: 8px; 
+        } 
+ 
+        footer { 
+            background: #333;             color: white;             text-align: center;             padding: 15px;             margin-top: 220px; 
+        } 
+    </style> 
+</head> 
+<body> 
+ 
+    <header> 
+        <h1>Welcome to My Webpage</h1> 
+        <p>A simple multi-section layout using semantic elements</p> 
+    </header> 
+ 
+    <nav> 
+        <a href="#">Home</a> 
+        <a href="#">Articles</a> 
+        <a href="#">About</a> 
+        <a href="#">Contact</a> 
+    </nav> 
+ 
+    <div class="container"> 
+        <article> 
+            <h2>Main Article Section</h2> 
+            <p> 
+                This is the article area. You can write your main content here.                 Using semantic tags helps search engines and screen readers                 understand the structure of your webpage. 
+            </p> 
+ 
+            <p> 
+                HTML5 introduced several new semantic elements such as                 <b>&lt;header&gt;</b>, <b>&lt;nav&gt;</b>, <b>&lt;article&gt;</b>,                <b>&lt;aside&gt;</b>, and <b>&lt;footer&gt;</b> to make layouts                clearer and more meaningful. 
+           </p> 
+        </article> 
+ 
+        <aside> 
+            <h3>Side Information</h3> 
+            <p> 
+                This is the aside section. It usually contains extra or related                 information, links, ads, or widgets. 
+            </p> 
+        </aside> 
+    </div> <footer> 
+        <p>© 2025 My Website | All Rights Reserved</p> 
+    </footer> 
+</body> 
+</html> 
+-------------------------------------------------------------------------------------------------------
+
+2. Create a student feedback form using HTML5 form elements ( <input> , <select> , <textarea> , <datalist> ). 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Student Feedback Form</title> 
+    <style>         body {             font-family: Arial, sans-serif;             background-color: #f7f2fc; /* light lavender */ 
+            margin: 0;             padding: 0; 
+        } 
+        .container {             width: 50%;             margin: 40px auto;             background: #ffffff;             padding: 25px;             border-radius: 12px;             box-shadow: 0 0 10px rgba(120, 50, 200, 0.3);             border-top: 6px solid #a23ac4; /* purple */ 
+        } 
+        h2 {             text-align: center;             color: #a23ac4;             margin-bottom: 15px; 
+        } 
+       label {            font-weight: bold;            color: #4d4d4d; 
+        } 
+        input, select, textarea {             width: 100%;             padding: 10px;             margin: 8px 0 18px 0;             border: 2px solid #c8c8c8;             border-radius: 8px;             background: #fdf7ff; 
+        } 
+        input:focus, select:focus, textarea:focus {             border-color: #a23ac4;             outline: none; 
+        } 
+        button {             background: #ff7f3f; /* orange */ 
+            color: white;             padding: 12px 20px;             width: 100%;             border: none;             border-radius: 8px;             font-size: 16px;             cursor: pointer; 
+        } 
+        button:hover {             background: #e06d33; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <div class="container"> 
+        <h2>Student Feedback Form</h2> 
+        <form> 
+            <!-- Student Name --> 
+            <label for="name">Student Name:</label> 
+            <input type="text" id="name" name="name" required placeholder="Enter your name"> 
+            <!-- Email --> 
+            <label for="email">Email:</label> 
+            <input type="email" id="email" name="email" required placeholder="Enter your email">             <!-- Course Selection --> 
+            <label for="course">Course:</label> 
+            <select id="course" name="course" required> 
+                <option value="">Select Course</option> 
+                <option value="BCA">BCA</option> 
+                <option value="BBA">BBA</option> 
+                <option value="BCom">B.Com</option> 
+                <option value="BA">BA</option> 
+            </select> 
+            <!-- Rating (using datalist) --> 
+            <label for="rating">Rate the Course (1 to 5):</label> 
+            <input list="ratings" id="rating" name="rating" required placeholder="Choose or type rating"> 
+            <datalist id="ratings"> 
+                <option value="1"> 
+                <option value="2"> 
+                <option value="3"> 
+                <option value="4">                 <option value="5"> 
+           </datalist> 
+           <!-- Feedback --> 
+           <label for="feedback">Your Feedback:</label> 
+           <textarea id="feedback" name="feedback" rows="4" required placeholder="Write your feedback here..."></textarea> 
+            <!-- Submit --> 
+            <button type="submit">Submit Feedback</button> 
+        </form> 
+    </div> 
+ 
+</body> 
+</html> 
+ 
+-------------------------------------------------------------------------------------------------------------------------	 	 	 	 
+3. Apply CSS selectors (element, class, ID, attribute, descendant) to style a webpage differently. 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>CSS Selectors Example</title> 
+ 
+    <style>         h1 { 
+            color: #8a2be2; /* purple */ 
+            text-align: center; 
+        } 
+        .highlight { 
+            background-color: #ffeb99; /* light yellow */             padding: 10px; 
+            border-left: 5px solid #e6b800; 
+        } 
+ 
+        #special { 
+            color: white; 
+            background-color: #ff5733; /* orange red */             padding: 10px; 
+            border-radius: 8px; 
+        } 
+ 
+         
+        input[type="text"] { 
+            border: 2px solid #4caf50; /* green */ 
+            padding: 8px; 
+            border-radius: 5px; 
+        } 
+ 
+        div p { 
+            font-style: italic; 
+            color: #555; 
+        } 
+    </style> 
+ 
+</head> 
+<body> 
+ 
+    <h1>CSS Selectors Demonstration</h1> 
+ 
+   <h2 class="highlight">This is styled using a CLASS selector</h2> 
+   <p id="special">This paragraph is styled using an ID selector.</p> 
+   <h3>Attribute Selector Example</h3> 
+   <input type="text" placeholder="Enter your name"> 
+    <input type="email" placeholder="Email (not styled)"> 
+ 
+    <div> 
+        <h3>Descendant Selector Example</h3> 
+        <p>This paragraph is inside a DIV, so it is styled by the descendant selector.</p>     </div> 
+ 
+</body> 
+</html> 
+ ------------------------------------------------------------------------------------
+4.Build a CSS Grid layout for a 3 -column news portal homepage. 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>News Portal - CSS Grid Layout</title> 
+ 
+    <style>         body {             margin: 0; 
+            font-family: Arial, sans-serif;             background: #f3f3f3; 
+        } 
+ 
+        header { 
+            background: #900C3F; /* deep pink-red */             color: white;             padding: 20px; 
+            text-align: center; 
+        } 
+ 
+        .grid-container { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */             gap: 20px; 
+            padding: 20px; 
+        } 
+        .news-box {             background: white;             padding: 15px;             border-radius: 10px; 
+            box-shadow: 0 0 8px rgba(0,0,0,0.1); 
+        } 
+ 
+        .news-box h3 {             color: #333; 
+            margin-top: 0; 
+        } 
+ 
+        .news-box p { 
+            color: #555; 
+        } 
+ 
+        footer {             background: #581845;             color: white;             text-align: center;             padding: 15px; 
+            margin-top: 220px; 
+        } 
+ 
+    </style> 
+</head> 
+<body> 
+ 
+    <header> 
+        <h1>Daily News Portal</h1> 
+        <p>Latest Headlines • Trending Stories • Breaking News</p>     </header> 
+<div class="grid-container"> 
+    <div class="news-box">            <h3>Politics</h3> 
+           <p>Government announces new policy reforms to boost economic stability. Experts discuss long-term impact.</p> 
+        </div> 
+ 
+        <div class="news-box"> 
+            <h3>Technology</h3> 
+            <p>New AI breakthrough aims to revolutionize the tech industry. Startups are rapidly adapting innovations.</p> 
+        </div> 
+ 
+        <div class="news-box"> 
+            <h3>Sports</h3> 
+            <p>National team wins the championship after a thrilling final match. Fans celebrate nationwide.</p> 
+        </div> 
+ 
+        <div class="news-box"> 
+            <h3>Entertainment</h3> 
+            <p>Upcoming blockbuster movie creates buzz across social media. Critics predict recordbreaking openings.</p> 
+        </div> 
+ 
+        <div class="news-box">             <h3>Business</h3> 
+            <p>Stock market experiences major rise as investors react to positive quarterly earnings reports.</p> 
+        </div> 
+ 
+        <div class="news-box"> 
+            <h3>Health</h3> 
+            <p>Doctors recommend new guidelines for maintaining mental and physical well-being in modern lifestyles.</p> 
+        </div> 
+ 
+    </div> 
+ 
+    <footer> 
+        <p>© 2025 Daily News Portal | All Rights Reserved</p> 
+    </footer> 
+ 
+</body> 
+</html> 
+ 
+-------------------------------------------------------------------------------------------------------------------
+5. Implement media queries to change font sizes and layout based on device width. 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Media Query Example</title> 
+ 
+    <style>         body {             margin: 0; 
+            font-family: Arial, sans-serif; 
+            background: #f4f4f4; 
+        } 
+ 
+        header { 
+            text-align: center; 
+            background: #6a1b9a; 
+            color: #fff; 
+            padding: 20px; 
+        } 
+ 
+        .grid-container {            display: grid; 
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for large screens */ 
+   gap: 20px; 
+    padding: 20px; 
+    } 
+       .box {            background: white;            padding: 15px;            border-radius: 8px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            font-size: 18px; 
+        } 
+ 
+        @media (max-width: 900px) { 
+            .grid-container { 
+                grid-template-columns: repeat(2, 1fr); /* 2 columns */ 
+            } 
+            .box { 
+                font-size: 16px; /* smaller font */ 
+            } 
+            header {                 font-size: 22px; 
+            } 
+        } 
+        @media (max-width: 600px) { 
+            .grid-container { 
+                grid-template-columns: 1fr; /* single column */ 
+            } 
+            .box {                 font-size: 15px; 
+            } 
+            header { 
+                font-size: 20px; 
+            } 
+        } 
+        @media (max-width: 400px) { 
+            .box {                 font-size: 14px; 
+            } 
+            header { 
+                font-size: 18px; 
+            } 
+        } 
+ 
+    </style> 
+</head> 
+<body> 
+<header> 
+<h1>Responsive Media Query Demo</h1> 
+<p>Resize your browser to see layout changes</p> </header> 
+   <div class="grid-container"> 
+       <div class="box">Box 1: Content goes here.</div> 
+       <div class="box">Box 2: Content goes here.</div> 
+       <div class="box">Box 3: Content goes here.</div> 
+        <div class="box">Box 4: Content goes here.</div> 
+        <div class="box">Box 5: Content goes here.</div> 
+        <div class="box">Box 6: Content goes here.</div> 
+    </div> 
+ 
+</body> 
+</html>
+----------------------------------------------------------------------------------------------------------
+6. Design a banner animation using @keyframes and CSS3 animations. 
+ 
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Simple Banner Animation</title> 
+    <style>         .banner {             width: 100%; 
+           height: 200px; 
+        background: linear-gradient(120deg, #ff7f50, #ffb347); 
+   color: white;     display: flex; 
+        justify-content: center; 
+           align-items: center;            font-size: 30px;            font-weight: bold; 
+           animation: slideBanner 5s infinite alternate; 
+       } 
+        @keyframes slideBanner { 
+            0% { 
+                background: linear-gradient(120deg, #ff7f50, #ffb347); 
+                letter-spacing: 1px; 
+            } 
+            50% { 
+                background: linear-gradient(120deg, #42a5f5, #66bb6a);                 letter-spacing: 3px; 
+            } 
+            100% { 
+                background: linear-gradient(120deg, #9c27b0, #e91e63);                 letter-spacing: 6px; 
+            }  } 
+    </style> 
+</head> 
+<body> 
+    <div class="banner">         Welcome to Our Website! 
+    </div> 
+</body> 
+</html> 
+-----------------------------------------------------------------------------------------------------
+7. Demonstrate block scope vs function scope using let , var , and const . 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>JS Scope Demo</title> 
+</head> 
+<body> 
+<script> 
+    // JavaScript code here 
+    function testVar() {         if (true) { 
+            var x = 10; 
+        } 
+        console.log("var x =", x); 
+    } 
+    function testLet() {         if (true) { 
+            let y = 20; 
+            console.log("Inside block, let y =", y); 
+        } 
+    } 
+    function testConst() { 
+        if (true) {             const z = 30; 
+            console.log("Inside block, const z =", z); 
+        } 
+    } 
+    testVar();     testLet();     testConst(); 
+</script> 
+</body> 
+</html> 
+Output: 
+  
+ ----------------------------------------------------------------------------------------------
+
+8. Use JavaScript objects and arrays to store and display student records. 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Student Records</title> 
+    <style>         body { 
+            font-family: Arial; 
+            padding: 20px; 
+        } 
+        table { 
+            border-collapse: collapse;             width: 70%; 
+        } 
+        th, td { 
+            border: 1px solid #444;             padding: 8px; 
+            text-align: left; 
+        } 
+        th { 
+            background: #ffb347; 
+        } 
+    </style> 
+</head> 
+<body> 
+ 
+<h2>Student Records</h2> 
+ 
+<table id="studentTable"> 
+    <tr> 
+        <th>Name</th> 
+        <th>Roll No</th> 
+        <th>Course</th> 
+        <th>Marks</th> 
+    </tr> 
+</table> <script>     const student1 = {         name: "John", 
+        roll: 101,         course: "BCA", 
+        marks: 85 
+    }; 
+ 
+    const student2 = {         name: "Sara",         roll: 102,         course: "BBA", 
+        marks: 90 
+    }; 
+ 
+    const student3 = { 
+        name: "Aman", 
+        roll: 103,         course: "B.Com",         marks: 78 
+    }; 
+ 
+    const students = [student1, student2, student3];     const table = document.getElementById("studentTable"); 
+ 
+    students.forEach(student => {         let row = ` 
+            <tr> 
+                <td>${student.name}</td> 
+                <td>${student.roll}</td> 
+                <td>${student.course}</td> 
+                <td>${student.marks}</td> 
+            </tr> 
+        `; 
+        table.innerHTML += row; 
+    }); 
+</script> 
+</body> 
+</html> 
+
+----------------------------------------------------------------------------------------------------------------
+9.Implement string and array methods (e.g., slice, map, filter, reduce) on sample data. 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>String & Array Methods</title> 
+</head> 
+<body> 
+ 
+<h2>Open Console to See Output</h2> 
+ 
+<script> 
+       
+    let text = "Hello JavaScript";     console.log("Original:", text); 
+    console.log("Slice(0,5):", text.slice(0, 5));   // "Hello"     console.log("Slice(6):", text.slice(6));        // "JavaScript" 
+    
+    let numbers = [1, 2, 3, 4, 5]; 
+    let doubled = numbers.map(num => num * 2); 
+    console.log("Map (Doubled):", doubled); 
+ 
+        let bigNumbers = numbers.filter(num => num > 2);     console.log("Filter (>2):", bigNumbers); 
+ 
+     
+    let sum = numbers.reduce((total, num) => total + num, 0);     console.log("Reduce (Sum):", sum); 
+    let marks = [45, 78, 90, 33, 55]; 
+ 
+    let result = marks 
+        .filter(m => m >= 50)     // keep only pass marks 
+        .map(m => m + 5)          // add grace marks 
+        .reduce((a, b) => a + b); // get total 
+ 
+    console.log("Filtered + Grace Marks + Total:", result); 
+</script> 
+ 
+</body> 
+</html> 
+----------------------------------------------------------------------------------------
+10.Create a simple calculator using basic JS operators and functions. 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Simple Calculator</title> 
+ 
+    <style>         body { 
+            font-family: Arial;             padding: 20px; 
+            background: #f4f4f4; 
+        } 
+ 
+        .calc-box {             width: 300px;             padding: 20px;             background: white;             border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            margin: auto; 
+        } 
+ 
+        input {             width: 100%;             padding: 10px;             margin: 8px 0; 
+            margin-right: 20px; 
+           
+            border-radius: 5px; 
+            border: 1px solid #888; 
+        } 
+ 
+        button {             width: 48%;             padding: 10px;             margin: 5px 1%;             background: coral;             border: none;             color: white;             font-weight: bold;             border-radius: 5px; 
+            cursor: pointer; 
+        } 
+ 
+        #result {             margin-top: 15px;             font-size: 20px;             font-weight: bold; 
+            color: #333; 
+        } 
+    </style> 
+ 
+</head> 
+<body> 
+ 
+<div class="calc-box"> 
+    <h2>Simple Calculator</h2> 
+ 
+    <input type="number" id="num1" placeholder="Enter first number"> 
+    <input type="number" id="num2" placeholder="Enter second number"> 
+ 
+    <button onclick="add()">+</button> 
+    <button onclick="sub()">-</button> 
+    <button onclick="mul()">*</button> 
+    <button onclick="div()">/</button> 
+ 
+    <div id="result">Result: </div> 
+</div> 
+ 
+<script>     function add() { 
+        let a = Number(document.getElementById("num1").value);         let b = Number(document.getElementById("num2").value);         document.getElementById("result").innerText = "Result: " + (a + b); 
+    } 
+ 
+    function sub() { 
+        let a = Number(document.getElementById("num1").value);         let b = Number(document.getElementById("num2").value);         document.getElementById("result").innerText = "Result: " + (a - b); 
+    } 
+ 
+    function mul() { 
+        let a = Number(document.getElementById("num1").value);         let b = Number(document.getElementById("num2").value);         document.getElementById("result").innerText = "Result: " + (a * b); 
+    } 
+ 
+    function div() { 
+        let a = Number(document.getElementById("num1").value); 
+        let b = Number(document.getElementById("num2").value);         if (b === 0) { 
+            document.getElementById("result").innerText = "Error: Cannot divide by 0"; 
+        } else { 
+            document.getElementById("result").innerText = "Result: " + (a / b); 
+        } 
+    } 
+</script> 
+ 
+</body> 
+</html> 
+ 
+----------------------------------------------------------------------------------
+11. Demonstrate block scope vs function scope using let , var , and const . 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>JS Scope Demo</title> 
+</head> 
+<body> 
+ 
+<script> 
+    // JavaScript code here 
+    function testVar() {         if (true) { 
+            var x = 10; 
+        } 
+        console.log("var x =", x); 
+    } 
+ 
+    function testLet() {         if (true) { 
+            let y = 20; 
+            console.log("Inside block, let y =", y); 
+        } 
+    } 
+ 
+    function testConst() { 
+        if (true) {             const z = 30; 
+            console.log("Inside block, const z =", z); 
+        } 
+    } 
+ 
+    testVar();     testLet();     testConst(); 
+</script> 
+ 
+</body> 
+</html> 
+----------------------------------------------------------------------------------------------
+12. Access and modify the text content and style of HTML elements using DOM methods. 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>DOM Manipulation Example</title> 
+ 
+    <style>         #myText {             font-size: 20px;             color: purple; 
+            margin-bottom: 20px; 
+        } 
+ 
+        button { 
+            padding: 10px 15px;             background: coral;             border: none;             color: white;             cursor: pointer; 
+            border-radius: 5px; 
+        } 
+    </style> 
+</head> 
+<body> 
+ 
+<h2 id="myText">This is the original text.</h2> 
+ 
+<button onclick="changeText()">Change Text</button> 
+<button onclick="changeStyle()">Change Style</button> 
+ 
+<script> 
+    // Function to change text content     function changeText() { 
+        document.getElementById("myText").innerText =  
+            "The text has now been changed using DOM!"; 
+    } 
+ 
+    // Function to change CSS style     function changeStyle() { 
+        let element = document.getElementById("myText"); 
+ 
+        element.style.color = "green";         element.style.fontSize = "28px"; 
+        element.style.backgroundColor = "lightyellow";         element.style.padding = "10px"; 
+    } 
+</script> 
+ 
+</body> 
+</html> 
+ 
+----------------------------------------------------------------------------------------------------
+13. Create a click counter using event listeners ( addEventListener ). 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Click Counter</title> 
+ 
+    <style>         body { 
+            font-family: Arial;             padding: 20px; 
+            text-align: center; 
+        } 
+ 
+        #countBox {             font-size: 40px;             margin: 20px; 
+            color: purple; 
+        } 
+ 
+        #btn { 
+            padding: 10px 20px;             background: coral;             color: white;             border: none;             border-radius: 5px;             font-size: 18px; 
+            cursor: pointer; 
+        } 
+    </style> 
+</head> 
+<body> 
+ 
+    <h2>Click Counter</h2> 
+ 
+    <div id="countBox">0</div> 
+ 
+    <button id="btn">Click Me!</button> 
+ 
+    <script> 
+        let count = 0; 
+ 
+        const button = document.getElementById("btn");         const box = document.getElementById("countBox"); 
+ 
+        // Add event listener for button click         button.addEventListener("click", function() { count++;                  // increase count 
+    box.innerText = count;    // update display 
+        }); 
+    </script> 
+ 
+</body> 
+</html> 
+------------------------------------------------------------------------------------------------------------------------ 
+
+14. Implement a to -do list app where users can add and delete tasks dynamically. 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Simple To-Do List</title> 
+ 
+    <style>         body { 
+            font-family: Arial;             padding: 20px; 
+            background: #f4f4f4; 
+        } 
+ 
+        .todo-box {             width: 350px;             background: white;             padding: 20px;  border-radius: 10px; 
+    margin: auto; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+        } 
+         h2 { 
+            text-align: center; 
+        } 
+ 
+        input {             width: 100%;             padding: 10px;             border: 1px solid #888; 
+            border-radius: 5px; 
+        } 
+ 
+        button {             width: 100%;             padding: 10px;             background: coral;             color: white;             border: none;             margin-top: 10px;             border-radius: 5px; 
+            cursor: pointer; 
+        }  
+        ul { 
+            margin-top: 20px; 
+            padding: 0; 
+        }  
+        li { 
+            list-style: none;             background: #ffe7d6;             padding: 10px;             margin: 6px 0;             border-radius: 5px; 
+            display: flex; 
+            justify-content: space-between; 
+        } 
+ 
+        .delete-btn {             background: red;             border: none;             color: white;             padding: 5px 8px;             border-radius: 4px; cursor: pointer; 
+ }
+    </style> 
+</head> 
+<body> 
+ 
+<div class="todo-box"> 
+    <h2>To-Do List</h2> 
+ 
+    <input type="text" id="taskInput" placeholder="Enter your task"> 
+    <button id="addBtn">Add Task</button> 
+ 
+    <ul id="taskList"></ul> 
+</div> 
+ 
+<script> 
+    const input = document.getElementById("taskInput");     const addBtn = document.getElementById("addBtn"); 
+    const taskList = document.getElementById("taskList"); 
+ 
+    // Add Task 
+    addBtn.addEventListener("click", () => { 
+        const taskText = input.value.trim(); 
+ 
+        if (taskText === "") {             alert("Please enter a task!"); 
+            return; 
+        } 
+ 
+        // Create <li> element         const li = document.createElement("li"); 
+        li.innerHTML = ` 
+            ${taskText} 
+            <button class="delete-btn">X</button> 
+        `; 
+ 
+        taskList.appendChild(li); 
+ 
+        input.value = ""; // Clear input 
+ 
+        // Add delete functionality 
+        li.querySelector(".delete-btn").addEventListener("click", () => {             li.remove(); 
+        }); 
+    }); 
+</script> 
+ 
+</body> 
+</html> 
+ 
+--------------------------------------------------------------------------------------------------------------------------------
+
+15. Build an image gallery where clicking a thumbnail changes the main displayed image. 
+ 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Simple Image Gallery</title> 
+    <style>         body { 
+            font-family: Arial;             padding: 20px; 
+            text-align: center; 
+        } 
+        .main-img {             width: 350px;             height: 250px;             border-radius: 10px;             margin-bottom: 20px; 
+            object-fit: cover; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.2); 
+        } 
+ 
+        .thumbs img {             width: 80px;             height: 60px;             margin: 5px;            border-radius: 6px;             cursor: pointer;             transition: transform 0.2s; 
+            object-fit: cover; 
+        } 
+        .thumbs img:hover { 
+            transform: scale(1.1); 
+        } 
+    </style> 
+</head> 
+<body> 
+    <h2>Image Gallery</h2> 
+   <!-- Main big image --> 
+    <img id="mainImage" class="main-img" src="https://picsum.photos/id/237/300/200" alt="Main"> 
+  
+    <div class="thumbs"> 
+        <img src="https://picsum.photos/id/237/300/200" onclick="changeImage(this)"> 
+        <img src="https://picsum.photos/id/238/300/200" onclick="changeImage(this)"> 
+        <img src="https://picsum.photos/id/239/300/200" onclick="changeImage(this)">         <img src="https://picsum.photos/id/240/300/200" onclick="changeImage(this)">     </div> 
+ 
+    <script> 
+        function changeImage(thumbnail) { 
+            const main = document.getElementById("mainImage"); 
+            main.src = thumbnail.src; // change main image when thumbnail is clicked 
+        } 
+    </script> 
+ 
+</body> 
+</html> 
+--------------------------------------------------------------------------------------------------------------------------
+
+16. Validate a login form using DOM events and display inline error messages. 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Login Form Validation</title> 
+ 
+    <style>         body { 
+            font-family: Arial;             padding: 20px; 
+            background: #f4f4f4; 
+        } 
+ 
+        .login-box {             width: 300px;             margin: auto;             background: white;             padding: 20px;             border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+        }         input {             width: 100%;             padding: 10px;             margin: 10px 0 5px;             border-radius: 5px; 
+            border: 1px solid #888; 
+        } 
+        .error {             color: red;             font-size: 13px; 
+            height: 15px; 
+        } 
+        button {             width: 100%;             padding: 10px;             background: coral;             color: white;             border: none;             border-radius: 5px;             margin-top: 10px; 
+            cursor: pointer; 
+        } 
+    </style> 
+</head> 
+<body>
+<div class="login-box"> 
+    <h2>Login</h2> 
+ 
+    <input type="text" id="username" placeholder="Username"> 
+    <div id="userError" class="error"></div> 
+ 
+    <input type="password" id="password" placeholder="Password"> 
+    <div id="passError" class="error"></div> 
+ 
+    <button id="loginBtn">Login</button> 
+</div> <script> 
+    const username = document.getElementById("username");     const password = document.getElementById("password");     const userError = document.getElementById("userError");     const passError = document.getElementById("passError"); 
+    const btn = document.getElementById("loginBtn"); 
+ 
+    btn.addEventListener("click", function () { 
+        let valid = true;         // Clear old errors         userError.innerText = "";         passError.innerText = "";         // Validate Username         if (username.value.trim() === "") {             userError.innerText = "Please enter username"; 
+            valid = false; 
+        } 
+        // Validate Password         if (password.value.trim() === "") {             passError.innerText = "Please enter password";             valid = false; 
+        }  
+        else if (password.value.length < 5) { 
+            passError.innerText = "Password must be at least 5 characters";             valid = false; 
+        } 
+ 
+        // If valid 
+        if (valid) { 
+            alert("Login Successful!"); 
+        } 
+    }); 
+</script> 
+ 
+</body> 
+</html> 
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+17. Write a program using Promises to simulate a delayed API response (e.g., “Loading user data…”). 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Promise Example</title> 
+</head> 
+<body> 
+ 
+<h2>Check Console Output</h2> 
+ 
+<script> 
+    // Function that returns a Promise     function loadUserData() { 
+        return new Promise((resolve, reject) => { 
+             
+            console.log("Loading user data..."); 
+ 
+            // Simulate network delay (2 seconds) 
+            setTimeout(() => { 
+                const success = true;  // change to false to test error 
+ 
+                if (success) { 
+                    resolve({ name: "John Doe", age: 21, course: "BCA" }); 
+                } else { 
+                    reject("Failed to load user data"); 
+               } 
+            }, 2000); 
+        }); 
+    } 
+ 
+    // Using the Promise     loadUserData()         .then(user => { 
+            console.log("User data loaded:"); 
+            console.log(user); 
+        }) 
+        .catch(error => { 
+            console.log("Error:", error); 
+        }); 
+</script> 
+ 
+</body> 
+</html> 
+-------------------------------------------------------------------------------------------------------------
+
+18. Convert the above Promise code into async/await syntax. 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Async Await Example</title> 
+</head> 
+<body> 
+ 
+<h2>Check Console Output</h2> 
+ 
+<script> 
+    // Function that returns a Promise (same as before)     function loadUserData() { 
+        return new Promise((resolve, reject) => { 
+             
+            console.log("Loading user data..."); 
+ 
+            setTimeout(() => { 
+                const success = true;  // change to false to test error 
+ 
+                if (success) { 
+                    resolve({ name: "John Doe", age: 21, course: "BCA" }); 
+                } else { 
+                    reject("Failed to load user data"); 
+                } 
+            }, 2000); 
+        }); 
+    } 
+ 
+    // Async function using await 
+    async function getUser() { 
+        try { 
+            const user = await loadUserData();   // wait for Promise             console.log("User data loaded:"); 
+            console.log(user);         } catch (error) { 
+            console.log("Error:", error); 
+        } 
+    } 
+ 
+    // Call async function     getUser(); 
+</script> 
+ 
+</body> 
+</html> 
+Output: 
+ ----------------------------------------------------------------------------------------------
+19. Create a class Student with methods to calculate grades and display info. 
+ 
+<!DOCTYPE html> 
+<html> 
+<head> 
+    <title>Student Class Example</title> 
+</head> 
+<body> 
+ 
+<h2>Check Console Output</h2> 
+ 
+<script> 
+    // ---------------------------- 
+    // Student Class 
+    // ----------------------------     class Student { 
+        constructor(name, marks) {             this.name = name; 
+            this.marks = marks; 
+        } 
+ 
+        // Method to calculate grade         calculateGrade() {             if (this.marks >= 90) return "A";             else if (this.marks >= 75) return "B";             else if (this.marks >= 50) return "C"; 
+            else return "F"; 
+        } 
+ 
+        // Method to display student info 
+        displayInfo() { 
+            console.log("Student Name:", this.name);             console.log("Marks:", this.marks);             console.log("Grade:", this.calculateGrade()); 
+            console.log("------------------------"); 
+        } 
+    } 
+ 
+    // Creating objects of Student class     const s1 = new Student("John", 92);     const s2 = new Student("Sara", 68); 
+    const s3 = new Student("Aman", 45); 
+ 
+    // Displaying info     s1.displayInfo();     s2.displayInfo();     s3.displayInfo(); 
+</script> 
+ 
+</body> 
+</html> 
+---------------------------------------------------------------------------------------------------------- 
+
+21. Demonstrate type annotations for variables, arrays, and functions. 
+ 
+Q21.js 
+ 
+ 
+// 1. Variable Type Annotations var username = "Sanika"; 
+var age = 21; var isStudent = true; 
+console.log(username, age, isStudent); 
+// 2. Array Type Annotations var numbers = [10, 20, 30]; 
+var fruits = ["Apple", "Banana", "Orange"]; 
+var flags = [true, false, true]; console.log(numbers); console.log(fruits); console.log(flags); 
+ 
+// 3. Function Type Annotations // Function with parameter and return type 
+function add(a, b) { 
+    return a + b; 
+} 
+console.log("Sum:", add(5, 3)); // Function returning a string function greet(name) { 
+    return "Hello " + name; 
+} 
+console.log(greet("Sanika")); 
+ 
+// 4. Function with void (no return) 
+ 
+function displayMessage(msg) { 
+    console.log("Message:", msg); 
+} 
+displayMessage("TypeScript is easy!"); 
+ 
+Q21.ts 
+ 
+// 1. Variable Type Annotations let username: string = "Sanika"; let age: number = 21; 
+let isStudent: boolean = true; 
+ 
+console.log(username, age, isStudent); 
+ 
+ 
+// 2. Array Type Annotations let numbers: number[] = [10, 20, 30]; let fruits: string[] = ["Apple", "Banana", "Orange"]; 
+let flags: boolean[] = [true, false, true]; 
+ 
+console.log(numbers); console.log(fruits); 
+console.log(flags); 
+ 
+// 3. Function Type Annotations 
+ 
+// Function with parameter and return type 
+function add(a: number, b: number): number {     return a + b; 
+} 
+ 
+console.log("Sum:", add(5, 3)); 
+ 
+// Function returning a string function greet(name: string): string {     return "Hello " + name; 
+} 
+ 
+console.log(greet("Sanika")); // 4. Function with void (no return) function displayMessage(msg: string): void {     console.log("Message:", msg); 
+} 
+ 
+displayMessage("TypeScript is easy!"); 
+------------------------------------------------------------------------------------------------------------
+22. Write a small app that uses TypeScript classes and modules to manage a student list. 
+ 
+Main.js 
+ 
+import { Student } from "./student.js"; class StudentList {     constructor() { 
+        this.students = []; 
+    } 
+    addStudent(student) {         this.students.push(student); 
+    } 
+    showStudents() { 
+        console.log("Student List:"); 
+        this.students.forEach(s => console.log(s.getInfo())); 
+    } 
+} 
+const list = new StudentList(); 
+list.addStudent(new Student("Sanika", 101)); list.addStudent(new Student("Riya", 102)); list.addStudent(new Student("Aman", 103)); 
+list.showStudents(); 
+ 
+Student.js 
+ 
+export class Student {     constructor(name, roll) {         this.name = name;         this.roll = roll; 
+    } 
+    getInfo() { 
+        return `Name: ${this.name}, Roll No: ${this.roll}`; 
+    } 
+} 
+ 
+ Main.ts 
+ 
+import { Student } from "./student.js"; 
+ 
+class StudentList {     private students: Student[] = []; 
+ 
+    addStudent(student: Student): void { 
+        this.students.push(student); 
+    } 
+ 
+    showStudents(): void {         console.log("Student List:"); 
+        this.students.forEach(s => console.log(s.getInfo())); 
+    } 
+} 
+ 
+const list = new StudentList(); 
+ 
+list.addStudent(new Student("Sanika", 101)); list.addStudent(new Student("Riya", 102)); 
+list.addStudent(new Student("Aman", 103)); 
+ 
+list.showStudents(); 
+ 
+Student.ts 
+ 
+export class Student {     name: string;     roll: number; 
+ 
+    constructor(name: string, roll: number) { 
+        this.name = name;         this.roll = roll; 
+    } 
+ 
+    getInfo(): string { 
+        return `Name: ${this.name}, Roll No: ${this.roll}`; 
+    } 
+} 
+---------------------------------------------------------------------------------------------------------- 
+ 23. Set up a new Angular project using Angular CLI. 
+Install Node.js 
+Make sure you have Node.js installed (Angular requires Node.js ≥ 14). Check version: 
+node -v 
+  
+Install Angular CLI 
+Install Angular CLI globally if you haven’t already: npm install -g @angular/cli Check version: 
+ng version 
+  
+Create a New Angular Project ng new my-app 
+You will be prompted to choose: 
+o Would you like to add Angular routing? → Yes or No o Which stylesheet format? → e.g., CSS, SCSS, SASS, LESS, Stylus This creates a folder my-app with all the project files. 
+  
+Navigate to the Project cd my-app 
+  
+Serve the Angular Application ng serve 
+Open your browser and go to: http://localhost:4200/ • 	You should see the default Angular welcome page. 
+  
+  Summary of Commands 
+node -v                  # Check Node.js version npm install -g @angular/cli 
+  # Install Angular CLI ng new my-app            
+ # Create new Angular project cd my-app                
+ # Go into project folder ng serve             
+     # Run Angular app 
+
+
+ 
+ ---------------------------------------------------------------------------------------------------------------
+ 
+ 24. Create a component to display a welcome message and student information.  
+ 
+Student.ts 
+import { Component } from '@angular/core'; 
+ 
+@Component({ 
+  selector: 'app-student',   standalone: true, 
+  template: ` 
+    <h2>Welcome to the Student App!</h2> 
+    <div *ngFor="let student of students" style="border:1px solid gray; padding:10px; margin:5px;"> 
+      <p><strong>Name:</strong> {{ student.name }}</p> 
+      <p><strong>Age:</strong> {{ student.age }}</p> 
+      <p><strong>Roll No:</strong> {{ student.rollNo }}</p> 
+    </div> 
+  ` 
+}) 
+export class StudentComponent { 
+  students = [ 
+    { name: 'Vaishnavi', age: 21, rollNo: 'SA1116' }, 
+    { name: 'Pranav', age: 22, rollNo: 'SA1117' } 
+  ]; 
+} 
+ 
+App.ts 
+ 
+import { Component } from '@angular/core'; 
+import { StudentComponent } from './student/student'; 
+ 
+@Component({ 
+  selector: 'app-root', 
+  standalone: true, 
+  imports: [StudentComponent],  // Import the standalone StudentComponent   template: ` 
+    <h1>Welcome to My Angular App!</h1> 
+    <app-student></app-student> 
+  ` 
+}) 
+export class AppComponent {} 
+ 
+main.ts 
+ 
+import { bootstrapApplication } from '@angular/platform-browser'; import { AppComponent } from './app/app'; 
+ 
+bootstrapApplication(AppComponent) 
+  .catch(err => console.error(err)); 
+ 
+ 
+ 
+
+
+
+
+  
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
