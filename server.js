@@ -22,16 +22,10 @@ app.get("/", async(req, res) => {
     }
   });
 });
-app.get("/bi1", async(req, res) => {
-  const fileName = "Practical1.pbix";
-  const directoryPath = path.join(__dirname, "uploads");
-  const filePath = path.join(directoryPath, fileName);
-  res.download(filePath, fileName, (err) => {
-    if (err) {
-      console.log("Error downloading file:", err);
-      res.status(500).send("File could not be downloaded.");
-    }
-  });
+app.get("/dj", (req, res) => {
+  res.redirect(
+    "https://drive.google.com/uc?export=download&id=1PV-DHTMQU6a3kKPQf5RpXVIohbJdycpo"
+  );
 });
 app.get("/bi2", async(req, res) => {
   const fileName = "Practical2.pbix";
