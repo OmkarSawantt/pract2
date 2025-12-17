@@ -24,26 +24,10 @@ app.get("/", async(req, res) => {
   });
 });
 
-
 app.get("/dj", (req, res) => {
-  const fileId = "1PV-DHTMQU6a3kKPQf5RpXVIohbJdycpo";
-  const fileName = "dj.zip";
-
-  const driveUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
-
-  res.setHeader(
-    "Content-Disposition",
-    `attachment; filename="${fileName}"`
+  res.redirect(
+  "https://firebasestorage.googleapis.com/v0/b/uploadingfile-1f51f.appspot.com/o/pract%2Fdj.zip?alt=media&token=1f39a212-6f86-47e2-9435-f0663859ca65"
   );
-  res.setHeader("Content-Type", "application/zip");
-
-  https.get(driveUrl, (driveRes) => {
-    // Pipe Google Drive file stream directly to client
-    driveRes.pipe(res);
-  }).on("error", (err) => {
-    console.error("Download error:", err);
-    res.status(500).send("File download failed");
-  });
 });
 app.get("/bi2", async(req, res) => {
   const fileName = "Practical2.pbix";
