@@ -6,6 +6,7 @@ const path = require("path");
 const fs = require('fs');
 const app = express();
 const archiver = require("archiver");
+const https = require("https");
 app.use(cors())
 app.use(fileUpload());
 
@@ -22,10 +23,27 @@ app.get("/", async(req, res) => {
     }
   });
 });
+
+
 app.get("/dj", (req, res) => {
-  res.redirect(
-    "https://drive.google.com/uc?export=download&id=1PV-DHTMQU6a3kKPQf5RpXVIohbJdycpo"
+  const fileId = "1PV-DHTMQU6a3kKPQf5RpXVIohbJdycpo";
+  const fileName = "dj.zip";
+
+  const driveUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+
+  res.setHeader(
+    "Content-Disposition",
+    `attachment; filename="${fileName}"`
   );
+  res.setHeader("Content-Type", "application/zip");
+
+  https.get(driveUrl, (driveRes) => {
+    // Pipe Google Drive file stream directly to client
+    driveRes.pipe(res);
+  }).on("error", (err) => {
+    console.error("Download error:", err);
+    res.status(500).send("File download failed");
+  });
 });
 app.get("/bi2", async(req, res) => {
   const fileName = "Practical2.pbix";
